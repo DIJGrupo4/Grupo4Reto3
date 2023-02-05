@@ -32,7 +32,7 @@ class jUnitCine {
 			Cine cine= new Cine();
 			String nombre= "un texto";
 			cine.setNombre(nombre);
-			assertNotEquals("Nombre no est� accesible", nombre, cine.getNombre());
+			assertNotEquals("Nombre no esta accesible", nombre, cine.getNombre());
 		}
 		
 		@Test
@@ -40,7 +40,7 @@ class jUnitCine {
 			Cine cine= new Cine();
 			String direccion= "un texto";
 			cine.setNombre(direccion);
-			assertNotEquals("Nombre no est� accesible", direccion, cine.getNombre());
+			assertNotEquals("Nombre no esta accesible", direccion, cine.getNombre());
 		}
 		
 		@Test
@@ -48,16 +48,42 @@ class jUnitCine {
 			Cine cine= new Cine();
 			int numSalas= 500;
 			cine.setNumSalas(numSalas);
-			assertNotEquals("Nombre no est� accesible", numSalas, cine.getNombre());
+			assertNotEquals("Nombre no esta accesible", numSalas, cine.getNombre());
 		}
 		
 
 		@Test
-		public void testHashCode() {
+		public void testHashCodeCodCine() {
 		Cine cine= new Cine();
 		assertEquals("hasCode no encontrado!!!",0, cine.hashCode());
 		int codCine = 666;
 		cine.setCodCine(codCine);
+		assertEquals("hashCode-2 no encontrado!!!!", hashCode(),cine.hashCode());
+		}
+		
+		@Test
+		public void testHashCodeNombre() {
+		Cine cine= new Cine();
+		assertEquals("hasCode no encontrado!!!",0, cine.hashCode());
+		String nombre = "un texto";
+		cine.setNombre(nombre);
+		assertEquals("hashCode-2 no encontrado!!!!", hashCode(),cine.hashCode());
+		}@Test
+		
+		public void testHashCodeDireccion() {
+		Cine cine= new Cine();
+		assertEquals("hasCode no encontrado!!!",0, cine.hashCode());
+		String direccion = "un texto";
+		cine.setDireccion(direccion);
+		assertEquals("hashCode-2 no encontrado!!!!", hashCode(),cine.hashCode());
+		}
+		
+		@Test
+		public void testHashCodeNumSala() {
+		Cine cine= new Cine();
+		assertEquals("hasCode no encontrado!!!",0, cine.hashCode());
+		int numSala = 500;
+		cine.setCodCine(numSala);
 		assertEquals("hashCode-2 no encontrado!!!!", hashCode(),cine.hashCode());
 		}
 }
