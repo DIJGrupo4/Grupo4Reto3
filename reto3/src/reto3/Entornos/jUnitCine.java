@@ -67,7 +67,24 @@ class jUnitCine {
 		assertEquals("los cines son iguales!!!!", cine, otroCine);
 
 	}
-	
+
+	@Test
+	public void testCineNull() {
+		Cine cine = new Cine();
+		cine.setCodCine(666);
+		cine.setNombre(null);
+		cine.setDireccion(null);
+		cine.setNumSalas(50);
+		Cine otroCine = new Cine();
+		cine.setCodCine(666);
+		cine.setNombre("Yelmo");
+		cine.setDireccion("Calle 14");
+		cine.setNumSalas(50);
+
+		assertEquals("los cines no son iguales!!!!", cine, otroCine);
+
+	}
+
 	@Test
 	public void testCineDiferentes() {
 		Cine cine = new Cine();
