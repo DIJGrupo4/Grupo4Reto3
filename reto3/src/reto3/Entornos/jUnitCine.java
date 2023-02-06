@@ -11,6 +11,7 @@ import reto3.bbdd.pojo.Cine;
 class jUnitCine {
 
 	// ***** para probar la serializaci�n
+	
 	@Test
 	public void testSerailizable() {
 		Cine cine = new Cine();
