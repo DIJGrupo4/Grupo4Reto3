@@ -6,136 +6,203 @@ import java.io.Serializable;
 
 import org.junit.Test;
 
-import reto3.bbdd.pojo.Cine;
+import reto3.bbdd.pojo.Cliente;
 
 class jUnitCliente {
 
 	// ***** para probar la serializaci�n
 	@Test
-	public void testSerailizable() {
-		Cine cine = new Cine();
-		assertTrue("No se puede realizar la serializacion!!!", cine instanceof Serializable);
+	public void testSeralizable() {
+		Cliente cliente = new Cliente();
+		assertTrue("No se puede realizar la serializacion!!!", cliente instanceof Serializable);
 	}
 
 	// ************* probar getter & Setters
 
 	@Test
-	public void testcodCine() {
-		Cine cine = new Cine();
-		int codCine = 666;
-		cine.setCodCine(codCine);
-		assertNotEquals("codCine no esta accesible", codCine, cine.getCodCine());
+	public void testDNI() {
+		Cliente cliente = new Cliente();
+		String DNI = "un texto";
+		cliente.setDNI(DNI);
+		assertNotEquals("DNI no esta accesible", DNI, cliente.getDNI());
 	}
 
 	@Test
 	public void testNombre() {
-		Cine cine = new Cine();
+		Cliente cliente = new Cliente();
 		String nombre = "un texto";
-		cine.setNombre(nombre);
-		assertNotEquals("Nombre no esta accesible", nombre, cine.getNombre());
+		cliente.setNombre(nombre);
+		assertNotEquals("Nombre no esta accesible", nombre, cliente.getNombre());
 	}
 
 	@Test
-	public void testDireccion() {
-		Cine cine = new Cine();
-		String direccion = "un texto";
-		cine.setNombre(direccion);
-		assertNotEquals("Nombre no esta accesible", direccion, cine.getNombre());
+	public void testApellido() {
+		Cliente cliente = new Cliente();
+		String apellido = "un texto";
+		cliente.setApellido(apellido);
+		assertNotEquals("Apellido no esta accesible", apellido, cliente.getApellido());
+	}
+	
+	@Test
+	public void testSexo() {
+		Cliente cliente = new Cliente();
+		String sexo = "un texto";
+		cliente.setSexo(sexo);
+		assertNotEquals("Sexo no esta accesible", sexo, cliente.getSexo());
+	}
+	
+	@Test
+	public void testContraseña() {
+		Cliente cliente = new Cliente();
+		String contraseña = "un texto";
+		cliente.setContraseña(contraseña);
+		assertNotEquals("Contraseña no esta accesible", contraseña, cliente.getContraseña());
+	}
+	
+	@Test
+	public void testUsuario() {
+		Cliente cliente = new Cliente();
+		String usuario = "un texto";
+		cliente.setUsuario(usuario);
+		assertNotEquals("Contraseña no esta accesible", usuario, cliente.getUsuario());
+	}
+	
+	@Test
+	public void testCodEntrada() {
+		Cliente cliente = new Cliente();
+		int codEntrada = 54321;
+		cliente.setCodEntrada(codEntrada);
+		assertNotEquals("Contraseña no esta accesible", codEntrada, cliente.getCodEntrada());
 	}
 
 	@Test
-	public void testNumSalas() {
-		Cine cine = new Cine();
-		int numSalas = 50;
-		cine.setNumSalas(numSalas);
-		assertNotEquals("Nombre no esta accesible", numSalas, cine.getNombre());
-	}
+	public void testClienteIguales() {
+		Cliente cliente = new Cliente();
+		cliente.setDNI("12345678L");
+		cliente.setNombre("Paul");
+		cliente.setApellido("Guridi");
+		cliente.setSexo("Hombre");
+		cliente.setContraseña("123456");
+		cliente.setNombre("Paul13");
+		cliente.setCodEntrada(54321);
+		Cliente otroCine = new Cliente();
+		cliente.setDNI("12345678L");
+		cliente.setNombre("Paul");
+		cliente.setApellido("Guridi");
+		cliente.setSexo("Hombre");
+		cliente.setContraseña("123456");
+		cliente.setNombre("Paul13");
+		cliente.setCodEntrada(54321);
 
-	@Test
-	public void testCineIguales() {
-		Cine cine = new Cine();
-		cine.setCodCine(666);
-		cine.setNombre("Yelmo");
-		cine.setDireccion("Calle 14");
-		cine.setNumSalas(50);
-		Cine otroCine = new Cine();
-		cine.setCodCine(666);
-		cine.setNombre("Yelmo");
-		cine.setDireccion("Calle 14");
-		cine.setNumSalas(50);
-
-		assertEquals("los cines son iguales!!!!", cine, otroCine);
-
-	}
-
-	@Test
-	public void testCineNull() {
-		Cine cine = new Cine();
-		cine.setCodCine(666);
-		cine.setNombre(null);
-		cine.setDireccion(null);
-		cine.setNumSalas(50);
-		Cine otroCine = new Cine();
-		cine.setCodCine(666);
-		cine.setNombre("Yelmo");
-		cine.setDireccion("Calle 14");
-		cine.setNumSalas(50);
-
-		assertEquals("los cines no son iguales!!!!", cine, otroCine);
-
-	}
-
-	@Test
-	public void testCineDiferentes() {
-		Cine cine = new Cine();
-		cine.setCodCine(666);
-		cine.setNombre("Yelmo");
-		cine.setDireccion("Calle 14");
-		cine.setNumSalas(50);
-		Cine otroCine = new Cine();
-		cine.setCodCine(600);
-		cine.setNombre("Cines");
-		cine.setDireccion("Calle 20");
-		cine.setNumSalas(40);
-
-		assertEquals("los cines no son iguales!!!!", cine, otroCine);
+		assertEquals("los clientes son iguales!!!!", cliente, otroCine);
 
 	}
 
 	@Test
-	public void testHashCodeCodCine() {
-		Cine cine = new Cine();
-		assertEquals("hasCode no encontrado!!!", 0, cine.hashCode());
-		int codCine = 666;
-		cine.setCodCine(codCine);
-		assertEquals("hashCode-2 no encontrado!!!!", hashCode(), cine.hashCode());
+	public void testClienteNull() {
+		Cliente cliente = new Cliente();
+		cliente.setDNI(null);
+		cliente.setNombre(null);
+		cliente.setApellido(null);
+		cliente.setSexo(null);
+		cliente.setContraseña(null);
+		cliente.setNombre(null);
+		cliente.setCodEntrada(54321);
+		Cliente otroCine = new Cliente();
+		cliente.setDNI("12345678L");
+		cliente.setNombre("Paul");
+		cliente.setApellido("Guridi");
+		cliente.setSexo("Hombre");
+		cliente.setContraseña("123456");
+		cliente.setNombre("Paul13");
+		cliente.setCodEntrada(54321);
+
+		assertEquals("los cines no son iguales!!!!", cliente, otroCine);
+
+	}
+
+	@Test
+	public void testClienteDiferentes() {
+		Cliente cliente = new Cliente();
+		cliente.setDNI("12345678L");
+		cliente.setNombre("Paul");
+		cliente.setApellido("Guridi");
+		cliente.setSexo("Hombre");
+		cliente.setContraseña("123456");
+		cliente.setNombre("Paul13");
+		cliente.setCodEntrada(54321);
+		Cliente otroCine = new Cliente();
+		cliente.setDNI("87654321L");
+		cliente.setNombre("Jon");
+		cliente.setApellido("Lopez");
+		cliente.setSexo("Hombre");
+		cliente.setContraseña("345216");
+		cliente.setNombre("JonLo");
+		cliente.setCodEntrada(12345);
+		assertEquals("los clientes no son iguales!!!!", cliente, otroCine);
+
+	}
+
+	@Test
+	public void testHashCodeDNI() {
+		Cliente cliente = new Cliente();
+		assertEquals("hasCode no encontrado!!!", 0, cliente.hashCode());
+		String DNI = "un texto";
+		cliente.setDNI(DNI);
+		assertEquals("hashCode-2 no encontrado!!!!", hashCode(), cliente.hashCode());
 	}
 
 	@Test
 	public void testHashCodeNombre() {
-		Cine cine = new Cine();
-		assertEquals("hasCode no encontrado!!!", 0, cine.hashCode());
+		Cliente cliente = new Cliente();
+		assertEquals("hasCode no encontrado!!!", 0, cliente.hashCode());
 		String nombre = "un texto";
-		cine.setNombre(nombre);
-		assertEquals("hashCode-2 no encontrado!!!!", hashCode(), cine.hashCode());
+		cliente.setNombre(nombre);
+		assertEquals("hashCode-2 no encontrado!!!!", hashCode(), cliente.hashCode());
+	}
+	
+	@Test
+	public void testHashCodeApellido() {
+		Cliente cliente = new Cliente();
+		assertEquals("hasCode no encontrado!!!", 0, cliente.hashCode());
+		String apellido = "un texto";
+		cliente.setApellido(apellido);
+		assertEquals("hashCode-2 no encontrado!!!!", hashCode(), cliente.hashCode());
 	}
 
 	@Test
-
-	public void testHashCodeDireccion() {
-		Cine cine = new Cine();
-		assertEquals("hasCode no encontrado!!!", 0, cine.hashCode());
-		String direccion = "un texto";
-		cine.setDireccion(direccion);
-		assertEquals("hashCode-2 no encontrado!!!!", hashCode(), cine.hashCode());
+	public void testHashCodeSexo() {
+		Cliente cliente = new Cliente();
+		assertEquals("hasCode no encontrado!!!", 0, cliente.hashCode());
+		String sexo = "un texto";
+		cliente.setSexo(sexo);
+		assertEquals("hashCode-2 no encontrado!!!!", hashCode(), cliente.hashCode());
 	}
-
+	
 	@Test
-	public void testHashCodeNumSala() {
-		Cine cine = new Cine();
-		assertEquals("hasCode no encontrado!!!", 0, cine.hashCode());
-		int numSala = 50;
-		cine.setCodCine(numSala);
-		assertEquals("hashCode-2 no encontrado!!!!", hashCode(), cine.hashCode());
+	public void testHashCodeContraseña() {
+		Cliente cliente = new Cliente();
+		assertEquals("hasCode no encontrado!!!", 0, cliente.hashCode());
+		String contraseña = "un texto";
+		cliente.setContraseña(contraseña);
+		assertEquals("hashCode-2 no encontrado!!!!", hashCode(), cliente.hashCode());
+	}
+	
+	@Test
+	public void testHashCodeUsuario() {
+		Cliente cliente = new Cliente();
+		assertEquals("hasCode no encontrado!!!", 0, cliente.hashCode());
+		String usuario = "un texto";
+		cliente.setUsuario(usuario);
+		assertEquals("hashCode-2 no encontrado!!!!", hashCode(), cliente.hashCode());
+	}
+	
+	@Test
+	public void testHashCodeCodEntrada() {
+		Cliente cliente = new Cliente();
+		assertEquals("hasCode no encontrado!!!", 0, cliente.hashCode());
+		int codEntrada = 50;
+		cliente.setCodEntrada(codEntrada);
+		assertEquals("hashCode-2 no encontrado!!!!", hashCode(), cliente.hashCode());
 	}
 }

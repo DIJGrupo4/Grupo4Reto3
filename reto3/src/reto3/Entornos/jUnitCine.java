@@ -41,7 +41,7 @@ class jUnitCine {
 		Cine cine = new Cine();
 		String direccion = "un texto";
 		cine.setNombre(direccion);
-		assertNotEquals("Nombre no esta accesible", direccion, cine.getNombre());
+		assertNotEquals("Direccion no esta accesible", direccion, cine.getNombre());
 	}
 
 	@Test
@@ -49,7 +49,7 @@ class jUnitCine {
 		Cine cine = new Cine();
 		int numSalas = 50;
 		cine.setNumSalas(numSalas);
-		assertNotEquals("Nombre no esta accesible", numSalas, cine.getNombre());
+		assertNotEquals("Numero salas no esta accesible", numSalas, cine.getNombre());
 	}
 
 	@Test
