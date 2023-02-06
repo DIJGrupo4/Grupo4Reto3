@@ -6,7 +6,7 @@ public class Salas {
 
 	private String nombreSala = null;
 	private int codSala = 0;
-	private int fecha = 0;
+	private String fecha = null;
 	private int codPelicula = 0;
 	private int horarioSala = 0;
 
@@ -26,11 +26,11 @@ public class Salas {
 		this.codSala = codSala;
 	}
 
-	public int getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(int fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 

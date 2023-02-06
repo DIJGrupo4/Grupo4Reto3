@@ -8,7 +8,6 @@ public class Ventas implements Serializable {
 	private static final long serialVersionUID = 8091926587816980311L;
 
 	private String dni = null;
-
 	private int costo = 0;
 	private String nombrePelicula = null;
 	private String fecha = null;

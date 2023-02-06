@@ -32,7 +32,7 @@ class jUnitEntradas {
 		Entradas entradas = new Entradas();
 		String fechaCompra = "un texto";
 		entradas.setFechaCompra(fechaCompra);
-		assertNotEquals("Nombre no esta accesible", fechaCompra, entradas.getFechaCompra());
+		assertNotEquals("La fecha de la compra no esta accesible", fechaCompra, entradas.getFechaCompra());
 	}
 
 	@Test
@@ -69,7 +69,7 @@ class jUnitEntradas {
 
 
 	@Test
-	public void testCineIguales() {
+	public void testEntradaIguales() {
 		Entradas entradas = new Entradas();
 		entradas.setCodEntrada(12345);
 		entradas.setFechaCompra("14 noviembre de 2022");
@@ -78,19 +78,19 @@ class jUnitEntradas {
 		entradas.setNumeroSala(1);
 		entradas.setPrecio(12);
 		Entradas otroEntradas = new Entradas();
-		entradas.setCodEntrada(12345);
-		entradas.setFechaCompra("14 noviembre de 2022");
-		entradas.setNombrePelicula("Avatar");
-		entradas.setHora(22);
-		entradas.setNumeroSala(1);
-		entradas.setPrecio(12);
+		otroEntradas.setCodEntrada(12345);
+		otroEntradas.setFechaCompra("14 noviembre de 2022");
+		otroEntradas.setNombrePelicula("Avatar");
+		otroEntradas.setHora(22);
+		otroEntradas.setNumeroSala(1);
+		otroEntradas.setPrecio(12);
 
 		assertEquals("Las entradas son iguales!!!!", entradas, otroEntradas);
 
 	}
 
 	@Test
-	public void testCineNull() {
+	public void testEntradaNull() {
 		Entradas entradas = new Entradas();
 		entradas.setCodEntrada(12345);
 		entradas.setFechaCompra(null);
@@ -99,19 +99,19 @@ class jUnitEntradas {
 		entradas.setNumeroSala(1);
 		entradas.setPrecio(12);
 		Entradas otroEntradas = new Entradas();
-		entradas.setCodEntrada(12345);
-		entradas.setFechaCompra("14 noviembre de 2022");
-		entradas.setNombrePelicula("Avatar");
-		entradas.setHora(22);
-		entradas.setNumeroSala(1);
-		entradas.setPrecio(12);
+		otroEntradas.setCodEntrada(12345);
+		otroEntradas.setFechaCompra("14 noviembre de 2022");
+		otroEntradas.setNombrePelicula("Avatar");
+		otroEntradas.setHora(22);
+		otroEntradas.setNumeroSala(1);
+		otroEntradas.setPrecio(12);
 
 		assertEquals("Las entradas no son iguales!!!!", entradas, otroEntradas);
 
 	}
 
 	@Test
-	public void testCineDiferentes() {
+	public void testEntradaDiferentes() {
 		Entradas entradas = new Entradas();
 		entradas.setCodEntrada(12345);
 		entradas.setFechaCompra("14 noviembre de 2022");
@@ -120,12 +120,12 @@ class jUnitEntradas {
 		entradas.setNumeroSala(1);
 		entradas.setPrecio(12);
 		Entradas otroEntradas = new Entradas();
-		entradas.setCodEntrada(12345);
-		entradas.setFechaCompra("18 noviembre de 2023");
-		entradas.setNombrePelicula("Fast and Furious 9");
-		entradas.setHora(20);
-		entradas.setNumeroSala(2);
-		entradas.setPrecio(15);
+		otroEntradas.setCodEntrada(12345);
+		otroEntradas.setFechaCompra("18 noviembre de 2023");
+		otroEntradas.setNombrePelicula("Fast and Furious 9");
+		otroEntradas.setHora(20);
+		otroEntradas.setNumeroSala(2);
+		otroEntradas.setPrecio(15);
 
 		assertEquals("Las entradas no son iguales!!!!", entradas, otroEntradas);
 

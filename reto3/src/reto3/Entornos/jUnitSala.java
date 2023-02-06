@@ -6,136 +6,158 @@ import java.io.Serializable;
 
 import org.junit.Test;
 
-import reto3.bbdd.pojo.Cine;
+import reto3.bbdd.pojo.Salas;
 
 class jUnitSala {
 
 	// ***** para probar la serializaci�n
 	@Test
 	public void testSerailizable() {
-		Cine cine = new Cine();
-		assertTrue("No se puede realizar la serializacion!!!", cine instanceof Serializable);
+		Salas salas = new Salas();
+		assertTrue("No se puede realizar la serializacion!!!", salas instanceof Serializable);
 	}
 
 	// ************* probar getter & Setters
 
 	@Test
-	public void testcodCine() {
-		Cine cine = new Cine();
-		int codCine = 666;
-		cine.setCodCine(codCine);
-		assertNotEquals("codCine no esta accesible", codCine, cine.getCodCine());
+	public void testNombreSala() {
+		Salas salas = new Salas();
+		String nombreSala = "un texto";
+		salas.setNombreSala(nombreSala);
+		assertNotEquals("Nombre de la sala no esta accesible", nombreSala, salas.getNombreSala());
+	}
+	
+	@Test
+	public void testcodSala() {
+		Salas salas = new Salas();
+		int codSala = 54321;
+		salas.setCodSala(codSala);
+		assertNotEquals("codSala no esta accesible", codSala, salas.getCodSala());
 	}
 
 	@Test
-	public void testNombre() {
-		Cine cine = new Cine();
-		String nombre = "un texto";
-		cine.setNombre(nombre);
-		assertNotEquals("Nombre no esta accesible", nombre, cine.getNombre());
+	public void testFecha() {
+		Salas salas = new Salas();
+		String fecha = "un texto";
+		salas.setFecha(fecha);
+		assertNotEquals("Nombre no esta accesible", fecha, salas.getFecha());
+	}
+	
+	@Test
+	public void testcodPelicula() {
+		Salas salas = new Salas();
+		int codPelicula = 12345;
+		salas.setCodPelicula(codPelicula);
+		assertNotEquals("codPelicula no esta accesible", codPelicula, salas.getCodPelicula());
+	}
+	
+	@Test
+	public void testHorarioSala() {
+		Salas salas = new Salas();
+		int horario = 20;
+		salas.setHorarioSala(horario);
+		assertNotEquals("Horario de la sala no esta accesible", horario, salas.getHorarioSala());
 	}
 
 	@Test
-	public void testDireccion() {
-		Cine cine = new Cine();
-		String direccion = "un texto";
-		cine.setNombre(direccion);
-		assertNotEquals("Nombre no esta accesible", direccion, cine.getNombre());
-	}
+	public void testSalasIguales() {
+		Salas salas = new Salas();
+		salas.setNombreSala("Numero 1");
+		salas.setCodSala(54321);
+		salas.setFecha("13 de noviembre de 2023");
+		salas.setCodPelicula(12345);
+		salas.setHorarioSala(20);
+		Salas otrasalas = new Salas();
+		otrasalas.setNombreSala("Numero 1");
+		otrasalas.setCodSala(54321);
+		otrasalas.setFecha("13 de noviembre de 2023");
+		otrasalas.setCodPelicula(12345);
+		otrasalas.setHorarioSala(20);
 
-	@Test
-	public void testNumSalas() {
-		Cine cine = new Cine();
-		int numSalas = 50;
-		cine.setNumSalas(numSalas);
-		assertNotEquals("Nombre no esta accesible", numSalas, cine.getNombre());
-	}
-
-	@Test
-	public void testCineIguales() {
-		Cine cine = new Cine();
-		cine.setCodCine(666);
-		cine.setNombre("Yelmo");
-		cine.setDireccion("Calle 14");
-		cine.setNumSalas(50);
-		Cine otroCine = new Cine();
-		cine.setCodCine(666);
-		cine.setNombre("Yelmo");
-		cine.setDireccion("Calle 14");
-		cine.setNumSalas(50);
-
-		assertEquals("los cines son iguales!!!!", cine, otroCine);
-
-	}
-
-	@Test
-	public void testCineNull() {
-		Cine cine = new Cine();
-		cine.setCodCine(666);
-		cine.setNombre(null);
-		cine.setDireccion(null);
-		cine.setNumSalas(50);
-		Cine otroCine = new Cine();
-		cine.setCodCine(666);
-		cine.setNombre("Yelmo");
-		cine.setDireccion("Calle 14");
-		cine.setNumSalas(50);
-
-		assertEquals("los cines no son iguales!!!!", cine, otroCine);
+		assertEquals("los cines son iguales!!!!", salas, otrasalas);
 
 	}
 
 	@Test
-	public void testCineDiferentes() {
-		Cine cine = new Cine();
-		cine.setCodCine(666);
-		cine.setNombre("Yelmo");
-		cine.setDireccion("Calle 14");
-		cine.setNumSalas(50);
-		Cine otroCine = new Cine();
-		cine.setCodCine(600);
-		cine.setNombre("Cines");
-		cine.setDireccion("Calle 20");
-		cine.setNumSalas(40);
+	public void testSalasNull() {
+		Salas salas = new Salas();
+		salas.setNombreSala(null);
+		salas.setCodSala(54321);
+		salas.setFecha(null);
+		salas.setCodPelicula(12345);
+		salas.setHorarioSala(20);
+		Salas otrasalas = new Salas();
+		otrasalas.setNombreSala("Numero 1");
+		otrasalas.setCodSala(54321);
+		otrasalas.setFecha("13 de noviembre de 2023");
+		otrasalas.setCodPelicula(12345);
+		otrasalas.setHorarioSala(20);
 
-		assertEquals("los cines no son iguales!!!!", cine, otroCine);
+		assertEquals("los cines no son iguales!!!!", salas, otrasalas);
 
 	}
 
 	@Test
-	public void testHashCodeCodCine() {
-		Cine cine = new Cine();
-		assertEquals("hasCode no encontrado!!!", 0, cine.hashCode());
-		int codCine = 666;
-		cine.setCodCine(codCine);
-		assertEquals("hashCode-2 no encontrado!!!!", hashCode(), cine.hashCode());
+	public void testSalasDiferentes() {
+		Salas salas = new Salas();
+		salas.setNombreSala("Yelmo");
+		salas.setCodSala(54321);
+		salas.setFecha("13 de noviembre de 2023");
+		salas.setCodPelicula(12345);
+		salas.setHorarioSala(20);
+		Salas otrasalas = new Salas();
+		otrasalas.setNombreSala("Yelmo");
+		otrasalas.setCodSala(54321);
+		otrasalas.setFecha("13 de noviembre de 2023");
+		otrasalas.setCodPelicula(12345);
+		otrasalas.setHorarioSala(20);
+
+		assertEquals("los cines no son iguales!!!!", salas, otrasalas);
+
 	}
 
 	@Test
-	public void testHashCodeNombre() {
-		Cine cine = new Cine();
-		assertEquals("hasCode no encontrado!!!", 0, cine.hashCode());
-		String nombre = "un texto";
-		cine.setNombre(nombre);
-		assertEquals("hashCode-2 no encontrado!!!!", hashCode(), cine.hashCode());
+	public void testHashCodeNombreSala() {
+		Salas salas = new Salas();
+		assertEquals("hasCode no encontrado!!!", 0, salas.hashCode());
+		String nombreSala = "un texto";
+		salas.setNombreSala(nombreSala);
+		assertEquals("hashCode-2 no encontrado!!!!", hashCode(), salas.hashCode());
+	}
+	
+	@Test
+	public void testHashCodeCodSala() {
+		Salas salas = new Salas();
+		assertEquals("hasCode no encontrado!!!", 0, salas.hashCode());
+		int codSala = 54321;
+		salas.setCodSala(codSala);
+		assertEquals("hashCode-2 no encontrado!!!!", hashCode(), salas.hashCode());
 	}
 
 	@Test
-
-	public void testHashCodeDireccion() {
-		Cine cine = new Cine();
-		assertEquals("hasCode no encontrado!!!", 0, cine.hashCode());
-		String direccion = "un texto";
-		cine.setDireccion(direccion);
-		assertEquals("hashCode-2 no encontrado!!!!", hashCode(), cine.hashCode());
+	public void testHashCodeFecha() {
+		Salas salas = new Salas();
+		assertEquals("hasCode no encontrado!!!", 0, salas.hashCode());
+		String fecha = "un texto";
+		salas.setFecha(fecha);
+		assertEquals("hashCode-2 no encontrado!!!!", hashCode(), salas.hashCode());
 	}
 
 	@Test
-	public void testHashCodeNumSala() {
-		Cine cine = new Cine();
-		assertEquals("hasCode no encontrado!!!", 0, cine.hashCode());
-		int numSala = 50;
-		cine.setCodCine(numSala);
-		assertEquals("hashCode-2 no encontrado!!!!", hashCode(), cine.hashCode());
+	public void testHashCodeCodPelicula() {
+		Salas salas = new Salas();
+		assertEquals("hasCode no encontrado!!!", 0, salas.hashCode());
+		int codPelicula = 12345;
+		salas.setCodPelicula(codPelicula);
+		assertEquals("hashCode-2 no encontrado!!!!", hashCode(), salas.hashCode());
+	}
+	
+	@Test
+	public void testHashCodeHorarioSala() {
+		Salas salas = new Salas();
+		assertEquals("hasCode no encontrado!!!", 0, salas.hashCode());
+		int horarioSala = 50;
+		salas.setHorarioSala(horarioSala);
+		assertEquals("hashCode-2 no encontrado!!!!", hashCode(), salas.hashCode());
 	}
 }

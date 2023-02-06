@@ -60,10 +60,10 @@ class jUnitCine {
 		cine.setDireccion("Calle 14");
 		cine.setNumSalas(50);
 		Cine otroCine = new Cine();
-		cine.setCodCine(666);
-		cine.setNombre("Yelmo");
-		cine.setDireccion("Calle 14");
-		cine.setNumSalas(50);
+		otroCine.setCodCine(666);
+		otroCine.setNombre("Yelmo");
+		otroCine.setDireccion("Calle 14");
+		otroCine.setNumSalas(50);
 
 		assertEquals("los cines son iguales!!!!", cine, otroCine);
 
@@ -77,10 +77,10 @@ class jUnitCine {
 		cine.setDireccion(null);
 		cine.setNumSalas(50);
 		Cine otroCine = new Cine();
-		cine.setCodCine(666);
-		cine.setNombre("Yelmo");
-		cine.setDireccion("Calle 14");
-		cine.setNumSalas(50);
+		otroCine.setCodCine(666);
+		otroCine.setNombre("Yelmo");
+		otroCine.setDireccion("Calle 14");
+		otroCine.setNumSalas(50);
 
 		assertEquals("los cines no son iguales!!!!", cine, otroCine);
 
@@ -94,10 +94,10 @@ class jUnitCine {
 		cine.setDireccion("Calle 14");
 		cine.setNumSalas(50);
 		Cine otroCine = new Cine();
-		cine.setCodCine(600);
-		cine.setNombre("Cines");
-		cine.setDireccion("Calle 20");
-		cine.setNumSalas(40);
+		otroCine.setCodCine(600);
+		otroCine.setNombre("Cines");
+		otroCine.setDireccion("Calle 20");
+		otroCine.setNumSalas(40);
 
 		assertEquals("los cines no son iguales!!!!", cine, otroCine);
 

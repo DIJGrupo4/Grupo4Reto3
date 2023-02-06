@@ -86,13 +86,13 @@ class jUnitCliente {
 		cliente.setNombre("Paul13");
 		cliente.setCodEntrada(54321);
 		Cliente otroCliente = new Cliente();
-		cliente.setDNI("12345678L");
-		cliente.setNombre("Paul");
-		cliente.setApellido("Guridi");
-		cliente.setSexo("Hombre");
-		cliente.setContraseña("123456");
-		cliente.setNombre("Paul13");
-		cliente.setCodEntrada(54321);
+		otroCliente.setDNI("12345678L");
+		otroCliente.setNombre("Paul");
+		otroCliente.setApellido("Guridi");
+		otroCliente.setSexo("Hombre");
+		otroCliente.setContraseña("123456");
+		otroCliente.setNombre("Paul13");
+		otroCliente.setCodEntrada(54321);
 
 		assertEquals("los clientes son iguales!!!!", cliente, otroCliente);
 
@@ -109,13 +109,13 @@ class jUnitCliente {
 		cliente.setNombre(null);
 		cliente.setCodEntrada(54321);
 		Cliente otroCliente = new Cliente();
-		cliente.setDNI("12345678L");
-		cliente.setNombre("Paul");
-		cliente.setApellido("Guridi");
-		cliente.setSexo("Hombre");
-		cliente.setContraseña("123456");
-		cliente.setNombre("Paul13");
-		cliente.setCodEntrada(54321);
+		otroCliente.setDNI("12345678L");
+		otroCliente.setNombre("Paul");
+		otroCliente.setApellido("Guridi");
+		otroCliente.setSexo("Hombre");
+		otroCliente.setContraseña("123456");
+		otroCliente.setNombre("Paul13");
+		otroCliente.setCodEntrada(54321);
 
 		assertEquals("los cines no son iguales!!!!", cliente, otroCliente);
 
@@ -132,13 +132,13 @@ class jUnitCliente {
 		cliente.setNombre("Paul13");
 		cliente.setCodEntrada(54321);
 		Cliente otroCliente = new Cliente();
-		cliente.setDNI("87654321L");
-		cliente.setNombre("Jon");
-		cliente.setApellido("Lopez");
-		cliente.setSexo("Hombre");
-		cliente.setContraseña("345216");
-		cliente.setNombre("JonLo");
-		cliente.setCodEntrada(12345);
+		otroCliente.setDNI("87654321L");
+		otroCliente.setNombre("Jon");
+		otroCliente.setApellido("Lopez");
+		otroCliente.setSexo("Hombre");
+		otroCliente.setContraseña("345216");
+		otroCliente.setNombre("JonLo");
+		otroCliente.setCodEntrada(12345);
 		assertEquals("los clientes no son iguales!!!!", cliente, otroCliente);
 
 	}

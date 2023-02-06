@@ -60,7 +60,7 @@ class jUnitPelicula {
 	}
 
 	@Test
-	public void testCineIguales() {
+	public void testPeliculaIguales() {
 		Peliculas peliculas = new Peliculas();
 		peliculas.setCodPelicula(666);
 		peliculas.setDuracion(2);
@@ -68,17 +68,17 @@ class jUnitPelicula {
 		peliculas.setPrecio(10);
 		peliculas.setNombre("Ayuda");
 		Peliculas otroPeliculas = new Peliculas();
-		peliculas.setCodPelicula(666);
-		peliculas.setDuracion(2);
-		peliculas.setGenero("Comedia");
-		peliculas.setPrecio(10);
-		peliculas.setNombre("Ayuda");
+		otroPeliculas.setCodPelicula(666);
+		otroPeliculas.setDuracion(2);
+		otroPeliculas.setGenero("Comedia");
+		otroPeliculas.setPrecio(10);
+		otroPeliculas.setNombre("Ayuda");
 		assertEquals("los cines son iguales!!!!", peliculas, otroPeliculas);
 
 	}
 
 	@Test
-	public void testCineNull() {
+	public void testPeliculaNull() {
 		Peliculas peliculas = new Peliculas();
 		peliculas.setCodPelicula(666);
 		peliculas.setDuracion(2);
@@ -86,17 +86,17 @@ class jUnitPelicula {
 		peliculas.setPrecio(10);
 		peliculas.setNombre(null);
 		Peliculas otroPeliculas = new Peliculas();
-		peliculas.setCodPelicula(666);
-		peliculas.setDuracion(2);
-		peliculas.setGenero("Comedia");
-		peliculas.setPrecio(10);
-		peliculas.setNombre("Ayuda");
+		otroPeliculas.setCodPelicula(666);
+		otroPeliculas.setDuracion(2);
+		otroPeliculas.setGenero("Comedia");
+		otroPeliculas.setPrecio(10);
+		otroPeliculas.setNombre("Ayuda");
 		assertEquals("los cines no son iguales!!!!", peliculas, otroPeliculas);
 
 	}
 
 	@Test
-	public void testCineDiferentes() {
+	public void testPeliculaDiferentes() {
 		Peliculas peliculas = new Peliculas();
 		peliculas.setCodPelicula(666);
 		peliculas.setDuracion(2);
@@ -104,11 +104,11 @@ class jUnitPelicula {
 		peliculas.setPrecio(10);
 		peliculas.setNombre("Ayuda");
 		Peliculas otroPeliculas = new Peliculas();
-		peliculas.setCodPelicula(100);
-		peliculas.setDuracion(3);
-		peliculas.setGenero("Accion");
-		peliculas.setPrecio(8);
-		peliculas.setNombre("Diablo");
+		otroPeliculas.setCodPelicula(100);
+		otroPeliculas.setDuracion(3);
+		otroPeliculas.setGenero("Accion");
+		otroPeliculas.setPrecio(8);
+		otroPeliculas.setNombre("Diablo");
 		assertEquals("los cines no son iguales!!!!", peliculas, otroPeliculas);
 
 	}
