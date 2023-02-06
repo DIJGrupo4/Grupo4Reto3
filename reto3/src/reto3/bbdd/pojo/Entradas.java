@@ -5,8 +5,7 @@ import java.util.Objects;
 public class Entradas {
 
 	private int codEntrada = 0;
-
-	private int fechaCompra = 0;
+	private String fechaCompra = null;
 	private String nombrePelicula = null;
 	private int hora = 0;
 	private int numeroSala = 0;
@@ -20,11 +19,11 @@ public class Entradas {
 		this.codEntrada = codEntrada;
 	}
 
-	public int getFechaCompra() {
+	public String getFechaCompra() {
 		return fechaCompra;
 	}
 
-	public void setFechaCompra(int fechaCompra) {
+	public void setFechaCompra(String fechaCompra) {
 		this.fechaCompra = fechaCompra;
 	}
 

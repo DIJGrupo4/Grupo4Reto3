@@ -64,7 +64,7 @@ class jUnitCliente {
 		Cliente cliente = new Cliente();
 		String usuario = "un texto";
 		cliente.setUsuario(usuario);
-		assertNotEquals("Contraseña no esta accesible", usuario, cliente.getUsuario());
+		assertNotEquals("Usuario no esta accesible", usuario, cliente.getUsuario());
 	}
 	
 	@Test
@@ -72,7 +72,7 @@ class jUnitCliente {
 		Cliente cliente = new Cliente();
 		int codEntrada = 54321;
 		cliente.setCodEntrada(codEntrada);
-		assertNotEquals("Contraseña no esta accesible", codEntrada, cliente.getCodEntrada());
+		assertNotEquals("CodEntrada no esta accesible", codEntrada, cliente.getCodEntrada());
 	}
 
 	@Test
@@ -85,7 +85,7 @@ class jUnitCliente {
 		cliente.setContraseña("123456");
 		cliente.setNombre("Paul13");
 		cliente.setCodEntrada(54321);
-		Cliente otroCine = new Cliente();
+		Cliente otroCliente = new Cliente();
 		cliente.setDNI("12345678L");
 		cliente.setNombre("Paul");
 		cliente.setApellido("Guridi");
@@ -94,7 +94,7 @@ class jUnitCliente {
 		cliente.setNombre("Paul13");
 		cliente.setCodEntrada(54321);
 
-		assertEquals("los clientes son iguales!!!!", cliente, otroCine);
+		assertEquals("los clientes son iguales!!!!", cliente, otroCliente);
 
 	}
 
@@ -108,7 +108,7 @@ class jUnitCliente {
 		cliente.setContraseña(null);
 		cliente.setNombre(null);
 		cliente.setCodEntrada(54321);
-		Cliente otroCine = new Cliente();
+		Cliente otroCliente = new Cliente();
 		cliente.setDNI("12345678L");
 		cliente.setNombre("Paul");
 		cliente.setApellido("Guridi");
@@ -117,7 +117,7 @@ class jUnitCliente {
 		cliente.setNombre("Paul13");
 		cliente.setCodEntrada(54321);
 
-		assertEquals("los cines no son iguales!!!!", cliente, otroCine);
+		assertEquals("los cines no son iguales!!!!", cliente, otroCliente);
 
 	}
 
@@ -131,7 +131,7 @@ class jUnitCliente {
 		cliente.setContraseña("123456");
 		cliente.setNombre("Paul13");
 		cliente.setCodEntrada(54321);
-		Cliente otroCine = new Cliente();
+		Cliente otroCliente = new Cliente();
 		cliente.setDNI("87654321L");
 		cliente.setNombre("Jon");
 		cliente.setApellido("Lopez");
@@ -139,7 +139,7 @@ class jUnitCliente {
 		cliente.setContraseña("345216");
 		cliente.setNombre("JonLo");
 		cliente.setCodEntrada(12345);
-		assertEquals("los clientes no son iguales!!!!", cliente, otroCine);
+		assertEquals("los clientes no son iguales!!!!", cliente, otroCliente);
 
 	}
 
