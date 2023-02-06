@@ -12,6 +12,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.JCheckBox;
 
 public class VentanaBienvenida {
 
@@ -52,13 +54,10 @@ public class VentanaBienvenida {
 		
 		JPanel panelSelecCines = new JPanel();
 		panelSelecCines.setBounds(0, 0, 564, 441);
-		frame.getContentPane().add(panelSelecCines);
+		panelBienvenida.add(panelSelecCines);
+		panelSelecCines.setLayout(null);
 		
-		JLabel labelSeleccionCines = new JLabel("Panel Seleccion de Cines");
-		panelSelecCines.add(labelSeleccionCines);
-		
-		
-		JButton botonBienvenida = new JButton("\r\nBIENVENIDO\r\n");
+		JButton botonBienvenida = new JButton("\r\n\r\n\r\n\r\nBIENVENIDO\r\n");
 		botonBienvenida.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -67,15 +66,50 @@ public class VentanaBienvenida {
 				panelSelecCines.setVisible(true);
 				
 			}
+
+
 		});
 		
+		
+		JLabel labelSeleccionCines = new JLabel("Selecciona un Cine");
+		labelSeleccionCines.setHorizontalAlignment(SwingConstants.CENTER);
+		labelSeleccionCines.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		labelSeleccionCines.setBounds(33, 69, 241, 57);
+		panelSelecCines.add(labelSeleccionCines);
+		
+		JLabel seleccionCinesLogo = new JLabel("");
+		seleccionCinesLogo.setIcon(new ImageIcon("C:\\Users\\in1dw3\\Desktop\\Ibai\\Reto 3\\bienvenida.png"));
+		seleccionCinesLogo.setLabelFor(frame);
+		seleccionCinesLogo.setBounds(376, 11, 137, 156);
+		panelSelecCines.add(seleccionCinesLogo);
+		
+		JButton seleccionBtnCine1 = new JButton("Cine1\r\n");
+		seleccionBtnCine1.setBounds(97, 184, 121, 74);
+		panelSelecCines.add(seleccionBtnCine1);
+		
+		JButton seleccionBtnCine2 = new JButton("Cine2\r\n");
+		seleccionBtnCine2.setBounds(317, 184, 127, 74);
+		panelSelecCines.add(seleccionBtnCine2);
+		
+		JButton seleccionBtnCine3 = new JButton("Cine3");
+		seleccionBtnCine3.setBounds(97, 282, 121, 74);
+		panelSelecCines.add(seleccionBtnCine3);
+		
+		JButton seleccionBtnCine4 = new JButton("Cine4\r\n");
+		seleccionBtnCine4.setBounds(317, 282, 127, 74);
+		panelSelecCines.add(seleccionBtnCine4);
+		
+		JButton btnFinalizar = new JButton("FINALIZAR");
+		btnFinalizar.setBounds(221, 392, 96, 38);
+		panelSelecCines.add(btnFinalizar);
+	
 		botonBienvenida.setIcon(new ImageIcon("C:\\Users\\in1dw3\\Desktop\\Ibai\\Reto 3\\bienvenida.png"));
 		botonBienvenida.setBounds(0, 0, 564, 441);
 		botonBienvenida.setForeground(Color.BLACK);
 		botonBienvenida.setFont(new Font("Yu Gothic", Font.PLAIN, 50));
 		botonBienvenida.setBackground(new Color(255, 255, 240));
-		panelBienvenida.add(botonBienvenida);
-		
+		panelBienvenida.add(botonBienvenida);	
+			
 	}
-
+	
 }
