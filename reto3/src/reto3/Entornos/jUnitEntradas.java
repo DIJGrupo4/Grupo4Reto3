@@ -40,7 +40,7 @@ class jUnitEntradas {
 		Entradas entradas = new Entradas();
 		String nombrePelicula = "un texto";
 		entradas.setNombrePelicula(nombrePelicula);
-		assertNotEquals("Nombre no esta accesible", nombrePelicula, entradas.getNombrePelicula());
+		assertNotEquals("Nombre de la pelicula no esta accesible", nombrePelicula, entradas.getNombrePelicula());
 	}
 
 	@Test
@@ -48,7 +48,7 @@ class jUnitEntradas {
 		Entradas entradas = new Entradas();
 		int hora = 22;
 		entradas.setHora(hora);
-		assertNotEquals("Nombre no esta accesible", hora, entradas.getHora());
+		assertNotEquals("Hora no esta accesible", hora, entradas.getHora());
 	}
 	
 	@Test
@@ -56,7 +56,7 @@ class jUnitEntradas {
 		Entradas entradas = new Entradas();
 		int numeroSalas = 10;
 		entradas.setNumeroSala(numeroSalas);
-		assertNotEquals("Nombre no esta accesible", numeroSalas, entradas.getNumeroSala());
+		assertNotEquals("Numero de sala no esta accesible", numeroSalas, entradas.getNumeroSala());
 	}
 
 	@Test
@@ -64,7 +64,7 @@ class jUnitEntradas {
 		Entradas entradas = new Entradas();
 		int precio = 12;
 		entradas.setPrecio(precio);
-		assertNotEquals("Nombre no esta accesible", precio, entradas.getPrecio());
+		assertNotEquals("Precio no esta accesible", precio, entradas.getPrecio());
 	}
 
 
@@ -106,7 +106,7 @@ class jUnitEntradas {
 		entradas.setNumeroSala(1);
 		entradas.setPrecio(12);
 
-		assertEquals("Las entradas son iguales!!!!", entradas, otroEntradas);
+		assertEquals("Las entradas no son iguales!!!!", entradas, otroEntradas);
 
 	}
 
@@ -127,7 +127,7 @@ class jUnitEntradas {
 		entradas.setNumeroSala(2);
 		entradas.setPrecio(15);
 
-		assertEquals("Las entradas son iguales!!!!", entradas, otroEntradas);
+		assertEquals("Las entradas no son iguales!!!!", entradas, otroEntradas);
 
 	}
 
