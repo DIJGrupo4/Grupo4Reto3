@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import reto3.bbdd.pojo.Cine;
+import reto3.bbdd.pojo.Pelicula;
 import reto3.bbdd.utils.DBUtils;
 
 public class GestorCines {
@@ -45,13 +46,15 @@ public class GestorCines {
 				int codCine = resultSet.getInt("codCine");
 				String nombre = resultSet.getString("nombre");
 				String direccion = resultSet.getString("direccion");
-				ArrayList<Pelicula> cartelera = (ArrayList<Pelicula>) resultSet.getArray("cartelera");
+				int salas = resultSet.getInt("salas");
+			
 
 				// Metemos los datos a Ejemplo
 				cine.setCodCine(codCine);;
 				cine.setNombre(nombre);
 				cine.setDireccion(direccion);
-				cine.setSalas(cartelera);
+				cine.setNumSalas(salas);
+				
 
 				// Lo guardamos en ret
 				ret.add(cine);
@@ -111,13 +114,13 @@ public class GestorCines {
 				int codCine = resultSet.getInt("codCine");
 				String nombre = resultSet.getString("nombre");
 				String direccion = resultSet.getString("direccion");
-				ArrayList<Pelicula> cartelera = (ArrayList<Pelicula>) resultSet.getArray("cartelera");
+				int salas = resultSet.getInt("salas");
 
 				// Metemos los datos a Ejemplo
 				cine.setCodCine(codCine);;
 				cine.setNombre(nombre);
 				cine.setDireccion(direccion);
-				cine.setSalas(cartelera);
+				cine.setNumSalas(salas);
 			}
 		} catch (SQLException sqle) {
 			System.out.println("Error con la BBDD - " + sqle.getMessage());

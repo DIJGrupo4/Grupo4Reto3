@@ -3,7 +3,7 @@ package reto3.bbdd.pojo;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Ventas implements Serializable {
+public class Venta implements Serializable {
 
 	private static final long serialVersionUID = 8091926587816980311L;
 
@@ -61,7 +61,7 @@ public class Ventas implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Ventas other = (Ventas) obj;
+		Venta other = (Venta) obj;
 		return costo == other.costo && Objects.equals(dni, other.dni) && Objects.equals(fecha, other.fecha)
 				&& Objects.equals(nombrePelicula, other.nombrePelicula);
 	}

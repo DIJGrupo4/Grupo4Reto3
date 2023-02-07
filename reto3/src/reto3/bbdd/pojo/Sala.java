@@ -2,7 +2,7 @@ package reto3.bbdd.pojo;
 
 import java.util.Objects;
 
-public class Salas {
+public class Sala {
 
 	private String nombreSala = null;
 	private int codSala = 0;
@@ -63,7 +63,7 @@ public class Salas {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Salas other = (Salas) obj;
+		Sala other = (Sala) obj;
 		return codPelicula == other.codPelicula && codSala == other.codSala && fecha == other.fecha
 				&& horarioSala == other.horarioSala && Objects.equals(nombreSala, other.nombreSala);
 	}

@@ -2,7 +2,7 @@ package reto3.bbdd.pojo;
 
 import java.util.Objects;
 
-public class Peliculas {
+public class Pelicula {
 
 	private int codPelicula = 0;
 	private int duracion = 0;
@@ -63,7 +63,7 @@ public class Peliculas {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Peliculas other = (Peliculas) obj;
+		Pelicula other = (Pelicula) obj;
 		return codPelicula == other.codPelicula && duracion == other.duracion && Objects.equals(genero, other.genero)
 				&& Objects.equals(nombre, other.nombre) && precio == other.precio;
 	}
