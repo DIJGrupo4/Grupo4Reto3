@@ -10,14 +10,16 @@ public class Venta implements Serializable {
 
 	// Clave primaria
 	private int codVenta = 0;
-	
+
 	// Atributos
-	private String dni = null;
 	private int precioTotal = 0;
 	private String fecha = null;
-	
-	//Relacion 1:N con Entrada
+
+	// Relacion 1:N con Entrada
 	private ArrayList<Entrada> entradas = null;
+
+	// Relacion N:1 con Cliente
+	private Cliente cliente = null;
 
 	public int getCodVenta() {
 		return codVenta;
@@ -25,14 +27,6 @@ public class Venta implements Serializable {
 
 	public void setCodVenta(int codVenta) {
 		this.codVenta = codVenta;
-	}
-
-	public String getDni() {
-		return dni;
-	}
-
-	public void setDni(String dni) {
-		this.dni = dni;
 	}
 
 	public int getPrecioTotal() {
@@ -59,13 +53,21 @@ public class Venta implements Serializable {
 		this.entradas = entradas;
 	}
 
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(codVenta, dni, entradas, fecha, precioTotal);
+		return Objects.hash(cliente, codVenta, entradas, fecha, precioTotal);
 	}
 
 	@Override
@@ -77,14 +79,15 @@ public class Venta implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Venta other = (Venta) obj;
-		return codVenta == other.codVenta && Objects.equals(dni, other.dni) && Objects.equals(entradas, other.entradas)
-				&& Objects.equals(fecha, other.fecha) && precioTotal == other.precioTotal;
+		return Objects.equals(cliente, other.cliente) && codVenta == other.codVenta
+				&& Objects.equals(entradas, other.entradas) && Objects.equals(fecha, other.fecha)
+				&& precioTotal == other.precioTotal;
 	}
 
 	@Override
 	public String toString() {
-		return "Venta [codVenta=" + codVenta + ", dni=" + dni + ", precioTotal=" + precioTotal + ", fecha=" + fecha
-				+ ", entradas=" + entradas + "]";
+		return "Venta [codVenta=" + codVenta + ", precioTotal=" + precioTotal + ", fecha=" + fecha + ", entradas="
+				+ entradas + ", cliente=" + cliente + "]";
 	}
 
 }

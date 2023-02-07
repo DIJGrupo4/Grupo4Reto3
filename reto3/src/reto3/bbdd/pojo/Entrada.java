@@ -1,5 +1,6 @@
 package reto3.bbdd.pojo;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Entrada {
@@ -13,6 +14,12 @@ public class Entrada {
 	private int hora = 0;
 	private int numeroSala = 0;
 	private int precio = 0;
+	
+	// relacion N:1 con Cliente
+	private Cliente cliente = null;
+	
+	// relacion N:1 con Proyeccion
+	private Proyeccion proyeccion = null;
 
 	public int getCodEntrada() {
 		return codEntrada;
@@ -62,9 +69,25 @@ public class Entrada {
 		this.precio = precio;
 	}
 
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Proyeccion getProyeccion() {
+		return proyeccion;
+	}
+
+	public void setProyeccion(Proyeccion proyeccion) {
+		this.proyeccion = proyeccion;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(codEntrada, codPelicula, fechaCompra, hora, numeroSala, precio);
+		return Objects.hash(cliente, codEntrada, codPelicula, fechaCompra, hora, numeroSala, precio, proyeccion);
 	}
 
 	@Override
@@ -76,15 +99,20 @@ public class Entrada {
 		if (getClass() != obj.getClass())
 			return false;
 		Entrada other = (Entrada) obj;
-		return codEntrada == other.codEntrada && codPelicula == other.codPelicula
-				&& Objects.equals(fechaCompra, other.fechaCompra) && hora == other.hora
-				&& numeroSala == other.numeroSala && precio == other.precio;
+		return Objects.equals(cliente, other.cliente) && codEntrada == other.codEntrada
+				&& codPelicula == other.codPelicula && Objects.equals(fechaCompra, other.fechaCompra)
+				&& hora == other.hora && numeroSala == other.numeroSala && precio == other.precio
+				&& Objects.equals(proyeccion, other.proyeccion);
 	}
 
 	@Override
 	public String toString() {
 		return "Entrada [codEntrada=" + codEntrada + ", fechaCompra=" + fechaCompra + ", codPelicula=" + codPelicula
-				+ ", hora=" + hora + ", numeroSala=" + numeroSala + ", precio=" + precio + "]";
+				+ ", hora=" + hora + ", numeroSala=" + numeroSala + ", precio=" + precio + ", cliente=" + cliente
+				+ ", proyeccion=" + proyeccion + "]";
 	}
 
+	
+	
+	
 }
