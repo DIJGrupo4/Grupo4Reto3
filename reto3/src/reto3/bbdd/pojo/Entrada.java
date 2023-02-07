@@ -4,9 +4,12 @@ import java.util.Objects;
 
 public class Entrada {
 
+	// Clave primaria
 	private int codEntrada = 0;
+
+	// Atributos
 	private String fechaCompra = null;
-	private String nombrePelicula = null;
+	private int codPelicula = 0;
 	private int hora = 0;
 	private int numeroSala = 0;
 	private int precio = 0;
@@ -27,12 +30,12 @@ public class Entrada {
 		this.fechaCompra = fechaCompra;
 	}
 
-	public String getNombrePelicula() {
-		return nombrePelicula;
+	public int getCodPelicula() {
+		return codPelicula;
 	}
 
-	public void setNombrePelicula(String nombrePelicula) {
-		this.nombrePelicula = nombrePelicula;
+	public void setCodPelicula(int codPelicula) {
+		this.codPelicula = codPelicula;
 	}
 
 	public int getHora() {
@@ -51,7 +54,7 @@ public class Entrada {
 		this.numeroSala = numeroSala;
 	}
 
-	public double getPrecio() {
+	public int getPrecio() {
 		return precio;
 	}
 
@@ -61,7 +64,7 @@ public class Entrada {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(codEntrada, fechaCompra, hora, nombrePelicula, numeroSala, precio);
+		return Objects.hash(codEntrada, codPelicula, fechaCompra, hora, numeroSala, precio);
 	}
 
 	@Override
@@ -73,15 +76,15 @@ public class Entrada {
 		if (getClass() != obj.getClass())
 			return false;
 		Entrada other = (Entrada) obj;
-		return codEntrada == other.codEntrada && fechaCompra == other.fechaCompra && hora == other.hora
-				&& Objects.equals(nombrePelicula, other.nombrePelicula) && numeroSala == other.numeroSala
-				&& Double.doubleToLongBits(precio) == Double.doubleToLongBits(other.precio);
+		return codEntrada == other.codEntrada && codPelicula == other.codPelicula
+				&& Objects.equals(fechaCompra, other.fechaCompra) && hora == other.hora
+				&& numeroSala == other.numeroSala && precio == other.precio;
 	}
 
 	@Override
 	public String toString() {
-		return "Entradas [codEntrada=" + codEntrada + ", fechaCompra=" + fechaCompra + ", nombrePelicula="
-				+ nombrePelicula + ", hora=" + hora + ", numeroSala=" + numeroSala + ", precio=" + precio + "]";
+		return "Entrada [codEntrada=" + codEntrada + ", fechaCompra=" + fechaCompra + ", codPelicula=" + codPelicula
+				+ ", hora=" + hora + ", numeroSala=" + numeroSala + ", precio=" + precio + "]";
 	}
 
 }

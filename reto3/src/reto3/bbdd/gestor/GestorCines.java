@@ -127,6 +127,10 @@ public class GestorCines {
 		} catch (Exception e) {
 			System.out.println("Error generico - " + e.getMessage());
 		} finally {
+			System.out.println("CodCine: "+cine.getCodCine());
+			System.out.println("nombre: "+cine.getNombre());
+			System.out.println("direccion: "+cine.getDireccion());
+			System.out.println("salas: "+cine.getNumSalas());
 			// Cerramos al reves de como las abrimos
 			try {
 				if (resultSet != null)

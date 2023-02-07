@@ -8,6 +8,9 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
+import javax.swing.JList;
+import java.awt.SystemColor;
+import java.awt.Color;
 
 public class VentanaPeliculas {
 
@@ -33,23 +36,11 @@ public class VentanaPeliculas {
 
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 615, 488);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel seleccionPeliculasLogo = new JLabel("");
-		seleccionPeliculasLogo.setIcon(new ImageIcon("C:\\Users\\in1dw3\\Desktop\\Ibai\\Reto 3\\bienvenida.png"));
-		seleccionPeliculasLogo.setBounds(395, 25, 137, 172);
-		frame.getContentPane().add(seleccionPeliculasLogo);
-		
-		JPanel panelSelecPelis = new JPanel();
-		panelSelecPelis.setBounds(0, 252, 434, -251);
-		frame.getContentPane().add(panelSelecPelis);
-		
-		JLabel labelSeleccionPeliculas = new JLabel("Selecciona una Pelicula");
-		labelSeleccionPeliculas.setBounds(48, 92, 253, 29);
-		frame.getContentPane().add(labelSeleccionPeliculas);
-		labelSeleccionPeliculas.setHorizontalAlignment(SwingConstants.CENTER);
-		labelSeleccionPeliculas.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 564, 436);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
 	}
 }

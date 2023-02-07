@@ -1,14 +1,21 @@
 package reto3.bbdd.pojo;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Cine {
 
+	// Clave primaria
 	private int codCine = 0;
+
+	// Atributos
 	private String nombre = null;
 	private String direccion = null;
 	private int numSalas = 0;
 
+	//Relacion 1:N con Sala
+	private ArrayList<Sala> salas = null;
+	
 	public int getCodCine() {
 		return codCine;
 	}
@@ -41,9 +48,17 @@ public class Cine {
 		this.numSalas = numSalas;
 	}
 
+	public ArrayList<Sala> getSalas() {
+		return salas;
+	}
+
+	public void setSalas(ArrayList<Sala> salas) {
+		this.salas = salas;
+	}
+	
 	@Override
 	public int hashCode() {
-		return Objects.hash(codCine, direccion, nombre, numSalas);
+		return Objects.hash(codCine, direccion, nombre, numSalas, salas);
 	}
 
 	@Override
@@ -56,13 +71,16 @@ public class Cine {
 			return false;
 		Cine other = (Cine) obj;
 		return codCine == other.codCine && Objects.equals(direccion, other.direccion)
-				&& Objects.equals(nombre, other.nombre) && numSalas == other.numSalas;
+				&& Objects.equals(nombre, other.nombre) && numSalas == other.numSalas
+				&& Objects.equals(salas, other.salas);
 	}
 
 	@Override
 	public String toString() {
 		return "Cine [codCine=" + codCine + ", nombre=" + nombre + ", direccion=" + direccion + ", numSalas=" + numSalas
-				+ "]";
+				+ ", salas=" + salas + "]";
 	}
+
+	
 
 }

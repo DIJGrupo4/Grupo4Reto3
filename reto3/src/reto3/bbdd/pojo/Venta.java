@@ -1,16 +1,31 @@
 package reto3.bbdd.pojo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Venta implements Serializable {
 
 	private static final long serialVersionUID = 8091926587816980311L;
 
+	// Clave primaria
+	private int codVenta = 0;
+	
+	// Atributos
 	private String dni = null;
-	private int costo = 0;
-	private String nombrePelicula = null;
+	private int precioTotal = 0;
 	private String fecha = null;
+	
+	//Relacion 1:N con Entrada
+	private ArrayList<Entrada> entradas = null;
+
+	public int getCodVenta() {
+		return codVenta;
+	}
+
+	public void setCodVenta(int codVenta) {
+		this.codVenta = codVenta;
+	}
 
 	public String getDni() {
 		return dni;
@@ -20,20 +35,12 @@ public class Venta implements Serializable {
 		this.dni = dni;
 	}
 
-	public int getCosto() {
-		return costo;
+	public int getPrecioTotal() {
+		return precioTotal;
 	}
 
-	public void setCosto(int costo) {
-		this.costo = costo;
-	}
-
-	public String getNombrePelicula() {
-		return nombrePelicula;
-	}
-
-	public void setNombrePelicula(String nombrePelicula) {
-		this.nombrePelicula = nombrePelicula;
+	public void setPrecioTotal(int precioTotal) {
+		this.precioTotal = precioTotal;
 	}
 
 	public String getFecha() {
@@ -44,13 +51,21 @@ public class Venta implements Serializable {
 		this.fecha = fecha;
 	}
 
+	public ArrayList<Entrada> getEntradas() {
+		return entradas;
+	}
+
+	public void setEntradas(ArrayList<Entrada> entradas) {
+		this.entradas = entradas;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(costo, dni, fecha, nombrePelicula);
+		return Objects.hash(codVenta, dni, entradas, fecha, precioTotal);
 	}
 
 	@Override
@@ -62,16 +77,14 @@ public class Venta implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Venta other = (Venta) obj;
-		return costo == other.costo && Objects.equals(dni, other.dni) && Objects.equals(fecha, other.fecha)
-				&& Objects.equals(nombrePelicula, other.nombrePelicula);
+		return codVenta == other.codVenta && Objects.equals(dni, other.dni) && Objects.equals(entradas, other.entradas)
+				&& Objects.equals(fecha, other.fecha) && precioTotal == other.precioTotal;
 	}
 
 	@Override
 	public String toString() {
-		return "Ventas [dni=" + dni + ", costo=" + costo + ", nombrePelicula=" + nombrePelicula + ", fecha=" + fecha
-				+ ", getDni()=" + getDni() + ", getCosto()=" + getCosto() + ", getNombrePelicula()="
-				+ getNombrePelicula() + ", getFecha()=" + getFecha() + ", hashCode()=" + hashCode() + ", getClass()="
-				+ getClass() + ", toString()=" + super.toString() + "]";
+		return "Venta [codVenta=" + codVenta + ", dni=" + dni + ", precioTotal=" + precioTotal + ", fecha=" + fecha
+				+ ", entradas=" + entradas + "]";
 	}
 
 }

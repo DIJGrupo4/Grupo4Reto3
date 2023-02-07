@@ -1,14 +1,21 @@
 package reto3.bbdd.pojo;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Pelicula {
 
+	// Clave primaria
 	private int codPelicula = 0;
+
+	// Atributos
+	private String titulo = null;
 	private int duracion = 0;
 	private String genero = null;
 	private int precio = 0;
-	private String nombre = null;
+
+	//Relacion 1:N con Proyeccion
+	private ArrayList<Proyeccion> proyecciones = null;
 
 	public int getCodPelicula() {
 		return codPelicula;
@@ -16,6 +23,14 @@ public class Pelicula {
 
 	public void setCodPelicula(int codPelicula) {
 		this.codPelicula = codPelicula;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public int getDuracion() {
@@ -42,17 +57,17 @@ public class Pelicula {
 		this.precio = precio;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public ArrayList<Proyeccion> getProyecciones() {
+		return proyecciones;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setProyecciones(ArrayList<Proyeccion> proyecciones) {
+		this.proyecciones = proyecciones;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(codPelicula, duracion, genero, nombre, precio);
+		return Objects.hash(codPelicula, duracion, genero, precio, proyecciones, titulo);
 	}
 
 	@Override
@@ -65,13 +80,16 @@ public class Pelicula {
 			return false;
 		Pelicula other = (Pelicula) obj;
 		return codPelicula == other.codPelicula && duracion == other.duracion && Objects.equals(genero, other.genero)
-				&& Objects.equals(nombre, other.nombre) && precio == other.precio;
+				&& precio == other.precio && Objects.equals(proyecciones, other.proyecciones)
+				&& Objects.equals(titulo, other.titulo);
 	}
 
 	@Override
 	public String toString() {
-		return "Peliculas [codPelicula=" + codPelicula + ", duracion=" + duracion + ", genero=" + genero + ", precio="
-				+ precio + ", nombre=" + nombre + "]";
+		return "Pelicula [codPelicula=" + codPelicula + ", titulo=" + titulo + ", duracion=" + duracion + ", genero="
+				+ genero + ", precio=" + precio + ", proyecciones=" + proyecciones + "]";
 	}
+	
+	
 
 }

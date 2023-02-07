@@ -1,22 +1,18 @@
 package reto3.bbdd.pojo;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Sala {
 
-	private String nombreSala = null;
+	// Clave primaria
 	private int codSala = 0;
-	private String fecha = null;
-	private int codPelicula = 0;
-	private int horarioSala = 0;
 
-	public String getNombreSala() {
-		return nombreSala;
-	}
-
-	public void setNombreSala(String nombreSala) {
-		this.nombreSala = nombreSala;
-	}
+	// Atributos
+	private String nombreSala = null;
+	
+	//Relacion 1:N con Proyeccion
+	private ArrayList<Proyeccion> proyecciones = null;
 
 	public int getCodSala() {
 		return codSala;
@@ -26,33 +22,25 @@ public class Sala {
 		this.codSala = codSala;
 	}
 
-	public String getFecha() {
-		return fecha;
+	public String getNombreSala() {
+		return nombreSala;
 	}
 
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
+	public void setNombreSala(String nombreSala) {
+		this.nombreSala = nombreSala;
 	}
 
-	public int getCodPelicula() {
-		return codPelicula;
+	public ArrayList<Proyeccion> getProyecciones() {
+		return proyecciones;
 	}
 
-	public void setCodPelicula(int codPelicula) {
-		this.codPelicula = codPelicula;
-	}
-
-	public int getHorarioSala() {
-		return horarioSala;
-	}
-
-	public void setHorarioSala(int horarioSala) {
-		this.horarioSala = horarioSala;
+	public void setProyecciones(ArrayList<Proyeccion> proyecciones) {
+		this.proyecciones = proyecciones;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(codPelicula, codSala, fecha, horarioSala, nombreSala);
+		return Objects.hash(codSala, nombreSala, proyecciones);
 	}
 
 	@Override
@@ -64,14 +52,13 @@ public class Sala {
 		if (getClass() != obj.getClass())
 			return false;
 		Sala other = (Sala) obj;
-		return codPelicula == other.codPelicula && codSala == other.codSala && fecha == other.fecha
-				&& horarioSala == other.horarioSala && Objects.equals(nombreSala, other.nombreSala);
+		return codSala == other.codSala && Objects.equals(nombreSala, other.nombreSala)
+				&& Objects.equals(proyecciones, other.proyecciones);
 	}
 
 	@Override
 	public String toString() {
-		return "Salas [nombreSala=" + nombreSala + ", codSala=" + codSala + ", fecha=" + fecha + ", codPelicula="
-				+ codPelicula + ", horarioSala=" + horarioSala + "]";
+		return "Sala [codSala=" + codSala + ", nombreSala=" + nombreSala + ", proyecciones=" + proyecciones + "]";
 	}
 
 }

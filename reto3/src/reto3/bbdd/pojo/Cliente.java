@@ -1,16 +1,34 @@
 package reto3.bbdd.pojo;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Cliente {
 
+	// Clave primaria
+	private int codCliente = 0;
+
+	// Atributos
 	private String DNI = null;
 	private String nombre = null;
 	private String apellido = null;
 	private String sexo = null;
-	private String contraseña = null;
 	private String usuario = null;
-	private int codEntrada = 0;
+	private String contraseña = null;
+	
+	//Relacion 1:N con Entrada
+	private ArrayList<Entrada> entradas = null;
+	
+	//Relacion 1:N con Venta
+	private ArrayList<Venta> ventas = null;
+
+	public int getCodCliente() {
+		return codCliente;
+	}
+
+	public void setCodCliente(int codCliente) {
+		this.codCliente = codCliente;
+	}
 
 	public String getDNI() {
 		return DNI;
@@ -44,14 +62,6 @@ public class Cliente {
 		this.sexo = sexo;
 	}
 
-	public String getContraseña() {
-		return contraseña;
-	}
-
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
-	}
-
 	public String getUsuario() {
 		return usuario;
 	}
@@ -60,17 +70,33 @@ public class Cliente {
 		this.usuario = usuario;
 	}
 
-	public int getCodEntrada() {
-		return codEntrada;
+	public String getContraseña() {
+		return contraseña;
 	}
 
-	public void setCodEntrada(int codEntrada) {
-		this.codEntrada = codEntrada;
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
+	}
+
+	public ArrayList<Entrada> getEntradas() {
+		return entradas;
+	}
+
+	public void setEntradas(ArrayList<Entrada> entradas) {
+		this.entradas = entradas;
+	}
+
+	public ArrayList<Venta> getVentas() {
+		return ventas;
+	}
+
+	public void setVentas(ArrayList<Venta> ventas) {
+		this.ventas = ventas;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(DNI, apellido, codEntrada, contraseña, nombre, sexo, usuario);
+		return Objects.hash(DNI, apellido, codCliente, contraseña, entradas, nombre, sexo, usuario, ventas);
 	}
 
 	@Override
@@ -83,15 +109,17 @@ public class Cliente {
 			return false;
 		Cliente other = (Cliente) obj;
 		return Objects.equals(DNI, other.DNI) && Objects.equals(apellido, other.apellido)
-				&& codEntrada == other.codEntrada && Objects.equals(contraseña, other.contraseña)
-				&& Objects.equals(nombre, other.nombre) && Objects.equals(sexo, other.sexo)
-				&& Objects.equals(usuario, other.usuario);
+				&& codCliente == other.codCliente && Objects.equals(contraseña, other.contraseña)
+				&& Objects.equals(entradas, other.entradas) && Objects.equals(nombre, other.nombre)
+				&& Objects.equals(sexo, other.sexo) && Objects.equals(usuario, other.usuario)
+				&& Objects.equals(ventas, other.ventas);
 	}
 
 	@Override
 	public String toString() {
-		return "Cliente [DNI=" + DNI + ", nombre=" + nombre + ", apellido=" + apellido + ", sexo=" + sexo
-				+ ", contraseña=" + contraseña + ", usuario=" + usuario + ", codEntrada=" + codEntrada + "]";
+		return "Cliente [codCliente=" + codCliente + ", DNI=" + DNI + ", nombre=" + nombre + ", apellido=" + apellido
+				+ ", sexo=" + sexo + ", usuario=" + usuario + ", contraseña=" + contraseña + ", entradas=" + entradas
+				+ ", ventas=" + ventas + "]";
 	}
 
 }
