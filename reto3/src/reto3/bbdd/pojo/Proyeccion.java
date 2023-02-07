@@ -12,6 +12,8 @@ public class Proyeccion {
 	private int fecha = 0;
 	private int hora = 0;
 
+	
+	
 	public int getCodSala() {
 		return codSala;
 	}
