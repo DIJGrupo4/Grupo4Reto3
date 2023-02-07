@@ -16,6 +16,8 @@ import javax.swing.SwingConstants;
 
 public class VentanaBienvenida {
 
+	public static JPanel panelSelecCines = null;
+	public static JPanel panelBienveniida = null;
 	private JFrame frame;
 
 	public static void main(String[] args) {
@@ -31,9 +33,6 @@ public class VentanaBienvenida {
 		});
 	}
 
-	/**
-	 * @wbp.parser.entryPoint
-	 */
 	public VentanaBienvenida() {
 		initialize();
 	}
@@ -48,6 +47,31 @@ public class VentanaBienvenida {
 		frame.setBounds(100, 100, 580, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		JPanel panelBienvenida = new JPanel();
+		panelBienvenida.setBounds(0, 0, 564, 441);
+		frame.getContentPane().add(panelBienvenida);
+		panelBienvenida.setLayout(null);
+		
+		JButton botonBienvenida = new JButton("\r\n\r\n\r\n\r\nBIENVENIDO\r\n");
+		botonBienvenida.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				panelBienvenida.setVisible(false);
+				panelSelecCines.setVisible(true);
+				
+			}
+
+
+		});
+		
+			botonBienvenida.setIcon(new ImageIcon("C:\\Users\\in1dw3\\Desktop\\Ibai\\Reto 3\\bienvenida.png"));
+			botonBienvenida.setBounds(0, 0, 564, 441);
+			botonBienvenida.setForeground(Color.BLACK);
+			botonBienvenida.setFont(new Font("Yu Gothic", Font.PLAIN, 50));
+			botonBienvenida.setBackground(new Color(255, 255, 240));
+			panelBienvenida.add(botonBienvenida);	
 		
 		JPanel panelSelecCines = new JPanel();
 		panelSelecCines.setBounds(0, 0, 564, 441);
@@ -84,31 +108,6 @@ public class VentanaBienvenida {
 		JButton btnFinalizar = new JButton("FINALIZAR");
 		btnFinalizar.setBounds(221, 392, 96, 38);
 		panelSelecCines.add(btnFinalizar);
-		
-		JPanel panelBienvenida = new JPanel();
-		panelBienvenida.setBounds(0, 0, 564, 441);
-		frame.getContentPane().add(panelBienvenida);
-		panelBienvenida.setLayout(null);
-		
-		JButton botonBienvenida = new JButton("\r\n\r\n\r\n\r\nBIENVENIDO\r\n");
-		botonBienvenida.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent e) {
-				
-				panelBienvenida.setVisible(false);
-				panelSelecCines.setVisible(true);
-				
-			}
-
-
-		});
-	
-		botonBienvenida.setIcon(new ImageIcon("C:\\Users\\in1dw3\\Desktop\\Ibai\\Reto 3\\bienvenida.png"));
-		botonBienvenida.setBounds(0, 0, 564, 441);
-		botonBienvenida.setForeground(Color.BLACK);
-		botonBienvenida.setFont(new Font("Yu Gothic", Font.PLAIN, 50));
-		botonBienvenida.setBackground(new Color(255, 255, 240));
-		panelBienvenida.add(botonBienvenida);	
 			
 	}
 	
