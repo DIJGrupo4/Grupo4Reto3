@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class VentanaBienvenida {
+public class Reto3 {
 
 	private JFrame frame;
 
@@ -22,7 +22,7 @@ public class VentanaBienvenida {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaBienvenida window = new VentanaBienvenida();
+					Reto3 window = new Reto3();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -31,7 +31,7 @@ public class VentanaBienvenida {
 		});
 	}
 
-	public VentanaBienvenida() {
+	public Reto3() {
 		initialize();
 	}
 
