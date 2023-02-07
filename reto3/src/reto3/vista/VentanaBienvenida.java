@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class VentanaBienvenida1 {
+public class VentanaBienvenida {
 
 	private JFrame frame;
 
@@ -34,7 +34,7 @@ public class VentanaBienvenida1 {
 	/**
 	 * @wbp.parser.entryPoint
 	 */
-	public VentanaBienvenida1() {
+	public VentanaBienvenida() {
 		initialize();
 	}
 
