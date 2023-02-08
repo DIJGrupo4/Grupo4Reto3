@@ -119,7 +119,7 @@ public class GestorCines {
 				cine.setNombre(nombre);
 				cine.setDireccion(direccion);
 				cine.setNumSalas(salas);
-				
+
 			}
 		} catch (SQLException sqle) {
 			System.out.println("Error con la BBDD - " + sqle.getMessage());
@@ -153,5 +153,4 @@ public class GestorCines {
 		return cine;
 	}
 
-	
 }

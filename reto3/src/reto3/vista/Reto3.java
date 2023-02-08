@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import reto3.bbdd.gestor.GestorPeliculas;
 import reto3.bbdd.pojo.Cine;
 import reto3.bbdd.pojo.Pelicula;
 import reto3.bbdd.pojo.Sala;
@@ -24,7 +26,9 @@ import javax.swing.JList;
 public class Reto3 {
 
 	private JFrame frame;
-
+	private ArrayList<String> peliculas = new ArrayList<String>();
+	DefaultListModel<String> listModel = new DefaultListModel<String>();
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -140,11 +144,11 @@ public class Reto3 {
 
 		// JLists
 
-		JList<Pelicula> listaPeliculas = new JList<Pelicula>();
-		listaPeliculas.setForeground(Color.WHITE);
-		listaPeliculas.setBackground(Color.BLACK);
-		listaPeliculas.setBounds(298, 406, -261, -221);
-		SPpanelSeleccionPelis.add(listaPeliculas);
+		JList<String> SPlistaPeliculas = new JList<String>();
+		SPlistaPeliculas.setForeground(Color.WHITE);
+		SPlistaPeliculas.setBackground(Color.BLACK);
+		SPlistaPeliculas.setBounds(298, 406, -261, -221);
+		SPpanelSeleccionPelis.add(SPlistaPeliculas);
 
 		// Action listeners
 
@@ -160,8 +164,15 @@ public class Reto3 {
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 				SPlblCineSeleccionado.setText("Cine 1");
+				
+				
+				peliculas=GestorPeliculas.rellenarLista("Cine1");
+				if(peliculas!=null) {
+					for(int i=0; i<peliculas.size(); i++) {
+						SPlistaPeliculas.add(i, peliculas.get[i]);
+					}
+				}
 				    
-			
 			}
 
 		});

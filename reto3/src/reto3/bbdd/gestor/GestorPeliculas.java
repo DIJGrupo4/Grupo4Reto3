@@ -5,12 +5,23 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import reto3.bbdd.pojo.Pelicula;
 import reto3.bbdd.utils.DBUtils;
 
-
 public class GestorPeliculas {
+
+public static ArrayList<String> rellenarLista(String stringcineNom) {
+	
+	ArrayList<String> peliculas = new ArrayList<String>();
+	
+	peliculas.add("aaaaaaa");
+	peliculas.add("eeeeeeee");
+	peliculas.add("iiiiiii");
+	
+	return peliculas;
+	}
 
 	public Pelicula obtenerPeliculaPorNombre(String peliNom) {
 		Pelicula peli = new Pelicula();
@@ -70,5 +81,4 @@ public class GestorPeliculas {
 		}
 		return peli;
 	}
-
 }
