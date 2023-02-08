@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import reto3.bbdd.dbUtils.DBUtils;
+import reto3.bbdd.utils.DBUtils;
 import reto3.bbdd.pojo.Cine;
 
 public class GestorCines {
@@ -45,18 +45,16 @@ public class GestorCines {
 				int codCine = resultSet.getInt("codCine");
 				String nombre = resultSet.getString("nombre");
 				String direccion = resultSet.getString("direccion");
-				int salas = resultSet.getInt("salas");
+				int salas = resultSet.getInt("numSalas");
 
 				// Metemos los datos a Ejemplo
-				cine.setCodCine(codCine);
+				cine.setCodigo(codCine);
 				cine.setNombre(nombre);
 				cine.setDireccion(direccion);
 				cine.setNumSalas(salas);
 
 				// Lo guardamos en ret
 				ret.add(cine);
-
-				
 			}
 		} catch (SQLException sqle) {
 			System.out.println("Error con la BBDD - " + sqle.getMessage());
@@ -88,7 +86,7 @@ public class GestorCines {
 
 	public Cine obtenerCinePorNombre(String cineNom) {
 		Cine cine = new Cine();
-		String sql = "select * from t_Cines where nombre like '" + cineNom + "'";
+		String sql = "select * from CINE where nombre like '" + cineNom + "'";
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -110,27 +108,28 @@ public class GestorCines {
 			while (resultSet.next()) {
 
 				// Sacamos las columnas del RS
-				int codCine = resultSet.getInt("codCine");
+				int codCine = resultSet.getInt("codigo");
 				String nombre = resultSet.getString("nombre");
 				String direccion = resultSet.getString("direccion");
-				int salas = resultSet.getInt("salas");
+				int salas = resultSet.getInt("numSalas");
 
 				// Metemos los datos a Ejemplo
-				cine.setCodCine(codCine);
+				cine.setCodigo(codCine);
 				;
 				cine.setNombre(nombre);
 				cine.setDireccion(direccion);
 				cine.setNumSalas(salas);
+				
 			}
 		} catch (SQLException sqle) {
 			System.out.println("Error con la BBDD - " + sqle.getMessage());
 		} catch (Exception e) {
 			System.out.println("Error generico - " + e.getMessage());
 		} finally {
-			System.out.println("CodCine: " + cine.getCodCine());
+			System.out.println("codigo: " + cine.getCodigo());
 			System.out.println("nombre: " + cine.getNombre());
 			System.out.println("direccion: " + cine.getDireccion());
-			System.out.println("salas: " + cine.getNumSalas());
+			System.out.println("numSalas: " + cine.getNumSalas());
 			// Cerramos al reves de como las abrimos
 			try {
 				if (resultSet != null)
@@ -154,91 +153,5 @@ public class GestorCines {
 		return cine;
 	}
 
-	public Cine borrarCinePorNombre(String cineNom) {
-		Cine cine = new Cine();
-		cine.setNombre(cineNom);
-		String sql = "delete from t_Cines where nombre like '" + cineNom + "'";
-		Connection connection = null;
-		Statement statement = null;
-
-		// --------------------------------------------------------------------------------------------------
-		try {
-			// El Driver que vamos a usar
-			Class.forName(DBUtils.DRIVER);
-
-			// Abrimos la conexion con BBDD
-			connection = DriverManager.getConnection(DBUtils.URL, DBUtils.USER, DBUtils.PASS);
-
-			statement = connection.createStatement();
-
-			statement.executeUpdate(sql);
-
-		} catch (SQLException sqle) {
-			System.out.println("Error con la BBDD - " + sqle.getMessage());
-		} catch (Exception e) {
-			System.out.println("Error generico - " + e.getMessage());
-		} finally {
-			// Cerramos al reves de como las abrimos
-			try {
-				if (statement != null)
-					statement.close();
-			} catch (Exception e) {
-				// No hace falta
-			}
-			;
-			try {
-				if (connection != null)
-					connection.close();
-			} catch (Exception e) {
-				// No hace falta
-			}
-			;
-		}
-		return cine;
-	}
-
-	public Cine modificarCine(Cine cine, String cineNom) {
-		String sql = "update t_Cines set nombre='";// Acabar el update;
-
-		Connection connection = null;
-		Statement statement = null;
-
-		// --------------------------------------------------------------------------------------------------
-		try {
-			// El Driver que vamos a usar
-			Class.forName(DBUtils.DRIVER);
-
-			// Abrimos la conexion con BBDD
-			connection = DriverManager.getConnection(DBUtils.URL, DBUtils.USER, DBUtils.PASS);
-
-			// Vamos a lanzar la sentencia...
-			statement = connection.createStatement();
-
-			// La ejecutamos...
-			statement.executeUpdate(sql);
-
-		} catch (SQLException sqle) {
-			System.out.println("Error con la BBDD - " + sqle.getMessage());
-		} catch (Exception e) {
-			System.out.println("Error generico - " + e.getMessage());
-		} finally {
-			// Cerramos al reves de como las abrimos
-			try {
-				if (statement != null)
-					statement.close();
-			} catch (Exception e) {
-				// No hace falta
-			}
-			;
-			try {
-				if (connection != null)
-					connection.close();
-			} catch (Exception e) {
-				// No hace falta
-			}
-			;
-		}
-		return cine;
-	}
-
+	
 }

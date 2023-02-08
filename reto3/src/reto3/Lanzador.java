@@ -1,9 +1,12 @@
 package reto3;
 
+import reto3.bbdd.gestor.GestorCines;
+
 public class Lanzador {
 
 	public static void main(String[] args) {
-		System.out.print("hola");
+		GestorCines gestorC = new GestorCines();
+		gestorC.obtenerCinePorNombre("CineBilbao");
 
 	}
 
