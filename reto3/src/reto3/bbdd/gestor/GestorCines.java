@@ -55,6 +55,7 @@ public class GestorCines {
 
 				// Lo guardamos en ret
 				ret.add(cine);
+
 				
 			}
 		} catch (SQLException sqle) {
