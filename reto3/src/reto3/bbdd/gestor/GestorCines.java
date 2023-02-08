@@ -48,7 +48,7 @@ public class GestorCines {
 				int salas = resultSet.getInt("numSalas");
 
 				// Metemos los datos a Ejemplo
-				cine.setCodigo(codCine);
+				cine.setCodCine(codCine);
 				cine.setNombre(nombre);
 				cine.setDireccion(direccion);
 				cine.setNumSalas(salas);
@@ -114,7 +114,7 @@ public class GestorCines {
 				int salas = resultSet.getInt("numSalas");
 
 				// Metemos los datos a Ejemplo
-				cine.setCodigo(codCine);
+				cine.setCodCine(codCine);
 				;
 				cine.setNombre(nombre);
 				cine.setDireccion(direccion);
@@ -126,7 +126,7 @@ public class GestorCines {
 		} catch (Exception e) {
 			System.out.println("Error generico - " + e.getMessage());
 		} finally {
-			System.out.println("codigo: " + cine.getCodigo());
+			System.out.println("codigo: " + cine.getCodCine());
 			System.out.println("nombre: " + cine.getNombre());
 			System.out.println("direccion: " + cine.getDireccion());
 			System.out.println("numSalas: " + cine.getNumSalas());

@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Cine {
 
 	// Clave primaria
-	private int codigo = 0;
+	private int codCine = 0;
 
 	// Atributos
 	private String nombre = null;
@@ -16,12 +16,12 @@ public class Cine {
 	// Relacion 1:N con Sala
 	private ArrayList<Sala> salas = null;
 
-	public int getCodigo() {
-		return codigo;
+	public int getCodCine() {
+		return codCine;
 	}
 
-	public void setCodigo(int codCine) {
-		this.codigo = codCine;
+	public void setCodCine(int codCine) {
+		this.codCine = codCine;
 	}
 
 	public String getNombre() {
@@ -58,7 +58,7 @@ public class Cine {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(codigo, direccion, nombre, numSalas, salas);
+		return Objects.hash(codCine, direccion, nombre, numSalas, salas);
 	}
 
 	@Override
@@ -70,14 +70,14 @@ public class Cine {
 		if (getClass() != obj.getClass())
 			return false;
 		Cine other = (Cine) obj;
-		return codigo == other.codigo && Objects.equals(direccion, other.direccion)
+		return codCine == other.codCine && Objects.equals(direccion, other.direccion)
 				&& Objects.equals(nombre, other.nombre) && numSalas == other.numSalas
 				&& Objects.equals(salas, other.salas);
 	}
 
 	@Override
 	public String toString() {
-		return "Cine [codCine=" + codigo + ", nombre=" + nombre + ", direccion=" + direccion + ", numSalas=" + numSalas
+		return "Cine [codCine=" + codCine + ", nombre=" + nombre + ", direccion=" + direccion + ", numSalas=" + numSalas
 				+ ", salas=" + salas + "]";
 	}
 
