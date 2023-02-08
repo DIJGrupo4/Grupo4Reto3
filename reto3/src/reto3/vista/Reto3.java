@@ -50,142 +50,148 @@ public class Reto3 {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JPanel panelBienvenida = new JPanel();
-		panelBienvenida.setBounds(0, 0, 564, 441);
-		frame.getContentPane().add(panelBienvenida);
-		panelBienvenida.setLayout(null);
+		// JPanels
 
-		JButton botonBienvenida = new JButton("\r\n\r\n\r\n\r\nBIENVENIDO\r\n");
+		JPanel BpanelBienvenida = new JPanel();
+		BpanelBienvenida.setBounds(0, 0, 564, 441);
+		frame.getContentPane().add(BpanelBienvenida);
+		BpanelBienvenida.setLayout(null);
 
-		botonBienvenida.setIcon(new ImageIcon("C:\\Users\\in1dw3\\Desktop\\Ibai\\Reto 3\\bienvenida.png"));
-		botonBienvenida.setBounds(0, 0, 564, 441);
-		botonBienvenida.setForeground(Color.BLACK);
-		botonBienvenida.setFont(new Font("Yu Gothic", Font.PLAIN, 50));
-		botonBienvenida.setBackground(new Color(255, 255, 240));
-		panelBienvenida.add(botonBienvenida);
+		JPanel SCpanelSeleccionCines = new JPanel();
+		SCpanelSeleccionCines.setBounds(0, 0, 564, 441);
+		frame.getContentPane().add(SCpanelSeleccionCines);
+		SCpanelSeleccionCines.setLayout(null);
 
-		JPanel panelSelecCines = new JPanel();
-		panelSelecCines.setBounds(0, 0, 564, 441);
-		frame.getContentPane().add(panelSelecCines);
-		panelSelecCines.setLayout(null);
+		JPanel SPpanelSeleccionPelis = new JPanel();
+		SPpanelSeleccionPelis.setLayout(null);
+		SPpanelSeleccionPelis.setBounds(0, 0, 564, 441);
+		frame.getContentPane().add(SPpanelSeleccionPelis);
 
-		JLabel labelSeleccionCines = new JLabel("Selecciona un Cine");
-		labelSeleccionCines.setHorizontalAlignment(SwingConstants.CENTER);
-		labelSeleccionCines.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		labelSeleccionCines.setBounds(33, 69, 241, 57);
-		panelSelecCines.add(labelSeleccionCines);
+		// JLabels
 
-		JLabel seleccionCinesLogo = new JLabel("");
-		seleccionCinesLogo.setBounds(376, 11, 137, 156);
-		panelSelecCines.add(seleccionCinesLogo);
+		JLabel SClabelSeleccionCines = new JLabel("Selecciona un Cine");
+		SClabelSeleccionCines.setHorizontalAlignment(SwingConstants.CENTER);
+		SClabelSeleccionCines.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		SClabelSeleccionCines.setBounds(33, 69, 241, 57);
+		SCpanelSeleccionCines.add(SClabelSeleccionCines);
 
-		botonBienvenida.addActionListener(new ActionListener() {
+		JLabel SCseleccionCinesLogo = new JLabel("");
+		SCseleccionCinesLogo.setIcon(new ImageIcon("C:\\Users\\in1dw3\\Desktop\\Ibai\\Reto 3\\bienvenida.png"));
+		SCseleccionCinesLogo.setBounds(376, 11, 137, 156);
+		SCpanelSeleccionCines.add(SCseleccionCinesLogo);
 
-			public void actionPerformed(ActionEvent e) {
+		JLabel SPlabelSeleccionPelis = new JLabel("Selecciona una Pelicula");
+		SPlabelSeleccionPelis.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		SPlabelSeleccionPelis.setBounds(43, 101, 250, 37);
+		SPpanelSeleccionPelis.add(SPlabelSeleccionPelis);
 
-				panelBienvenida.setVisible(false);
-				panelSelecCines.setVisible(true);
+		JLabel SPlabelLogoPelis = new JLabel("");
+		SPlabelLogoPelis.setIcon(new ImageIcon("C:\\Users\\in1dw3\\Desktop\\Ibai\\Reto 3\\bienvenida.png"));
+		SPlabelLogoPelis.setBounds(362, 11, 192, 188);
+		SPpanelSeleccionPelis.add(SPlabelLogoPelis);
 
-			}
+		JLabel SPlblCineSeleccionado = new JLabel("Aqui se muestra el cine");
+		SPlblCineSeleccionado.setBounds(216, 33, 178, 14);
+		SPpanelSeleccionPelis.add(SPlblCineSeleccionado);
 
-		});
+		// JButtons
 
-		JButton seleccionBtnCine1 = new JButton("Cine1\r\n");
+		JButton BbotonBienvenida = new JButton("BIENVENIDO");
+		BbotonBienvenida.setFocusable(false);
+		BbotonBienvenida.setIcon(new ImageIcon("C:\\Users\\in1dw3\\Desktop\\Ibai\\Reto 3\\bienvenida.png"));
+		BbotonBienvenida.setBounds(0, 0, 564, 441);
+		BbotonBienvenida.setForeground(new Color(0, 0, 0));
+		BbotonBienvenida.setFont(new Font("Yu Gothic", Font.PLAIN, 50));
+		BbotonBienvenida.setBackground(new Color(255, 255, 255));
+		BpanelBienvenida.add(BbotonBienvenida);
 
-		seleccionCinesLogo.setIcon(new ImageIcon("C:\\Users\\in1dw3\\Desktop\\Ibai\\Reto 3\\bienvenida.png"));
-		seleccionBtnCine1.setBounds(97, 184, 121, 74);
-		panelSelecCines.add(seleccionBtnCine1);
+		JButton SCseleccionBtnCine1 = new JButton("Cine1");
+		SCseleccionBtnCine1.setFocusable(false);
+		SCseleccionBtnCine1.setBounds(97, 184, 121, 74);
+		SCpanelSeleccionCines.add(SCseleccionBtnCine1);
 
-		JButton seleccionBtnCine2 = new JButton("Cine2\r\n");
-		
-		seleccionBtnCine2.setBounds(317, 184, 127, 74);
-		panelSelecCines.add(seleccionBtnCine2);
+		JButton SCseleccionBtnCine2 = new JButton("Cine2");
+		SCseleccionBtnCine2.setFocusable(false);
+		SCseleccionBtnCine2.setBounds(317, 184, 127, 74);
+		SCpanelSeleccionCines.add(SCseleccionBtnCine2);
 
-		JButton seleccionBtnCine3 = new JButton("Cine3");
-		
-		seleccionBtnCine3.setBounds(97, 282, 121, 74);
-		panelSelecCines.add(seleccionBtnCine3);
+		JButton SCseleccionBtnCine3 = new JButton("Cine3");
+		SCseleccionBtnCine3.setFocusable(false);
+		SCseleccionBtnCine3.setBounds(97, 282, 121, 74);
+		SCpanelSeleccionCines.add(SCseleccionBtnCine3);
 
-		JButton seleccionBtnCine4 = new JButton("Cine4\r\n");
-		
-		seleccionBtnCine4.setBounds(317, 282, 127, 74);
-		panelSelecCines.add(seleccionBtnCine4);
+		JButton SCseleccionBtnCine4 = new JButton("Cine4");
+		SCseleccionBtnCine4.setFocusable(false);
+		SCseleccionBtnCine4.setBounds(317, 282, 127, 74);
+		SCpanelSeleccionCines.add(SCseleccionBtnCine4);
 
-		JButton btnFinalizar = new JButton("FINALIZAR");
-		btnFinalizar.setBounds(221, 392, 96, 38);
-		panelSelecCines.add(btnFinalizar);
+		JButton SCbtnFinalizar = new JButton("FINALIZAR");
+		SCbtnFinalizar.setFocusable(false);
+		SCbtnFinalizar.setBounds(221, 392, 96, 38);
+		SCpanelSeleccionCines.add(SCbtnFinalizar);
 
-		JPanel panelSelecPelis = new JPanel();
-		panelSelecPelis.setLayout(null);
-		panelSelecPelis.setBounds(0, 0, 564, 441);
-		frame.getContentPane().add(panelSelecPelis);
+		JButton SPbtnAtras = new JButton("Atras");
+		SPbtnAtras.setFocusable(false);
+		SPbtnAtras.setBounds(337, 391, 89, 23);
+		SPpanelSeleccionPelis.add(SPbtnAtras);
 
-		JLabel labelSeleccionPelis = new JLabel("Selecciona una Pelicula");
-		labelSeleccionPelis.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		labelSeleccionPelis.setBounds(43, 101, 250, 37);
-		panelSelecPelis.add(labelSeleccionPelis);
-
-		JLabel labelLogoPelis = new JLabel("");
-		labelLogoPelis.setIcon(new ImageIcon("C:\\Users\\in1dw3\\Desktop\\Ibai\\Reto 3\\bienvenida.png"));
-		labelLogoPelis.setBounds(362, 11, 192, 188);
-		panelSelecPelis.add(labelLogoPelis);
+		// JLists
 
 		JList<Pelicula> listaPeliculas = new JList<Pelicula>();
 		listaPeliculas.setForeground(Color.WHITE);
 		listaPeliculas.setBackground(Color.BLACK);
 		listaPeliculas.setBounds(298, 406, -261, -221);
-		panelSelecPelis.add(listaPeliculas);
+		SPpanelSeleccionPelis.add(listaPeliculas);
 
-		JLabel SPlblCineSeleccionado = new JLabel("Aqui se muestra el cine");
-		SPlblCineSeleccionado.setBounds(216, 33, 178, 14);
-		panelSelecPelis.add(SPlblCineSeleccionado);
+		// Action listeners
 
-		JButton SPbtnAtras = new JButton("Atras");
-		SPbtnAtras.setBounds(337, 391, 89, 23);
-		panelSelecPelis.add(SPbtnAtras);
-
-		SPbtnAtras.addActionListener(new ActionListener() {
+		BbotonBienvenida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelBienvenida.setVisible(false);
-				panelSelecPelis.setVisible(false);
-				panelSelecCines.setVisible(true);
+				BpanelBienvenida.setVisible(false);
+				SCpanelSeleccionCines.setVisible(true);
 			}
 		});
-		seleccionBtnCine1.addActionListener(new ActionListener() {
+		SCseleccionBtnCine1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				panelBienvenida.setVisible(false);
-				panelSelecCines.setVisible(false);
-				panelSelecPelis.setVisible(true);
+				BpanelBienvenida.setVisible(false);
+				SCpanelSeleccionCines.setVisible(false);
+				SPpanelSeleccionPelis.setVisible(true);
 				SPlblCineSeleccionado.setText("Cine 1");
 				;
 			}
 		});
-		seleccionBtnCine2.addActionListener(new ActionListener() {
+		SCseleccionBtnCine2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelBienvenida.setVisible(false);
-				panelSelecCines.setVisible(false);
-				panelSelecPelis.setVisible(true);
+				BpanelBienvenida.setVisible(false);
+				SCpanelSeleccionCines.setVisible(false);
+				SPpanelSeleccionPelis.setVisible(true);
 				SPlblCineSeleccionado.setText("Cine 2");
 				;
 			}
 		});
-		seleccionBtnCine3.addActionListener(new ActionListener() {
+		SCseleccionBtnCine3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelBienvenida.setVisible(false);
-				panelSelecCines.setVisible(false);
-				panelSelecPelis.setVisible(true);
+				BpanelBienvenida.setVisible(false);
+				SCpanelSeleccionCines.setVisible(false);
+				SPpanelSeleccionPelis.setVisible(true);
 				SPlblCineSeleccionado.setText("Cine 3");
 				;
 			}
 		});
-		seleccionBtnCine4.addActionListener(new ActionListener() {
+		SCseleccionBtnCine4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelBienvenida.setVisible(false);
-				panelSelecCines.setVisible(false);
-				panelSelecPelis.setVisible(true);
+				BpanelBienvenida.setVisible(false);
+				SCpanelSeleccionCines.setVisible(false);
+				SPpanelSeleccionPelis.setVisible(true);
 				SPlblCineSeleccionado.setText("Cine 4");
 				;
+			}
+		});
+		SPbtnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BpanelBienvenida.setVisible(false);
+				SPpanelSeleccionPelis.setVisible(false);
+				SCpanelSeleccionCines.setVisible(true);
 			}
 		});
 	}
