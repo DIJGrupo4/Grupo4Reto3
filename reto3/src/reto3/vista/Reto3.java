@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,6 +17,7 @@ import javax.swing.SwingConstants;
 
 import reto3.bbdd.pojo.Cine;
 import reto3.bbdd.pojo.Pelicula;
+import reto3.bbdd.pojo.Sala;
 
 import javax.swing.JList;
 
@@ -158,6 +160,8 @@ public class Reto3 {
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 				SPlblCineSeleccionado.setText("Cine 1");
+				    
+			
 			}
 
 		});

@@ -13,9 +13,9 @@ public class Cine {
 	private String direccion = null;
 	private int numSalas = 0;
 
-	//Relacion 1:N con Sala
+	// Relacion 1:N con Sala
 	private ArrayList<Sala> salas = null;
-	
+
 	public int getCodigo() {
 		return codigo;
 	}
@@ -55,7 +55,7 @@ public class Cine {
 	public void setSalas(ArrayList<Sala> salas) {
 		this.salas = salas;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(codigo, direccion, nombre, numSalas, salas);
@@ -80,7 +80,5 @@ public class Cine {
 		return "Cine [codCine=" + codigo + ", nombre=" + nombre + ", direccion=" + direccion + ", numSalas=" + numSalas
 				+ ", salas=" + salas + "]";
 	}
-
-	
 
 }
