@@ -42,7 +42,7 @@ public class VentanaCines {
 		frame.getContentPane().setForeground(SystemColor.text);
 		frame.getContentPane().setBackground(SystemColor.text);
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 580, 482);
+		frame.setBounds(100, 100, 580, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 

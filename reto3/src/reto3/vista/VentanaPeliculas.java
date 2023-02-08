@@ -36,11 +36,5 @@ public class VentanaPeliculas {
 
 	private void initialize() {
 		frame = new JFrame();
-		frame.getContentPane().setLayout(null);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 564, 436);
-		frame.getContentPane().add(panel);
-		panel.setLayout(null);
 	}
 }
