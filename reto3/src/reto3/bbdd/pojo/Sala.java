@@ -7,12 +7,15 @@ public class Sala {
 
 	// Clave primaria
 	private int codSala = 0;
-
+	
 	// Atributos
-	private String nombreSala = null;
+	private int numSala = 0;
 	
 	//Relacion 1:N con Proyeccion
 	private ArrayList<Proyeccion> proyecciones = null;
+	
+	//Relacion N:1 con Cine
+	Cine cine = null;
 
 	public int getCodSala() {
 		return codSala;
@@ -22,12 +25,12 @@ public class Sala {
 		this.codSala = codSala;
 	}
 
-	public String getNombreSala() {
-		return nombreSala;
+	public int getNumSala() {
+		return numSala;
 	}
 
-	public void setNombreSala(String nombreSala) {
-		this.nombreSala = nombreSala;
+	public void setNumSala(int numSala) {
+		this.numSala = numSala;
 	}
 
 	public ArrayList<Proyeccion> getProyecciones() {
@@ -38,9 +41,17 @@ public class Sala {
 		this.proyecciones = proyecciones;
 	}
 
+	public Cine getCine() {
+		return cine;
+	}
+
+	public void setCine(Cine cine) {
+		this.cine = cine;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(codSala, nombreSala, proyecciones);
+		return Objects.hash(cine, codSala, numSala, proyecciones);
 	}
 
 	@Override
@@ -52,13 +63,14 @@ public class Sala {
 		if (getClass() != obj.getClass())
 			return false;
 		Sala other = (Sala) obj;
-		return codSala == other.codSala && Objects.equals(nombreSala, other.nombreSala)
+		return Objects.equals(cine, other.cine) && codSala == other.codSala && numSala == other.numSala
 				&& Objects.equals(proyecciones, other.proyecciones);
 	}
 
 	@Override
 	public String toString() {
-		return "Sala [codSala=" + codSala + ", nombreSala=" + nombreSala + ", proyecciones=" + proyecciones + "]";
+		return "Sala [codSala=" + codSala + ", numSala=" + numSala + ", proyecciones=" + proyecciones + ", cine=" + cine
+				+ "]";
 	}
-
+	
 }

@@ -13,7 +13,6 @@ public class Venta implements Serializable {
 
 	// Atributos
 	private int precioTotal = 0;
-	private String fecha = null;
 
 	// Relacion 1:N con Entrada
 	private ArrayList<Entrada> entradas = null;
@@ -35,14 +34,6 @@ public class Venta implements Serializable {
 
 	public void setPrecioTotal(int precioTotal) {
 		this.precioTotal = precioTotal;
-	}
-
-	public String getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
 	}
 
 	public ArrayList<Entrada> getEntradas() {
@@ -67,7 +58,7 @@ public class Venta implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cliente, codVenta, entradas, fecha, precioTotal);
+		return Objects.hash(cliente, codVenta, entradas, precioTotal);
 	}
 
 	@Override
@@ -80,14 +71,14 @@ public class Venta implements Serializable {
 			return false;
 		Venta other = (Venta) obj;
 		return Objects.equals(cliente, other.cliente) && codVenta == other.codVenta
-				&& Objects.equals(entradas, other.entradas) && Objects.equals(fecha, other.fecha)
-				&& precioTotal == other.precioTotal;
+				&& Objects.equals(entradas, other.entradas) && precioTotal == other.precioTotal;
 	}
 
 	@Override
 	public String toString() {
-		return "Venta [codVenta=" + codVenta + ", precioTotal=" + precioTotal + ", fecha=" + fecha + ", entradas="
-				+ entradas + ", cliente=" + cliente + "]";
+		return "Venta [codVenta=" + codVenta + ", precioTotal=" + precioTotal + ", entradas=" + entradas + ", cliente="
+				+ cliente + "]";
 	}
+
 
 }
