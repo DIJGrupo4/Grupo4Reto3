@@ -11,7 +11,6 @@ public class Cine {
 	// Atributos
 	private String nombre = null;
 	private String direccion = null;
-	private int numSalas = 0;
 
 	// Relacion 1:N con Sala
 	private ArrayList<Sala> salas = null;

@@ -12,12 +12,12 @@ public class Cliente {
 	private String DNI = null;
 	private String nombre = null;
 	private String apellido = null;
-	private String sexo = null;
+	private char sexo = '*';
 	private String usuario = null;
 	private String contraseña = null;
 	
 	//Relacion 1:N con Entrada
-	private ArrayList<Entrada> entradas = null;
+	private ArrayList<Recibo> recibos = null;
 	
 	//Relacion 1:N con Venta
 	private ArrayList<Venta> ventas = null;

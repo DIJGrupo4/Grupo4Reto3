@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Venta implements Serializable {
+public class Recibo implements Serializable {
 
 	private static final long serialVersionUID = 8091926587816980311L;
 
 	// Clave primaria
-	private int codVenta = 0;
+	private int codRecibo = 0;
 
 	// Atributos
 	private int precioTotal = 0;
@@ -20,12 +20,12 @@ public class Venta implements Serializable {
 	// Relacion N:1 con Cliente
 	private Cliente cliente = null;
 
-	public int getCodVenta() {
-		return codVenta;
+	public int getCodRecibo() {
+		return codRecibo;
 	}
 
-	public void setCodVenta(int codVenta) {
-		this.codVenta = codVenta;
+	public void setCodRecibo(int codRecibo) {
+		this.codRecibo = codRecibo;
 	}
 
 	public int getPrecioTotal() {
