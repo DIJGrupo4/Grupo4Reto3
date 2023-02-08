@@ -1,6 +1,6 @@
 package reto3.bbdd.pojo;
 
-import java.util.ArrayList;
+
 import java.util.Objects;
 
 public class Entrada {
