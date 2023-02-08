@@ -6,28 +6,25 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import reto3.bbdd.gestor.GestorPeliculas;
-import reto3.bbdd.pojo.Cine;
-import reto3.bbdd.pojo.Pelicula;
-import reto3.bbdd.pojo.Sala;
-
-import javax.swing.JList;
 
 public class Reto3 {
 
 	private JFrame frame;
-	private ArrayList<String> peliculas = new ArrayList<String>();
+	private String peliculas[] = new String[9];
 	DefaultListModel<String> listModel = new DefaultListModel<String>();
+	
+
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -56,13 +53,11 @@ public class Reto3 {
 		frame.setBounds(100, 100, 580, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-
-		// JPanels
-
+		
 		JPanel BpanelBienvenida = new JPanel();
-		BpanelBienvenida.setBounds(0, 0, 564, 441);
-		frame.getContentPane().add(BpanelBienvenida);
 		BpanelBienvenida.setLayout(null);
+		BpanelBienvenida.setBounds(0, 0, 938, 704);
+		frame.getContentPane().add(BpanelBienvenida);
 
 		JPanel SCpanelSeleccionCines = new JPanel();
 		SCpanelSeleccionCines.setBounds(0, 0, 564, 441);
@@ -101,17 +96,22 @@ public class Reto3 {
 		SPlblCineSeleccionado.setBounds(216, 33, 178, 14);
 		SPpanelSeleccionPelis.add(SPlblCineSeleccionado);
 
-		// JButtons
-
+		//JLists
+		
+		JList SPlistaPeliculas = new JList();
+		SPlistaPeliculas.setBounds(43, 166, 250, 248);
+		SPpanelSeleccionPelis.add(SPlistaPeliculas);
+		
+		//Buttons
+		
 		JButton BbotonBienvenida = new JButton("BIENVENIDO");
-		BbotonBienvenida.setFocusable(false);
-		BbotonBienvenida.setIcon(new ImageIcon("C:\\Users\\in1dw3\\Desktop\\Ibai\\Reto 3\\bienvenida.png"));
-		BbotonBienvenida.setBounds(0, 0, 564, 441);
-		BbotonBienvenida.setForeground(new Color(0, 0, 0));
+		BbotonBienvenida.setForeground(Color.BLACK);
 		BbotonBienvenida.setFont(new Font("Yu Gothic", Font.PLAIN, 50));
-		BbotonBienvenida.setBackground(new Color(255, 255, 255));
+		BbotonBienvenida.setFocusable(false);
+		BbotonBienvenida.setBackground(Color.WHITE);
+		BbotonBienvenida.setBounds(0, 0, 564, 441);
 		BpanelBienvenida.add(BbotonBienvenida);
-
+		
 		JButton SCseleccionBtnCine1 = new JButton("Cine1");
 		SCseleccionBtnCine1.setFocusable(false);
 		SCseleccionBtnCine1.setBounds(97, 184, 121, 74);
@@ -141,23 +141,16 @@ public class Reto3 {
 		SPbtnAtras.setFocusable(false);
 		SPbtnAtras.setBounds(337, 391, 89, 23);
 		SPpanelSeleccionPelis.add(SPbtnAtras);
-
-		// JLists
-
-		JList<String> SPlistaPeliculas = new JList<String>();
-		SPlistaPeliculas.setForeground(Color.WHITE);
-		SPlistaPeliculas.setBackground(Color.BLACK);
-		SPlistaPeliculas.setBounds(298, 406, -261, -221);
-		SPpanelSeleccionPelis.add(SPlistaPeliculas);
-
-		// Action listeners
-
+		
+		//Action listeners
+		
 		BbotonBienvenida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(true);
 			}
 		});
+		
 		SCseleccionBtnCine1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BpanelBienvenida.setVisible(false);
@@ -165,17 +158,15 @@ public class Reto3 {
 				SPpanelSeleccionPelis.setVisible(true);
 				SPlblCineSeleccionado.setText("Cine 1");
 				
-				
 				peliculas=GestorPeliculas.rellenarLista("Cine1");
-				if(peliculas!=null) {
-					for(int i=0; i<peliculas.size(); i++) {
-						SPlistaPeliculas.add(i, peliculas.get[i]);
-					}
+				for(int i=0; i<peliculas.length; i++) {
+					listModel.addElement(peliculas[i]);
 				}
-				    
+				SPlistaPeliculas.setModel(listModel);
 			}
 
 		});
+				
 		SCseleccionBtnCine2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BpanelBienvenida.setVisible(false);
