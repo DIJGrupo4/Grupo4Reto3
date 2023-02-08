@@ -7,15 +7,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import reto3.bbdd.dbUtils.DBUtils;
 import reto3.bbdd.pojo.Cine;
-import reto3.bbdd.pojo.Pelicula;
-import reto3.bbdd.utils.DBUtils;
 
 public class GestorCines {
 
 	public ArrayList<Cine> obtenerTodosLosCine() {
 		ArrayList<Cine> ret = null;
-		String sql = "select * from t_cines";
+		String sql = "select * from cine";
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -47,17 +46,16 @@ public class GestorCines {
 				String nombre = resultSet.getString("nombre");
 				String direccion = resultSet.getString("direccion");
 				int salas = resultSet.getInt("salas");
-			
 
 				// Metemos los datos a Ejemplo
-				cine.setCodCine(codCine);;
+				cine.setCodCine(codCine);
 				cine.setNombre(nombre);
 				cine.setDireccion(direccion);
 				cine.setNumSalas(salas);
-				
 
 				// Lo guardamos en ret
 				ret.add(cine);
+				
 			}
 		} catch (SQLException sqle) {
 			System.out.println("Error con la BBDD - " + sqle.getMessage());
@@ -86,7 +84,7 @@ public class GestorCines {
 		}
 		return ret;
 	}
-	
+
 	public Cine obtenerCinePorNombre(String cineNom) {
 		Cine cine = new Cine();
 		String sql = "select * from t_Cines where nombre like '" + cineNom + "'";
@@ -109,7 +107,7 @@ public class GestorCines {
 			// No es posible saber cuantas cosas nos ha devuelto el resultSet.
 			// Hay que ir 1 por 1 y guardandolo todo en su objeto Ejemplo correspondiente
 			while (resultSet.next()) {
-				
+
 				// Sacamos las columnas del RS
 				int codCine = resultSet.getInt("codCine");
 				String nombre = resultSet.getString("nombre");
@@ -117,7 +115,8 @@ public class GestorCines {
 				int salas = resultSet.getInt("salas");
 
 				// Metemos los datos a Ejemplo
-				cine.setCodCine(codCine);;
+				cine.setCodCine(codCine);
+				;
 				cine.setNombre(nombre);
 				cine.setDireccion(direccion);
 				cine.setNumSalas(salas);
@@ -127,10 +126,10 @@ public class GestorCines {
 		} catch (Exception e) {
 			System.out.println("Error generico - " + e.getMessage());
 		} finally {
-			System.out.println("CodCine: "+cine.getCodCine());
-			System.out.println("nombre: "+cine.getNombre());
-			System.out.println("direccion: "+cine.getDireccion());
-			System.out.println("salas: "+cine.getNumSalas());
+			System.out.println("CodCine: " + cine.getCodCine());
+			System.out.println("nombre: " + cine.getNombre());
+			System.out.println("direccion: " + cine.getDireccion());
+			System.out.println("salas: " + cine.getNumSalas());
 			// Cerramos al reves de como las abrimos
 			try {
 				if (resultSet != null)
@@ -153,8 +152,6 @@ public class GestorCines {
 		}
 		return cine;
 	}
-	
-	
 
 	public Cine borrarCinePorNombre(String cineNom) {
 		Cine cine = new Cine();
@@ -200,7 +197,7 @@ public class GestorCines {
 	}
 
 	public Cine modificarCine(Cine cine, String cineNom) {
-		String sql = "update t_Cines set nombre='";//Acabar el update;
+		String sql = "update t_Cines set nombre='";// Acabar el update;
 
 		Connection connection = null;
 		Statement statement = null;
@@ -242,4 +239,5 @@ public class GestorCines {
 		}
 		return cine;
 	}
+
 }
