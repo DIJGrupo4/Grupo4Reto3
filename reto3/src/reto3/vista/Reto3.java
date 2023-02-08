@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.JList;
 
 public class Reto3 {
 
@@ -55,6 +56,11 @@ public class Reto3 {
 		panelSelecCines.setBounds(0, 0, 564, 441);
 		frame.getContentPane().add(panelSelecCines);
 		panelSelecCines.setLayout(null);
+		
+		JPanel panelSelecPelis = new JPanel();
+		panelSelecPelis.setLayout(null);
+		panelSelecPelis.setBounds(0, 0, 564, 441);
+		frame.getContentPane().add(panelSelecPelis);
 
 		JButton botonBienvenida = new JButton("\r\n\r\n\r\n\r\nBIENVENIDO\r\n");
 		botonBienvenida.addActionListener(new ActionListener() {
@@ -86,6 +92,15 @@ public class Reto3 {
 		panelSelecCines.add(seleccionCinesLogo);
 
 		JButton seleccionBtnCine1 = new JButton("Cine1\r\n");
+		seleccionBtnCine1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				panelBienvenida.setVisible(false);
+				panelSelecCines.setVisible(false);
+				panelSelecPelis.setVisible(true);
+				
+			}
+		});
 		seleccionCinesLogo.setIcon(new ImageIcon("C:\\Users\\in1dw3\\Desktop\\Ibai\\Reto 3\\bienvenida.png"));
 		seleccionBtnCine1.setBounds(97, 184, 121, 74);
 		panelSelecCines.add(seleccionBtnCine1);
@@ -105,6 +120,22 @@ public class Reto3 {
 		JButton btnFinalizar = new JButton("FINALIZAR");
 		btnFinalizar.setBounds(221, 392, 96, 38);
 		panelSelecCines.add(btnFinalizar);
+		
+		JLabel labelSeleccionPelis = new JLabel("Selecciona una Pelicula");
+		labelSeleccionPelis.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		labelSeleccionPelis.setBounds(43, 101, 250, 37);
+		panelSelecPelis.add(labelSeleccionPelis);
+		
+		JLabel labelLogoPelis = new JLabel("");
+		labelLogoPelis.setIcon(new ImageIcon("C:\\Users\\in1dw3\\Desktop\\Ibai\\Reto 3\\bienvenida.png"));
+		labelLogoPelis.setBounds(362, 11, 192, 188);
+		panelSelecPelis.add(labelLogoPelis);
+		
+		JList listaPeliculas = new JList();
+		listaPeliculas.setForeground(Color.WHITE);
+		listaPeliculas.setBackground(Color.BLACK);
+		listaPeliculas.setBounds(298, 406, -261, -221);
+		panelSelecPelis.add(listaPeliculas);
 
 	}
 
