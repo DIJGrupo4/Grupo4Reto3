@@ -6,8 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import reto3.bbdd.dbUtils.DBUtils;
 import reto3.bbdd.pojo.Pelicula;
-import reto3.bbdd.utils.DBUtils;
+
 
 public class GestorPeliculas {
 
@@ -39,14 +40,14 @@ public class GestorPeliculas {
 				int duracion = resultSet.getInt("duracion");
 				String genero = resultSet.getString("genero");
 				int precio = resultSet.getInt("precio");
-				String nombre = resultSet.getString("nombre");
+				String nombre = resultSet.getString("titulo");
 
 				// Metemos los datos a Ejemplo
 				peli.setCodPelicula(codPelicula);;
 				peli.setDuracion(duracion);
 				peli.setGenero(genero);
 				peli.setPrecio(precio);
-				peli.setNombre(nombre);
+				peli.setTitulo(nombre);
 			}
 		} catch (SQLException sqle) {
 			System.out.println("Error con la BBDD - " + sqle.getMessage());
