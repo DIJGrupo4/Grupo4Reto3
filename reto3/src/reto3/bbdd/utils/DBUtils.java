@@ -1,4 +1,4 @@
-package reto3.bbdd.dbUtils;
+package reto3.bbdd.utils;
 
 public class DBUtils{
 
