@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import reto3.bbdd.pojo.Cine;
 import reto3.bbdd.pojo.Pelicula;
 
 import javax.swing.JList;
@@ -157,8 +158,8 @@ public class Reto3 {
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 				SPlblCineSeleccionado.setText("Cine 1");
-				;
 			}
+
 		});
 		SCseleccionBtnCine2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
