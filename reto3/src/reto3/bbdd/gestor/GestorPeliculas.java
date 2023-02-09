@@ -45,14 +45,11 @@ public static String[] rellenarLista(String stringcineNom) {
 				String titulo = resultSet.getString("titulo");
 				int duracion = resultSet.getInt("duracion");
 				String genero = resultSet.getString("genero");
-				int precio = resultSet.getInt("precio");
 
 				peli.setCodPelicula(codPelicula);
 				peli.setTitulo(titulo);
 				peli.setDuracion(duracion);
 				peli.setGenero(genero);
-				peli.setPrecio(precio);
-
 			}
 		} catch (SQLException sqle) {
 			System.out.println("Error con la BBDD - " + sqle.getMessage());

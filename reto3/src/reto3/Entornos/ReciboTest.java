@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 import org.junit.Test;
 
-import reto3.bbdd.pojo.Ventas;
+import reto3.bbdd.pojo.Recibo;
 
 class jUnitVentas {
 
