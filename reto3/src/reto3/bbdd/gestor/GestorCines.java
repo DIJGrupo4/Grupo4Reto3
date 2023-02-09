@@ -86,7 +86,7 @@ public class GestorCines {
 
 	public Cine obtenerCinePorNombre(String cineNom) {
 		Cine cine = new Cine();
-		String sql = "select * from CINE where nombre like '" + cineNom + "'";
+		String sql = "select * from Cine where nombre like '" + cineNom + "'";
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;

@@ -12,16 +12,16 @@ import reto3.bbdd.utils.DBUtils;
 
 public class GestorPeliculas {
 
-public static ArrayList<String> rellenarLista(String stringcineNom) {
+public static String[] rellenarLista(String stringcineNom) {
 	
-	ArrayList<String> peliculas = new ArrayList<String>();
+	String peliculas[] = new String[9];
 	
-	peliculas.add("aaaaaaa");
-	peliculas.add("eeeeeeee");
-	peliculas.add("iiiiiii");
+	peliculas[0]="aaaaaaa";
+	peliculas[1]="eeeeeeee";
+	peliculas[2]="iiiiiii";
 	
 	return peliculas;
-	}
+}
 
 	public Pelicula obtenerPeliculaPorNombre(String peliNom) {
 		Pelicula peli = new Pelicula();
