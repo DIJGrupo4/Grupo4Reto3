@@ -58,7 +58,7 @@ public class Recibo implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cliente, codVenta, entradas, precioTotal);
+		return Objects.hash(cliente, codRecibo, entradas, precioTotal);
 	}
 
 	@Override
@@ -69,16 +69,15 @@ public class Recibo implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Venta other = (Venta) obj;
-		return Objects.equals(cliente, other.cliente) && codVenta == other.codVenta
+		Recibo other = (Recibo) obj;
+		return Objects.equals(cliente, other.cliente) && codRecibo == other.codRecibo
 				&& Objects.equals(entradas, other.entradas) && precioTotal == other.precioTotal;
 	}
 
 	@Override
 	public String toString() {
-		return "Venta [codVenta=" + codVenta + ", precioTotal=" + precioTotal + ", entradas=" + entradas + ", cliente="
-				+ cliente + "]";
+		return "Recibo [codRecibo=" + codRecibo + ", precioTotal=" + precioTotal + ", entradas=" + entradas
+				+ ", cliente=" + cliente + "]";
 	}
-
 
 }
