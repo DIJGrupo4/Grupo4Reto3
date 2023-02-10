@@ -145,10 +145,6 @@ public class Reto3 {
 		SPlistaPeliculas.setBounds(43, 166, 250, 248);
 		SPpanelSeleccionPelis.add(SPlistaPeliculas);
 
-		JList<String> SPlistaPeliculas_1 = new JList<String>();
-		SPlistaPeliculas_1.setBounds(0, 0, 250, 248);
-		SPpanelSeleccionPelis.add(SPlistaPeliculas_1);
-
 		// Action listeners
 
 		SPbtnAtras.addActionListener(new ActionListener() {

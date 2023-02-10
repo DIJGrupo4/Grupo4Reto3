@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import reto3.bbdd.menu.Menu;
 import reto3.bbdd.pojo.Pelicula;
 import reto3.bbdd.utils.DBUtils;
 
@@ -55,14 +56,17 @@ public class GestorPeliculas {
 		
 		return peliculas;
 	}
-	public Pelicula obtenerPeliculaPorNombre(String peliNom) {
-		Pelicula peli = new Pelicula();
-		String sql = "select * from peliculas where nombre like '" + peliNom + "'";
+	
+	private ArrayList<Pelicula> obtenerPeliculaPorCine1() {
+		ArrayList<Pelicula> ret = null;
+
+		String sql = "select * from t_pelicula";
+
 		Connection connection = null;
+
 		Statement statement = null;
 		ResultSet resultSet = null;
 
-		// --------------------------------------------------------------------------------------------------
 		try {
 			Class.forName(DBUtils.DRIVER);
 
@@ -72,6 +76,11 @@ public class GestorPeliculas {
 			resultSet = statement.executeQuery(sql);
 
 			while (resultSet.next()) {
+
+				if (null == ret)
+					ret = new <Pelicula>ArrayList();
+
+				Pelicula peli = new Pelicula();
 
 				int codPelicula = resultSet.getInt("codPelicula");
 				String titulo = resultSet.getString("titulo");
@@ -95,19 +104,34 @@ public class GestorPeliculas {
 			} catch (Exception e) {
 
 			}
+			;
 			try {
 				if (statement != null)
 					statement.close();
 			} catch (Exception e) {
 
 			}
+			;
 			try {
 				if (connection != null)
 					connection.close();
 			} catch (Exception e) {
 
 			}
+			;
 		}
-		return peli;
+		return ret;
+	}
+	
+
+	public static void buscarNotasALumnoAsig() {
+
+		 GestorPeliculas dBAccessExample = new GestorPeliculas();
+		ArrayList<Pelicula> peli = dBAccessExample.obtenerPeliculaPorCine1();
+
+		Menu menu = new Menu();
+		for (int i = 0; i < peli.size(); i++) {
+			menu.mostrarPelicula(peli.get(i));
+		}
 	}
 }
