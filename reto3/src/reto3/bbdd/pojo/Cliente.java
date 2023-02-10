@@ -12,15 +12,15 @@ public class Cliente {
 	private String DNI = null;
 	private String nombre = null;
 	private String apellido = null;
-	private char sexo = '*';
+	private String sexo = null;
 	private String usuario = null;
 	private String contraseña = null;
-	
-	//Relacion 1:N con Entrada
+
+	// Relacion 1:N con Entrada
+	private ArrayList<Entrada> entradas = null;
+
+	// Relacion 1:N con Recibo
 	private ArrayList<Recibo> recibos = null;
-	
-	//Relacion 1:N con Venta
-	private ArrayList<Venta> ventas = null;
 
 	public int getCodCliente() {
 		return codCliente;
@@ -86,17 +86,17 @@ public class Cliente {
 		this.entradas = entradas;
 	}
 
-	public ArrayList<Venta> getVentas() {
-		return ventas;
+	public ArrayList<Recibo> getRecibos() {
+		return recibos;
 	}
 
-	public void setVentas(ArrayList<Venta> ventas) {
-		this.ventas = ventas;
+	public void setRecibos(ArrayList<Recibo> recibos) {
+		this.recibos = recibos;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(DNI, apellido, codCliente, contraseña, entradas, nombre, sexo, usuario, ventas);
+		return Objects.hash(DNI, apellido, codCliente, contraseña, entradas, nombre, recibos, sexo, usuario);
 	}
 
 	@Override
@@ -111,15 +111,15 @@ public class Cliente {
 		return Objects.equals(DNI, other.DNI) && Objects.equals(apellido, other.apellido)
 				&& codCliente == other.codCliente && Objects.equals(contraseña, other.contraseña)
 				&& Objects.equals(entradas, other.entradas) && Objects.equals(nombre, other.nombre)
-				&& Objects.equals(sexo, other.sexo) && Objects.equals(usuario, other.usuario)
-				&& Objects.equals(ventas, other.ventas);
+				&& Objects.equals(recibos, other.recibos) && sexo == other.sexo
+				&& Objects.equals(usuario, other.usuario);
 	}
 
 	@Override
 	public String toString() {
 		return "Cliente [codCliente=" + codCliente + ", DNI=" + DNI + ", nombre=" + nombre + ", apellido=" + apellido
 				+ ", sexo=" + sexo + ", usuario=" + usuario + ", contraseña=" + contraseña + ", entradas=" + entradas
-				+ ", ventas=" + ventas + "]";
+				+ ", recibos=" + recibos + "]";
 	}
 
 }
