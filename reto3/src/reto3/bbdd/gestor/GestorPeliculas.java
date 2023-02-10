@@ -7,30 +7,66 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import reto3.bbdd.menu.Menu;
 import reto3.bbdd.pojo.Pelicula;
 import reto3.bbdd.utils.DBUtils;
 
 public class GestorPeliculas {
 
-public static String[] rellenarLista(String stringcineNom) {
+	public static String[] rellenarListaCine1(String stringcineNom) {
+		
+		String peliculas[] = new String[3];
+		
+		peliculas[0]="a";
+		peliculas[1]="b";
+		peliculas[2]="c";
+		
+		return peliculas;
+	}
 	
-	String peliculas[] = new String[9];
-	
-	peliculas[0]="aaaaaaa";
-	peliculas[1]="eeeeeeee";
-	peliculas[2]="iiiiiii";
-	
-	return peliculas;
-}
+	public static String[] rellenarListaCine2(String stringcineNom) {
+		
+		String peliculas[] = new String[3];
+		
+		peliculas[0]="d";
+		peliculas[1]="e";
+		peliculas[2]="f";
+		
+		return peliculas;
+	}
 
-	public Pelicula obtenerPeliculaPorNombre(String peliNom) {
-		Pelicula peli = new Pelicula();
-		String sql = "select * from peliculas where nombre like '" + peliNom + "'";
+	public static String[] rellenarListaCine3(String stringcineNom) {
+		
+		String peliculas[] = new String[3];
+		
+		peliculas[0]="g";
+		peliculas[1]="h";
+		peliculas[2]="i";
+		
+		return peliculas;
+	}
+	
+	public static String[] rellenarListaCine4(String stringcineNom) {
+		
+		String peliculas[] = new String[3];
+		
+		peliculas[0]="j";
+		peliculas[1]="k";
+		peliculas[2]="l";
+		
+		return peliculas;
+	}
+	
+	private ArrayList<Pelicula> obtenerPeliculaPorCine1() {
+		ArrayList<Pelicula> ret = null;
+
+		String sql = "select * from t_pelicula";
+
 		Connection connection = null;
+
 		Statement statement = null;
 		ResultSet resultSet = null;
 
-		// --------------------------------------------------------------------------------------------------
 		try {
 			Class.forName(DBUtils.DRIVER);
 
@@ -40,6 +76,11 @@ public static String[] rellenarLista(String stringcineNom) {
 			resultSet = statement.executeQuery(sql);
 
 			while (resultSet.next()) {
+
+				if (null == ret)
+					ret = new <Pelicula>ArrayList();
+
+				Pelicula peli = new Pelicula();
 
 				int codPelicula = resultSet.getInt("codPelicula");
 				String titulo = resultSet.getString("titulo");
@@ -63,19 +104,34 @@ public static String[] rellenarLista(String stringcineNom) {
 			} catch (Exception e) {
 
 			}
+			;
 			try {
 				if (statement != null)
 					statement.close();
 			} catch (Exception e) {
 
 			}
+			;
 			try {
 				if (connection != null)
 					connection.close();
 			} catch (Exception e) {
 
 			}
+			;
 		}
-		return peli;
+		return ret;
+	}
+	
+
+	public static void buscarNotasALumnoAsig() {
+
+		 GestorPeliculas dBAccessExample = new GestorPeliculas();
+		ArrayList<Pelicula> peli = dBAccessExample.obtenerPeliculaPorCine1();
+
+		Menu menu = new Menu();
+		for (int i = 0; i < peli.size(); i++) {
+			menu.mostrarPelicula(peli.get(i));
+		}
 	}
 }
