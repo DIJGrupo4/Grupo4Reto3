@@ -12,17 +12,49 @@ import reto3.bbdd.utils.DBUtils;
 
 public class GestorPeliculas {
 
-public static String[] rellenarLista(String stringcineNom) {
+	public static String[] rellenarListaCine1(String stringcineNom) {
+		
+		String peliculas[] = new String[3];
+		
+		peliculas[0]="a";
+		peliculas[1]="b";
+		peliculas[2]="c";
+		
+		return peliculas;
+	}
 	
-	String peliculas[] = new String[9];
-	
-	peliculas[0]="aaaaaaa";
-	peliculas[1]="eeeeeeee";
-	peliculas[2]="iiiiiii";
-	
-	return peliculas;
-}
+	public static String[] rellenarListaCine2(String stringcineNom) {
+		
+		String peliculas[] = new String[3];
+		
+		peliculas[0]="d";
+		peliculas[1]="e";
+		peliculas[2]="f";
+		
+		return peliculas;
+	}
 
+	public static String[] rellenarListaCine3(String stringcineNom) {
+		
+		String peliculas[] = new String[3];
+		
+		peliculas[0]="g";
+		peliculas[1]="h";
+		peliculas[2]="i";
+		
+		return peliculas;
+	}
+	
+	public static String[] rellenarListaCine4(String stringcineNom) {
+		
+		String peliculas[] = new String[3];
+		
+		peliculas[0]="j";
+		peliculas[1]="k";
+		peliculas[2]="l";
+		
+		return peliculas;
+	}
 	public Pelicula obtenerPeliculaPorNombre(String peliNom) {
 		Pelicula peli = new Pelicula();
 		String sql = "select * from peliculas where nombre like '" + peliNom + "'";

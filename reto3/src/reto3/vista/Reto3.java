@@ -21,11 +21,10 @@ import reto3.bbdd.gestor.GestorPeliculas;
 public class Reto3 {
 
 	private JFrame frame;
-	private String peliculas[] = new String[9];
+	private String peliculas[] = new String[3];
+	private String[] peliculasSeleccionadas = new String[3];
 	DefaultListModel<String> listModel = new DefaultListModel<String>();
-	
 
-	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -53,7 +52,7 @@ public class Reto3 {
 		frame.setBounds(100, 100, 580, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+
 		JPanel BpanelBienvenida = new JPanel();
 		BpanelBienvenida.setLayout(null);
 		BpanelBienvenida.setBounds(0, 0, 938, 704);
@@ -63,7 +62,7 @@ public class Reto3 {
 		SCpanelSeleccionCines.setBounds(0, 0, 564, 441);
 		frame.getContentPane().add(SCpanelSeleccionCines);
 		SCpanelSeleccionCines.setLayout(null);
-
+		
 		JPanel SPpanelSeleccionPelis = new JPanel();
 		SPpanelSeleccionPelis.setLayout(null);
 		SPpanelSeleccionPelis.setBounds(0, 0, 564, 441);
@@ -81,7 +80,7 @@ public class Reto3 {
 		SCseleccionCinesLogo.setIcon(new ImageIcon("C:\\Users\\in1dw3\\Desktop\\Ibai\\Reto 3\\bienvenida.png"));
 		SCseleccionCinesLogo.setBounds(376, 11, 137, 156);
 		SCpanelSeleccionCines.add(SCseleccionCinesLogo);
-
+		
 		JLabel SPlabelSeleccionPelis = new JLabel("Selecciona una Pelicula");
 		SPlabelSeleccionPelis.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		SPlabelSeleccionPelis.setBounds(43, 101, 250, 37);
@@ -96,14 +95,8 @@ public class Reto3 {
 		SPlblCineSeleccionado.setBounds(216, 33, 178, 14);
 		SPpanelSeleccionPelis.add(SPlblCineSeleccionado);
 
-		//JLists
-		
-		JList SPlistaPeliculas = new JList();
-		SPlistaPeliculas.setBounds(43, 166, 250, 248);
-		SPpanelSeleccionPelis.add(SPlistaPeliculas);
-		
-		//Buttons
-		
+		// Buttons
+
 		JButton BbotonBienvenida = new JButton("BIENVENIDO");
 		BbotonBienvenida.setForeground(Color.BLACK);
 		BbotonBienvenida.setFont(new Font("Yu Gothic", Font.PLAIN, 50));
@@ -111,7 +104,7 @@ public class Reto3 {
 		BbotonBienvenida.setBackground(Color.WHITE);
 		BbotonBienvenida.setBounds(0, 0, 564, 441);
 		BpanelBienvenida.add(BbotonBienvenida);
-		
+
 		JButton SCseleccionBtnCine1 = new JButton("Cine1");
 		SCseleccionBtnCine1.setFocusable(false);
 		SCseleccionBtnCine1.setBounds(97, 184, 121, 74);
@@ -136,43 +129,73 @@ public class Reto3 {
 		SCbtnFinalizar.setFocusable(false);
 		SCbtnFinalizar.setBounds(221, 392, 96, 38);
 		SCpanelSeleccionCines.add(SCbtnFinalizar);
-
+		
 		JButton SPbtnAtras = new JButton("Atras");
 		SPbtnAtras.setFocusable(false);
 		SPbtnAtras.setBounds(337, 391, 89, 23);
 		SPpanelSeleccionPelis.add(SPbtnAtras);
+
+		JButton SCbtnAceptar = new JButton("Aceptar");
+		SCbtnAceptar.setBounds(337, 280, 89, 23);
+		SPpanelSeleccionPelis.add(SCbtnAceptar);
+
+
+		// JLists
+
+		JList<String> SPlistaPeliculas = new JList<String>();
+		SPlistaPeliculas.setBounds(43, 166, 250, 248);
+		SPpanelSeleccionPelis.add(SPlistaPeliculas);
+
 		
-		//Action listeners
 		
+
+		// Action listeners
+		
+		SPbtnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BpanelBienvenida.setVisible(false);
+				SPpanelSeleccionPelis.setVisible(false);
+				SCpanelSeleccionCines.setVisible(true);
+			}
+		});
+
 		BbotonBienvenida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(true);
 			}
 		});
-		
+
 		SCseleccionBtnCine1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				listModel.clear();
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
-				SPlblCineSeleccionado.setText("Cine 1");
-				
-				peliculas=GestorPeliculas.rellenarLista("Cine1");
-				for(int i=0; i<peliculas.length; i++) {
+
+				peliculas = GestorPeliculas.rellenarListaCine1("Cine1");
+				for (int i = 0; i < peliculas.length; i++) {
 					listModel.addElement(peliculas[i]);
 				}
 				SPlistaPeliculas.setModel(listModel);
 			}
 
 		});
-				
+
 		SCseleccionBtnCine2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				listModel.clear();
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
-				SPlblCineSeleccionado.setText("Cine 2");
+
+				peliculas = GestorPeliculas.rellenarListaCine2("Cine 2");
+				for (int i = 0; i < peliculas.length; i++) {
+					listModel.addElement(peliculas[i]);
+				}
+				SPlistaPeliculas.setModel(listModel);
 				;
 			}
 		});
@@ -181,7 +204,18 @@ public class Reto3 {
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
-				SPlblCineSeleccionado.setText("Cine 3");
+				listModel.clear();
+
+				BpanelBienvenida.setVisible(false);
+				SCpanelSeleccionCines.setVisible(false);
+				SPpanelSeleccionPelis.setVisible(true);
+
+				peliculas = GestorPeliculas.rellenarListaCine3("Cine3");
+				for (int i = 0; i < peliculas.length; i++) {
+					listModel.addElement(peliculas[i]);
+				}
+				SPlistaPeliculas.setModel(listModel);
+				;
 				;
 			}
 		});
@@ -190,16 +224,74 @@ public class Reto3 {
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
-				SPlblCineSeleccionado.setText("Cine 4");
-				;
+				listModel.clear();
+				BpanelBienvenida.setVisible(false);
+				SCpanelSeleccionCines.setVisible(false);
+				SPpanelSeleccionPelis.setVisible(true);
+
+				peliculas = GestorPeliculas.rellenarListaCine4("Cine4");
+				for (int i = 0; i < peliculas.length; i++) {
+					listModel.addElement(peliculas[i]);
+				}
+				SPlistaPeliculas.setModel(listModel);
 			}
 		});
-		SPbtnAtras.addActionListener(new ActionListener() {
+		
+		SCbtnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BpanelBienvenida.setVisible(false);
-				SPpanelSeleccionPelis.setVisible(false);
-				SCpanelSeleccionCines.setVisible(true);
-			}
+				
+					if(peliculas[0] == "a" ) {	
+					for (int i = 0; i < peliculasSeleccionadas.length; i++) {
+						listModel.addElement(peliculasSeleccionadas[i]);
+					}
+					}
+					if(peliculas[0] == "b" ) {	
+						for (int i = 0; i < peliculasSeleccionadas.length; i++) {
+							listModel.addElement(peliculasSeleccionadas[i]);
+						}}
+						if(peliculas[0] == "c" ) {	
+							for (int i = 0; i < peliculasSeleccionadas.length; i++) {
+								listModel.addElement(peliculasSeleccionadas[i]);
+							}}
+							if(peliculas[0] == "d" ) {	
+								for (int i = 0; i < peliculasSeleccionadas.length; i++) {
+									listModel.addElement(peliculasSeleccionadas[i]);
+								}}
+								if(peliculas[0] == "e" ) {	
+									for (int i = 0; i < peliculasSeleccionadas.length; i++) {
+										listModel.addElement(peliculasSeleccionadas[i]);
+									}}
+									if(peliculas[0] == "f" ) {	
+										for (int i = 0; i < peliculasSeleccionadas.length; i++) {
+											listModel.addElement(peliculasSeleccionadas[i]);
+										}}
+										if(peliculas[0] == "g" ) {	
+											for (int i = 0; i < peliculasSeleccionadas.length; i++) {
+												listModel.addElement(peliculasSeleccionadas[i]);
+											}}
+											if(peliculas[0] == "h" ) {	
+												for (int i = 0; i < peliculasSeleccionadas.length; i++) {
+													listModel.addElement(peliculasSeleccionadas[i]);
+												}}
+												if(peliculas[0] == "i" ) {	
+													for (int i = 0; i < peliculasSeleccionadas.length; i++) {
+														listModel.addElement(peliculasSeleccionadas[i]);
+													}}
+													if(peliculas[0] == "j" ) {	
+														for (int i = 0; i < peliculasSeleccionadas.length; i++) {
+															listModel.addElement(peliculasSeleccionadas[i]);
+														}}
+														
+														if(peliculas[0] == "k" ) {	
+															for (int i = 0; i < peliculasSeleccionadas.length; i++) {
+																listModel.addElement(peliculasSeleccionadas[i]);
+															}}
+															
+															if(peliculas[0] == "l" ) {	
+																for (int i = 0; i < peliculasSeleccionadas.length; i++) {
+																	listModel.addElement(peliculasSeleccionadas[i]);
+																}}
+				}
 		});
 	}
 }
