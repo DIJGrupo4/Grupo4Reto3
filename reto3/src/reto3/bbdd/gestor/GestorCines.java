@@ -14,7 +14,7 @@ public class GestorCines {
 
 	public ArrayList<Cine> obtenerTodosLosCine() {
 		ArrayList<Cine> ret = null;
-		String sql = "select * from cine";
+		String sql = "select * from t_cine";
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
