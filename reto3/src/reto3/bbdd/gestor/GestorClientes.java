@@ -1,5 +1,5 @@
 package reto3.bbdd.gestor;
 
-public class GestorCliente {
+public class GestorClientes {
 
 }
