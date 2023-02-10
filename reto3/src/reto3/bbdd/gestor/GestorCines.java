@@ -45,13 +45,13 @@ public class GestorCines {
 				int codCine = resultSet.getInt("codCine");
 				String nombre = resultSet.getString("nombre");
 				String direccion = resultSet.getString("direccion");
-				int salas = resultSet.getInt("numSalas");
+				
 
 				// Metemos los datos a Ejemplo
 				cine.setCodCine(codCine);
 				cine.setNombre(nombre);
 				cine.setDireccion(direccion);
-				cine.setNumSalas(salas);
+				
 
 				// Lo guardamos en ret
 				ret.add(cine);
@@ -86,7 +86,7 @@ public class GestorCines {
 
 	public Cine obtenerCinePorNombre(String cineNom) {
 		Cine cine = new Cine();
-		String sql = "select * from Cine where nombre like '" + cineNom + "'";
+		String sql = "select * from t_cine";
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -108,17 +108,17 @@ public class GestorCines {
 			while (resultSet.next()) {
 
 				// Sacamos las columnas del RS
-				int codCine = resultSet.getInt("codigo");
+				int codCine = resultSet.getInt("codCine");
 				String nombre = resultSet.getString("nombre");
 				String direccion = resultSet.getString("direccion");
-				int salas = resultSet.getInt("numSalas");
+				
 
 				// Metemos los datos a Ejemplo
 				cine.setCodCine(codCine);
 				;
 				cine.setNombre(nombre);
 				cine.setDireccion(direccion);
-				cine.setNumSalas(salas);
+				
 
 			}
 		} catch (SQLException sqle) {
@@ -126,10 +126,10 @@ public class GestorCines {
 		} catch (Exception e) {
 			System.out.println("Error generico - " + e.getMessage());
 		} finally {
-			System.out.println("codigo: " + cine.getCodCine());
+			System.out.println("codCine: " + cine.getCodCine());
 			System.out.println("nombre: " + cine.getNombre());
 			System.out.println("direccion: " + cine.getDireccion());
-			System.out.println("numSalas: " + cine.getNumSalas());
+		
 			// Cerramos al reves de como las abrimos
 			try {
 				if (resultSet != null)
