@@ -22,7 +22,6 @@ public class Reto3 {
 
 	private JFrame frame;
 	private String peliculas[] = new String[3];
-	private String[] peliculasSeleccionadas = new String[3];
 	DefaultListModel<String> listModel = new DefaultListModel<String>();
 
 	public static void main(String[] args) {
