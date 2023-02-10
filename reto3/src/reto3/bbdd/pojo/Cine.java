@@ -39,14 +39,6 @@ public class Cine {
 		this.direccion = direccion;
 	}
 
-	public int getNumSalas() {
-		return numSalas;
-	}
-
-	public void setNumSalas(int numSalas) {
-		this.numSalas = numSalas;
-	}
-
 	public ArrayList<Sala> getSalas() {
 		return salas;
 	}
@@ -57,7 +49,7 @@ public class Cine {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(codCine, direccion, nombre, numSalas, salas);
+		return Objects.hash(codCine, direccion, nombre, salas);
 	}
 
 	@Override
@@ -70,14 +62,13 @@ public class Cine {
 			return false;
 		Cine other = (Cine) obj;
 		return codCine == other.codCine && Objects.equals(direccion, other.direccion)
-				&& Objects.equals(nombre, other.nombre) && numSalas == other.numSalas
-				&& Objects.equals(salas, other.salas);
+				&& Objects.equals(nombre, other.nombre) && Objects.equals(salas, other.salas);
 	}
 
 	@Override
 	public String toString() {
-		return "Cine [codCine=" + codCine + ", nombre=" + nombre + ", direccion=" + direccion + ", numSalas=" + numSalas
-				+ ", salas=" + salas + "]";
+		return "Cine [codCine=" + codCine + ", nombre=" + nombre + ", direccion=" + direccion + ", salas=" + salas
+				+ "]";
 	}
 
 }
