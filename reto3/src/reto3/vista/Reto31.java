@@ -25,6 +25,8 @@ public class Reto31 {
 	private JFrame frame;
 	private ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
 
+	
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -148,8 +150,9 @@ public class Reto31 {
 		SPcomboPeliculas.setBounds(70, 280, 161, 22);
 		SPpanelSeleccionPelis.add(SPcomboPeliculas);
 
-		// Action listeners
 
+		// Action listeners
+		
 		SPbtnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BpanelBienvenida.setVisible(false);
@@ -160,7 +163,7 @@ public class Reto31 {
 
 		BbotonBienvenida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(true);
 				SPpanelSeleccionPelis.setVisible(false);
@@ -174,8 +177,9 @@ public class Reto31 {
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				peliculas = GestorPeliculas.obtenerPeliculaPorCineBilbao();
+	
 				for (int i = 0; i < peliculas.size(); i++) {
+					peliculas = GestorPeliculas.obtenerPeliculaPorCineBilbao();
 					SPcomboPeliculas.addItem(peliculas);
 				}
 
@@ -190,8 +194,8 @@ public class Reto31 {
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				peliculas = GestorPeliculas.obtenerPeliculaPorCineBilbao();
 				for (int i = 0; i < peliculas.size(); i++) {
+					peliculas = GestorPeliculas.obtenerPeliculaPorCineBasauri();
 					SPcomboPeliculas.addItem(peliculas);
 				}
 
@@ -205,8 +209,9 @@ public class Reto31 {
 				SPpanelSeleccionPelis.setVisible(true);
 
 				for (int i = 0; i < peliculas.size(); i++) {
+					peliculas = GestorPeliculas.obtenerPeliculaPorCineBaracaldo();
 					SPcomboPeliculas.addItem(peliculas);
-				}
+				} 
 			}
 		});
 		SCseleccionBtnCineElorrieta.addActionListener(new ActionListener() {
@@ -216,8 +221,9 @@ public class Reto31 {
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				peliculas = GestorPeliculas.obtenerPeliculaPorCineBilbao();
+				
 				for (int i = 0; i < peliculas.size(); i++) {
+					peliculas = GestorPeliculas.obtenerPeliculaPorCineElorrieta();
 					SPcomboPeliculas.addItem(peliculas);
 				}
 
@@ -227,7 +233,7 @@ public class Reto31 {
 		SCbtnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String peliculaSeleccionada = SPcomboPeliculas.getName();
-
+				
 			}
 		});
 
