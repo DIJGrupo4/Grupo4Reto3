@@ -7,12 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
-import javax.swing.JScrollBar;
-import javax.swing.JSpinner;
-import javax.swing.JTextPane;
 import javax.swing.JList;
-import javax.swing.UIManager;
 import java.awt.Color;
 import java.awt.SystemColor;
 

@@ -58,9 +58,9 @@ public class Reto3 {
 		frame.getContentPane().add(BpanelBienvenida);
 
 		JPanel SCpanelSeleccionCines = new JPanel();
+		SCpanelSeleccionCines.setLayout(null);
 		SCpanelSeleccionCines.setBounds(0, 0, 564, 441);
 		frame.getContentPane().add(SCpanelSeleccionCines);
-		SCpanelSeleccionCines.setLayout(null);
 
 		JPanel SPpanelSeleccionPelis = new JPanel();
 		SPpanelSeleccionPelis.setLayout(null);
@@ -104,22 +104,22 @@ public class Reto3 {
 		BbotonBienvenida.setBounds(0, 0, 564, 441);
 		BpanelBienvenida.add(BbotonBienvenida);
 
-		JButton SCseleccionBtnCine1 = new JButton("Cine1");
+		JButton SCseleccionBtnCine1 = new JButton("Cine Bilbao");
 		SCseleccionBtnCine1.setFocusable(false);
 		SCseleccionBtnCine1.setBounds(97, 184, 121, 74);
 		SCpanelSeleccionCines.add(SCseleccionBtnCine1);
 
-		JButton SCseleccionBtnCine2 = new JButton("Cine2");
+		JButton SCseleccionBtnCine2 = new JButton("Cine Basauri");
 		SCseleccionBtnCine2.setFocusable(false);
 		SCseleccionBtnCine2.setBounds(317, 184, 127, 74);
 		SCpanelSeleccionCines.add(SCseleccionBtnCine2);
 
-		JButton SCseleccionBtnCine3 = new JButton("Cine3");
+		JButton SCseleccionBtnCine3 = new JButton("Cine Baracaldo");
 		SCseleccionBtnCine3.setFocusable(false);
 		SCseleccionBtnCine3.setBounds(97, 282, 121, 74);
 		SCpanelSeleccionCines.add(SCseleccionBtnCine3);
 
-		JButton SCseleccionBtnCine4 = new JButton("Cine4");
+		JButton SCseleccionBtnCine4 = new JButton("Cine Elorrieta");
 		SCseleccionBtnCine4.setFocusable(false);
 		SCseleccionBtnCine4.setBounds(317, 282, 127, 74);
 		SCpanelSeleccionCines.add(SCseleccionBtnCine4);
@@ -135,6 +135,7 @@ public class Reto3 {
 		SPpanelSeleccionPelis.add(SPbtnAtras);
 
 		JButton SCbtnAceptar = new JButton("Aceptar");
+		SCbtnAceptar.setFocusable(false);
 		SCbtnAceptar.setBounds(337, 280, 89, 23);
 		SPpanelSeleccionPelis.add(SCbtnAceptar);
 
