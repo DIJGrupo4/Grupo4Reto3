@@ -222,6 +222,12 @@ public class Reto31 {
 				
 			}
 		});
+		
+		SCbtnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			   SPcomboPeliculas.setSelectedIndex(1);
+			}
+		});
 
 	}
 }
