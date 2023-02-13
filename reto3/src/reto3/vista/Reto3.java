@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -17,12 +18,22 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import reto3.bbdd.gestor.GestorPeliculas;
+import reto3.bbdd.pojo.Pelicula;
+
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
 
 public class Reto3 {
 
 	private JFrame frame;
-	private String peliculas[] = new String[3];
+	private ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
+	private ArrayList<String> titulos = new ArrayList<String>();
+	private int ListaFull = 0;
 	DefaultListModel<String> listModel = new DefaultListModel<String>();
+	private JTextField SStextTitulo;
+	private JTextField SStextHora;
+	private JTextField SStextPrecio;
+	private JTextField SStextSala;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -41,6 +52,9 @@ public class Reto3 {
 		initialize();
 	}
 
+	/**
+	 * @wbp.parser.entryPoint
+	 */
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setEnabled(false);
@@ -67,6 +81,11 @@ public class Reto3 {
 		SPpanelSeleccionPelis.setBounds(0, 0, 564, 441);
 		frame.getContentPane().add(SPpanelSeleccionPelis);
 
+		JPanel SSpanelSeleccionSesiones = new JPanel();
+		SSpanelSeleccionSesiones.setLayout(null);
+		SSpanelSeleccionSesiones.setBounds(0, 0, 564, 441);
+		frame.getContentPane().add(SSpanelSeleccionSesiones);
+
 		// JLabels
 
 		JLabel SClabelSeleccionCines = new JLabel("Selecciona un Cine");
@@ -90,9 +109,51 @@ public class Reto3 {
 		SPlabelLogoPelis.setBounds(362, 11, 192, 188);
 		SPpanelSeleccionPelis.add(SPlabelLogoPelis);
 
-		JLabel SPlblCineSeleccionado = new JLabel("Aqui se muestra el cine");
-		SPlblCineSeleccionado.setBounds(216, 33, 178, 14);
-		SPpanelSeleccionPelis.add(SPlblCineSeleccionado);
+		JLabel SSlblTitulo = new JLabel("Titulo:");
+		SSlblTitulo.setBounds(81, 170, 81, 14);
+		SSpanelSeleccionSesiones.add(SSlblTitulo);
+
+		JLabel SSlblHora = new JLabel("Hora:");
+		SSlblHora.setBounds(81, 221, 81, 14);
+		SSpanelSeleccionSesiones.add(SSlblHora);
+
+		JLabel SSlblPrecio = new JLabel("Precio:");
+		SSlblPrecio.setBounds(81, 273, 81, 14);
+		SSpanelSeleccionSesiones.add(SSlblPrecio);
+
+		JLabel SSlblSala = new JLabel("Sala:");
+		SSlblSala.setBounds(81, 326, 81, 14);
+		SSpanelSeleccionSesiones.add(SSlblSala);
+
+		JLabel SSlblSesiones = new JLabel("Seleccionar sesion");
+		SSlblSesiones.setBounds(216, 21, 157, 14);
+		SSpanelSeleccionSesiones.add(SSlblSesiones);
+
+		JLabel SSlblSesionesDisponibles = new JLabel("Sesiones disponibles:");
+		SSlblSesionesDisponibles.setBounds(81, 107, 130, 14);
+		SSpanelSeleccionSesiones.add(SSlblSesionesDisponibles);
+
+		// TextFields
+
+		SStextTitulo = new JTextField();
+		SStextTitulo.setColumns(10);
+		SStextTitulo.setBounds(211, 167, 204, 20);
+		SSpanelSeleccionSesiones.add(SStextTitulo);
+
+		SStextHora = new JTextField();
+		SStextHora.setColumns(10);
+		SStextHora.setBounds(211, 323, 102, 20);
+		SSpanelSeleccionSesiones.add(SStextHora);
+
+		SStextPrecio = new JTextField();
+		SStextPrecio.setColumns(10);
+		SStextPrecio.setBounds(211, 218, 102, 20);
+		SSpanelSeleccionSesiones.add(SStextPrecio);
+
+		SStextSala = new JTextField();
+		SStextSala.setColumns(10);
+		SStextSala.setBounds(211, 270, 102, 20);
+		SSpanelSeleccionSesiones.add(SStextSala);
 
 		// Buttons
 
@@ -134,16 +195,30 @@ public class Reto3 {
 		SPbtnAtras.setBounds(337, 391, 89, 23);
 		SPpanelSeleccionPelis.add(SPbtnAtras);
 
-		JButton SCbtnAceptar = new JButton("Aceptar");
-		SCbtnAceptar.setFocusable(false);
-		SCbtnAceptar.setBounds(337, 280, 89, 23);
-		SPpanelSeleccionPelis.add(SCbtnAceptar);
+		JButton SPbtnAceptar = new JButton("Aceptar");
+		SPbtnAceptar.setFocusable(false);
+		SPbtnAceptar.setBounds(337, 280, 89, 23);
+		SPpanelSeleccionPelis.add(SPbtnAceptar);
+
+		JButton SSbtnAtras = new JButton("Atras");
+		SSbtnAtras.setBounds(112, 407, 113, 23);
+		SSpanelSeleccionSesiones.add(SSbtnAtras);
+
+		JButton SSbtnConfirmar = new JButton("Confirmar");
+		SSbtnConfirmar.setBounds(353, 407, 130, 23);
+		SSpanelSeleccionSesiones.add(SSbtnConfirmar);
 
 		// JLists
 
 		JList<String> SPlistaPeliculas = new JList<String>();
 		SPlistaPeliculas.setBounds(43, 166, 250, 248);
 		SPpanelSeleccionPelis.add(SPlistaPeliculas);
+
+		// JComboBox
+
+		JComboBox<String> SScomboBoxSesiones = new JComboBox<String>();
+		SScomboBoxSesiones.setBounds(211, 103, 204, 22);
+		SSpanelSeleccionSesiones.add(SScomboBoxSesiones);
 
 		// Action listeners
 
@@ -152,6 +227,7 @@ public class Reto3 {
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(true);
 				SPpanelSeleccionPelis.setVisible(false);
+				SSpanelSeleccionSesiones.setVisible(false);
 			}
 		});
 
@@ -165,35 +241,43 @@ public class Reto3 {
 
 		SCseleccionBtnCine1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				BpanelBienvenida.setVisible(false);
+				SCpanelSeleccionCines.setVisible(false);
+				SPpanelSeleccionPelis.setVisible(true);
 				listModel.clear();
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				peliculas = GestorPeliculas.rellenarListaCineBilba"Cine1");
-				for (int i = 0; i < peliculas.length; i++) {
-					listModel.addElement(peliculas[i]);
+				peliculas = GestorPeliculas.obtenerPeliculaPorCine(1);
+				titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+				if (titulos != null) {
+					for (int i = 0; i < titulos.size(); i++) {
+						listModel.addElement(titulos.get(i));
+					}
 				}
 				SPlistaPeliculas.setModel(listModel);
 			}
-
 		});
 
 		SCseleccionBtnCine2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				BpanelBienvenida.setVisible(false);
+				SCpanelSeleccionCines.setVisible(false);
+				SPpanelSeleccionPelis.setVisible(true);
 				listModel.clear();
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				peliculas = GestorPeliculas.rellenarListaCine2("Cine 2");
-				for (int i = 0; i < peliculas.length; i++) {
-					listModel.addElement(peliculas[i]);
+				peliculas = GestorPeliculas.obtenerPeliculaPorCine(2);
+				titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+				if (titulos != null) {
+					for (int i = 0; i < titulos.size(); i++) {
+						listModel.addElement(titulos.get(i));
+					}
 				}
 				SPlistaPeliculas.setModel(listModel);
-				;
 			}
 		});
 		SCseleccionBtnCine3.addActionListener(new ActionListener() {
@@ -202,18 +286,18 @@ public class Reto3 {
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 				listModel.clear();
-
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				peliculas = GestorPeliculas.rellenarListaCine3("Cine3");
-				for (int i = 0; i < peliculas.length; i++) {
-					listModel.addElement(peliculas[i]);
+				peliculas = GestorPeliculas.obtenerPeliculaPorCine(3);
+				titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+				if (titulos != null) {
+					for (int i = 0; i < titulos.size(); i++) {
+						listModel.addElement(titulos.get(i));
+					}
 				}
 				SPlistaPeliculas.setModel(listModel);
-				;
-				;
 			}
 		});
 		SCseleccionBtnCine4.addActionListener(new ActionListener() {
@@ -226,13 +310,46 @@ public class Reto3 {
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				peliculas = GestorPeliculas.rellenarListaCine4("Cine4");
-				for (int i = 0; i < peliculas.length; i++) {
-					listModel.addElement(peliculas[i]);
+				peliculas = GestorPeliculas.obtenerPeliculaPorCine(4);
+				titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+				if (titulos != null) {
+					for (int i = 0; i < titulos.size(); i++) {
+						listModel.addElement(titulos.get(i));
+					}
 				}
 				SPlistaPeliculas.setModel(listModel);
 			}
 		});
-
+		SCbtnFinalizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (ListaFull == 0) {
+					System.exit(0);
+				}
+			}
+		});
+		SPbtnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BpanelBienvenida.setVisible(false);
+				SCpanelSeleccionCines.setVisible(false);
+				SPpanelSeleccionPelis.setVisible(false);
+				SSpanelSeleccionSesiones.setVisible(true);
+			}
+		});
+		SSbtnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BpanelBienvenida.setVisible(false);
+				SCpanelSeleccionCines.setVisible(false);
+				SPpanelSeleccionPelis.setVisible(true);
+				SSpanelSeleccionSesiones.setVisible(false);
+			}
+		});
+		SSbtnConfirmar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BpanelBienvenida.setVisible(false);
+				SCpanelSeleccionCines.setVisible(true);
+				SPpanelSeleccionPelis.setVisible(false);
+				SSpanelSeleccionSesiones.setVisible(false);
+			}
+		});
 	}
 }
