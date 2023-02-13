@@ -16,7 +16,9 @@ public class GestorPeliculas {
 	public static ArrayList<Pelicula> obtenerPeliculaPorCineBilbao() {
 		ArrayList<Pelicula> ret = null;
 
-		String sql = "select * from t_pelicula where nombre = 'CineBilbao'";
+		String sql = "select * from t_pelicula, t_cine, t_sala, t_proyeccion where t_cine.codCine = t_sala.codCine "
+				+ "and t_sala.codSala = t_proyeccion.codSala "
+				+ "and t_proyeccion.codPelicula = t_pelicula.codPelicula and nombre = 'CineBilbao'";
 
 		Connection connection = null;
 

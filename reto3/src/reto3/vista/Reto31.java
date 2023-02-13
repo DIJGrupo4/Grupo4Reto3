@@ -204,7 +204,6 @@ public class Reto31 {
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				peliculas = GestorPeliculas.obtenerPeliculaPorCineBilbao();
 				for (int i = 0; i < peliculas.size(); i++) {
 					SPcomboPeliculas.addItem(peliculas);
 				}
