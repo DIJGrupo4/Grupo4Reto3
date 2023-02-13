@@ -17,8 +17,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import reto3.bbdd.gestor.GestorPeliculas;
+import javax.swing.JComboBox;
 
-public class Reto3 {
+public class Reto31 {
 
 	private JFrame frame;
 	private String peliculas[] = new String[3];
@@ -28,7 +29,7 @@ public class Reto3 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Reto3 window = new Reto3();
+					Reto31 window = new Reto31();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,7 +38,7 @@ public class Reto3 {
 		});
 	}
 
-	public Reto3() {
+	public Reto31() {
 		initialize();
 	}
 
@@ -51,6 +52,8 @@ public class Reto3 {
 		frame.setBounds(100, 100, 580, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+
+		// JPanels
 
 		JPanel BpanelBienvenida = new JPanel();
 		BpanelBienvenida.setLayout(null);
@@ -104,25 +107,25 @@ public class Reto3 {
 		BbotonBienvenida.setBounds(0, 0, 564, 441);
 		BpanelBienvenida.add(BbotonBienvenida);
 
-		JButton SCseleccionBtnCine1 = new JButton("Cine Bilbao");
-		SCseleccionBtnCine1.setFocusable(false);
-		SCseleccionBtnCine1.setBounds(97, 184, 121, 74);
-		SCpanelSeleccionCines.add(SCseleccionBtnCine1);
+		JButton SCseleccionBtnCineBilbao = new JButton("Cine Bilbao");
+		SCseleccionBtnCineBilbao.setFocusable(false);
+		SCseleccionBtnCineBilbao.setBounds(97, 184, 121, 74);
+		SCpanelSeleccionCines.add(SCseleccionBtnCineBilbao);
 
-		JButton SCseleccionBtnCine2 = new JButton("Cine Basauri");
-		SCseleccionBtnCine2.setFocusable(false);
-		SCseleccionBtnCine2.setBounds(317, 184, 127, 74);
-		SCpanelSeleccionCines.add(SCseleccionBtnCine2);
+		JButton SCseleccionBtnCineBasauri = new JButton("Cine Basauri");
+		SCseleccionBtnCineBasauri.setFocusable(false);
+		SCseleccionBtnCineBasauri.setBounds(317, 184, 127, 74);
+		SCpanelSeleccionCines.add(SCseleccionBtnCineBasauri);
 
-		JButton SCseleccionBtnCine3 = new JButton("Cine Baracaldo");
-		SCseleccionBtnCine3.setFocusable(false);
-		SCseleccionBtnCine3.setBounds(97, 282, 121, 74);
-		SCpanelSeleccionCines.add(SCseleccionBtnCine3);
+		JButton SCseleccionBtnCineBaracaldo = new JButton("Cine Baracaldo");
+		SCseleccionBtnCineBaracaldo.setFocusable(false);
+		SCseleccionBtnCineBaracaldo.setBounds(97, 282, 121, 74);
+		SCpanelSeleccionCines.add(SCseleccionBtnCineBaracaldo);
 
-		JButton SCseleccionBtnCine4 = new JButton("Cine Elorrieta");
-		SCseleccionBtnCine4.setFocusable(false);
-		SCseleccionBtnCine4.setBounds(317, 282, 127, 74);
-		SCpanelSeleccionCines.add(SCseleccionBtnCine4);
+		JButton SCseleccionBtnCineElorrieta = new JButton("Cine Elorrieta");
+		SCseleccionBtnCineElorrieta.setFocusable(false);
+		SCseleccionBtnCineElorrieta.setBounds(317, 282, 127, 74);
+		SCpanelSeleccionCines.add(SCseleccionBtnCineElorrieta);
 
 		JButton SCbtnFinalizar = new JButton("FINALIZAR");
 		SCbtnFinalizar.setFocusable(false);
@@ -139,11 +142,18 @@ public class Reto3 {
 		SCbtnAceptar.setBounds(337, 280, 89, 23);
 		SPpanelSeleccionPelis.add(SCbtnAceptar);
 
-		// JLists
+		// JComboBox
+		JComboBox<String> SPcomboPeliculas = new JComboBox<String>();
+		SPcomboPeliculas.setBounds(70, 280, 161, 22);
+		SPpanelSeleccionPelis.add(SPcomboPeliculas);
 
-		JList<String> SPlistaPeliculas = new JList<String>();
-		SPlistaPeliculas.setBounds(43, 166, 250, 248);
-		SPpanelSeleccionPelis.add(SPlistaPeliculas);
+		SPbtnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BpanelBienvenida.setVisible(false);
+				SPpanelSeleccionPelis.setVisible(false);
+				SCpanelSeleccionCines.setVisible(true);
+			}
+		});
 
 		// Action listeners
 
@@ -155,82 +165,61 @@ public class Reto3 {
 			}
 		});
 
-		SPbtnAtras.addActionListener(new ActionListener() {
+		SCseleccionBtnCineBilbao.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BpanelBienvenida.setVisible(false);
-				SPpanelSeleccionPelis.setVisible(false);
-				SCpanelSeleccionCines.setVisible(true);
-			}
-		});
-
-		SCseleccionBtnCine1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				listModel.clear();
+				
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				peliculas = GestorPeliculas.rellenarListaCine1("Cine1");
+			
 				for (int i = 0; i < peliculas.length; i++) {
-					listModel.addElement(peliculas[i]);
+					SPcomboPeliculas.addItem(peliculas[i]);
 				}
-				SPlistaPeliculas.setModel(listModel);
+				
 			}
 
 		});
 
-		SCseleccionBtnCine2.addActionListener(new ActionListener() {
+		SCseleccionBtnCineBasauri.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				listModel.clear();
+				
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				peliculas = GestorPeliculas.rellenarListaCine2("Cine 2");
+			
 				for (int i = 0; i < peliculas.length; i++) {
-					listModel.addElement(peliculas[i]);
+					SPcomboPeliculas.addItem(peliculas[i]);
 				}
-				SPlistaPeliculas.setModel(listModel);
-				;
+
 			}
 		});
-		SCseleccionBtnCine3.addActionListener(new ActionListener() {
+		SCseleccionBtnCineBaracaldo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BpanelBienvenida.setVisible(false);
-				SCpanelSeleccionCines.setVisible(false);
-				SPpanelSeleccionPelis.setVisible(true);
-				listModel.clear();
-
+				
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				peliculas = GestorPeliculas.rellenarListaCine3("Cine3");
+			
 				for (int i = 0; i < peliculas.length; i++) {
-					listModel.addElement(peliculas[i]);
+					SPcomboPeliculas.addItem(peliculas[i]);
 				}
-				SPlistaPeliculas.setModel(listModel);
-				;
-				;
 			}
 		});
-		SCseleccionBtnCine4.addActionListener(new ActionListener() {
+		SCseleccionBtnCineElorrieta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BpanelBienvenida.setVisible(false);
-				SCpanelSeleccionCines.setVisible(false);
-				SPpanelSeleccionPelis.setVisible(true);
-				listModel.clear();
+				
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				peliculas = GestorPeliculas.rellenarListaCine4("Cine4");
+			
 				for (int i = 0; i < peliculas.length; i++) {
-					listModel.addElement(peliculas[i]);
+					SPcomboPeliculas.addItem(peliculas[i]);
 				}
-				SPlistaPeliculas.setModel(listModel);
+				
 			}
 		});
 
