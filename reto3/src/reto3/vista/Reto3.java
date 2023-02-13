@@ -171,7 +171,7 @@ public class Reto3 {
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				peliculas = GestorPeliculas.rellenarListaCine1("Cine1");
+				peliculas = GestorPeliculas.rellenarListaCineBilba"Cine1");
 				for (int i = 0; i < peliculas.length; i++) {
 					listModel.addElement(peliculas[i]);
 				}

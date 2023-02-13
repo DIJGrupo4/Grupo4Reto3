@@ -6,24 +6,24 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import reto3.bbdd.gestor.GestorPeliculas;
+import reto3.bbdd.pojo.Pelicula;
+
 import javax.swing.JComboBox;
 
 public class Reto31 {
 
 	private JFrame frame;
-	private String peliculas[] = new String[3];
-	DefaultListModel<String> listModel = new DefaultListModel<String>();
+	private ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -143,9 +143,12 @@ public class Reto31 {
 		SPpanelSeleccionPelis.add(SCbtnAceptar);
 
 		// JComboBox
-		JComboBox<String> SPcomboPeliculas = new JComboBox<String>();
+		JComboBox<ArrayList<Pelicula>> SPcomboPeliculas = new JComboBox<ArrayList<Pelicula>>();
+		SPcomboPeliculas.setFocusable(false);
 		SPcomboPeliculas.setBounds(70, 280, 161, 22);
 		SPpanelSeleccionPelis.add(SPcomboPeliculas);
+
+		// Action listeners
 
 		SPbtnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -155,10 +158,9 @@ public class Reto31 {
 			}
 		});
 
-		// Action listeners
-
 		BbotonBienvenida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(true);
 				SPpanelSeleccionPelis.setVisible(false);
@@ -167,65 +169,66 @@ public class Reto31 {
 
 		SCseleccionBtnCineBilbao.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-			
-				for (int i = 0; i < peliculas.length; i++) {
-					SPcomboPeliculas.addItem(peliculas[i]);
+				peliculas = GestorPeliculas.obtenerPeliculaPorCineBilbao();
+				for (int i = 0; i < peliculas.size(); i++) {
+					SPcomboPeliculas.addItem(peliculas);
 				}
-				
+
 			}
 
 		});
 
 		SCseleccionBtnCineBasauri.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-			
-				for (int i = 0; i < peliculas.length; i++) {
-					SPcomboPeliculas.addItem(peliculas[i]);
+				peliculas = GestorPeliculas.obtenerPeliculaPorCineBilbao();
+				for (int i = 0; i < peliculas.size(); i++) {
+					SPcomboPeliculas.addItem(peliculas);
 				}
 
 			}
 		});
 		SCseleccionBtnCineBaracaldo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-			
-				for (int i = 0; i < peliculas.length; i++) {
-					SPcomboPeliculas.addItem(peliculas[i]);
+				peliculas = GestorPeliculas.obtenerPeliculaPorCineBilbao();
+				for (int i = 0; i < peliculas.size(); i++) {
+					SPcomboPeliculas.addItem(peliculas);
 				}
 			}
 		});
 		SCseleccionBtnCineElorrieta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-			
-				for (int i = 0; i < peliculas.length; i++) {
-					SPcomboPeliculas.addItem(peliculas[i]);
+				peliculas = GestorPeliculas.obtenerPeliculaPorCineBilbao();
+				for (int i = 0; i < peliculas.size(); i++) {
+					SPcomboPeliculas.addItem(peliculas);
 				}
-				
+
 			}
 		});
-		
+
 		SCbtnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			   SPcomboPeliculas.setSelectedIndex(1);
+				String peliculaSeleccionada = SPcomboPeliculas.getName();
+
 			}
 		});
 
