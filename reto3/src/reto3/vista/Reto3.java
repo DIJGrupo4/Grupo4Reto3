@@ -297,8 +297,8 @@ public class Reto3 {
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				// peliculas = GestorPeliculas.obtenerPeliculaPorCine(3);
-				// titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+				//peliculas = GestorPeliculas.obtenerPeliculaPorCine(3);
+				//titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
 
 				titulos.add("Peli1Cine3");
 				titulos.add("Peli2Cine3");
@@ -320,8 +320,8 @@ public class Reto3 {
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				// peliculas = GestorPeliculas.obtenerPeliculaPorCine(4);
-				titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+				//peliculas = GestorPeliculas.obtenerPeliculaPorCine(4);
+				//titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
 				titulos.add("Peli1Cine4");
 				titulos.add("Peli2Cine4");
 				titulos.add("Peli3Cine4");
