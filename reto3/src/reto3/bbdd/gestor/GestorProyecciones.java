@@ -12,16 +12,19 @@ import reto3.bbdd.utils.DBUtils;
 
 public class GestorProyecciones {
 
-	private static ArrayList<String> ret;
+	private ArrayList<String> ret;
 
-	public static ArrayList<Pelicula> obtenerProyeccionPorCine(int i) {
+	/**
+	 * 
+	 * @param codCine
+	 * @return
+	 */
+	public ArrayList<Pelicula> obtenerProyeccionPorCine(int codCine) {
 		ArrayList<Pelicula> ret = null;
 
-		String sql = "select t_pelicula.codPelicula, t_pelicula.titulo, t_pelicula.duracion, t_pelicula.genero from t_cine, t_sala, t_proyeccion, t_pelicula where t_cine.codCine = t_sala.codCine "
-				+ "and t_sala.codSala = t_proyeccion.codSala and t_proyeccion.codPelicula = t_pelicula.codPelicula and t_cine.codCine = '" + i + "' ORDER BY t_proyeccion.fechaHora";
+		String sql = "select t_pelicula.* from t_cine, t_sala, t_proyeccion, t_pelicula where t_cine.codCine = t_sala.codCine "
+				+ "and t_sala.codSala = t_proyeccion.codSala and t_proyeccion.codPelicula = t_pelicula.codPelicula and t_cine.codCine = '" + codCine + "' ORDER BY t_proyeccion.fechaHora" ;
 
-		//String sql = "select * from t_pelicula";
-		
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -62,33 +65,29 @@ public class GestorProyecciones {
 		} catch (Exception e) {
 			System.out.println("Error generico - " + e.getMessage());
 		} finally {
-
 			try {
 				if (resultSet != null)
 					resultSet.close();
 			} catch (Exception e) {
 
 			}
-			;
 			try {
 				if (statement != null)
 					statement.close();
 			} catch (Exception e) {
 
 			}
-			;
 			try {
 				if (connection != null)
 					connection.close();
 			} catch (Exception e) {
 
 			}
-			;
 		}
 		return ret;
 	}
 
-	public static ArrayList<String> obtenerTitulosPorPeliculas(ArrayList<Pelicula> peliculas) {
+	public ArrayList<String> obtenerTitulosPorPeliculas(ArrayList<Pelicula> peliculas) {
 		ret=new ArrayList<String>();
 		if(peliculas!=null) {
 			for (int i = 0; i < peliculas.size(); i++) {
