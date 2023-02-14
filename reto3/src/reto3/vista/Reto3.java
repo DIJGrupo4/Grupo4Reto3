@@ -17,8 +17,8 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import reto3.bbdd.gestor.GestorPeliculas;
-import reto3.bbdd.pojo.Proyeccion;
+import reto3.bbdd.gestor.GestorProyecciones;
+import reto3.bbdd.pojo.Pelicula;
 
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -27,7 +27,7 @@ public class Reto3 {
 
 	private JFrame frame;
 
-	private ArrayList<Proyeccion> proyecciones = new ArrayList<Proyeccion>();
+	private ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
 	private ArrayList<String> titulos = new ArrayList<String>();
 
 	private int ListaFull = 0;
@@ -252,16 +252,13 @@ public class Reto3 {
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				// proyecciones = GestorPeliculas.obtenerProyeccionPorCine(1);
-				titulos = GestorPeliculas.obtenerTitulosPorProyecciones(proyecciones);
+				peliculas = GestorProyecciones.obtenerProyeccionPorCine(1);
+				titulos = GestorProyecciones.obtenerTitulosPorPeliculas(peliculas);
 
 				if(titulos==null) {
 					titulos=new ArrayList<String>();
 				}
 				
-				titulos.add("Peli1Cine1");
-				titulos.add("Peli2Cine1");
-				titulos.add("Peli3Cine1");
 				if (titulos != null) {
 					for (int i = 0; i < titulos.size(); i++) {
 						listModel.addElement(titulos.get(i));
@@ -279,16 +276,13 @@ public class Reto3 {
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				// proyecciones = GestorPeliculas.obtenerProyeccionPorCine(2);
-				titulos = GestorPeliculas.obtenerTitulosPorProyecciones(proyecciones);
+				peliculas = GestorProyecciones.obtenerProyeccionPorCine(2);
+				titulos = GestorProyecciones.obtenerTitulosPorPeliculas(peliculas);
 
 				if(titulos==null) {
 					titulos=new ArrayList<String>();
 				}
 				
-				titulos.add("Peli1Cine2");
-				titulos.add("Peli2Cine2");
-				titulos.add("Peli3Cine2");
 				if (titulos != null) {
 					for (int i = 0; i < titulos.size(); i++) {
 						listModel.addElement(titulos.get(i));
@@ -305,16 +299,13 @@ public class Reto3 {
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				//proyecciones = GestorPeliculas.obtenerProyeccionPorCine(3);
-				titulos = GestorPeliculas.obtenerTitulosPorProyecciones(proyecciones);
+				peliculas = GestorProyecciones.obtenerProyeccionPorCine(3);
+				titulos = GestorProyecciones.obtenerTitulosPorPeliculas(peliculas);
 
 				if(titulos==null) {
 					titulos=new ArrayList<String>();
 				}
 				
-				titulos.add("Peli1Cine3");
-				titulos.add("Peli2Cine3");
-				titulos.add("Peli3Cine3");
 				if (titulos != null) {
 					for (int i = 0; i < titulos.size(); i++) {
 						listModel.addElement(titulos.get(i));
@@ -331,16 +322,13 @@ public class Reto3 {
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				//proyecciones = GestorPeliculas.obtenerProyeccionPorCine(4);
-				titulos = GestorPeliculas.obtenerTitulosPorProyecciones(proyecciones);
+				peliculas = GestorProyecciones.obtenerProyeccionPorCine(4);
+				titulos = GestorProyecciones.obtenerTitulosPorPeliculas(peliculas);
 
 				if(titulos==null) {
 					titulos=new ArrayList<String>();
 				}
 				
-				titulos.add("Peli1Cine4");
-				titulos.add("Peli2Cine4");
-				titulos.add("Peli3Cine4");
 				if (titulos != null) {
 					for (int i = 0; i < titulos.size(); i++) {
 						listModel.addElement(titulos.get(i));

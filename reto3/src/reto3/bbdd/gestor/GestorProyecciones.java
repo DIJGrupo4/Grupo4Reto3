@@ -7,19 +7,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import reto3.bbdd.pojo.Proyeccion;
+import reto3.bbdd.pojo.Pelicula;
 import reto3.bbdd.utils.DBUtils;
 
-public class GestorPeliculas {
+public class GestorProyecciones {
 
 	private static ArrayList<String> ret;
 
-	public static ArrayList<Proyeccion> obtenerProyeccionPorCine(int i) {
-		ArrayList<Proyeccion> ret = null;
+	public static ArrayList<Pelicula> obtenerProyeccionPorCine(int i) {
+		ArrayList<Pelicula> ret = null;
 
-		String sql = "select t_proyeccion.* from t_cine, t_sala, t_proyeccion where t_cine.codCine = t_sala.codCine "
-				+ "and t_sala.codSala = t_proyeccion.codSala and t_cine.codCine = '" + i + "' ORDER BY t_proyeccion.fechaHora";
+		String sql = "select t_pelicula.codPelicula, t_pelicula.titulo, t_pelicula.duracion, t_pelicula.genero from t_cine, t_sala, t_proyeccion, t_pelicula where t_cine.codCine = t_sala.codCine "
+				+ "and t_sala.codSala = t_proyeccion.codSala and t_proyeccion.codPelicula = t_pelicula.codPelicula and t_cine.codCine = '" + i + "' ORDER BY t_proyeccion.fechaHora";
 
+		//String sql = "select * from t_pelicula";
+		
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -35,19 +37,25 @@ public class GestorPeliculas {
 			while (resultSet.next()) {
 
 				if (null == ret)
-					ret = new ArrayList<Proyeccion>();
+					ret = new ArrayList<Pelicula>();
 
-				Proyeccion proy = new Proyeccion();
+				Pelicula peli = new Pelicula();
 
-				int codPelicula = resultSet.getInt("codProyeccion");
+				int codPelicula = resultSet.getInt("codPelicula");
 				String titulo = resultSet.getString("titulo");
-				int hora = resultSet.getInt("hora");
-				int precio = resultSet.getInt("precio");
+				int duracion = resultSet.getInt("duracion");
+				String genero = resultSet.getString("genero");
 
-				proy.setCodPelicula(codPelicula);
-				proy.setTitulo(titulo);
-				proy.setHora(hora);
-				proy.setPrecio(precio);
+				peli.setCodPelicula(codPelicula);
+				peli.setTitulo(titulo);
+				peli.setDuracion(duracion);
+				peli.setGenero(genero);
+
+				try {
+					ret.add(peli);
+				}catch(Exception e){
+					
+				}
 			}
 		} catch (SQLException sqle) {
 			System.out.println("Error con la BBDD - " + sqle.getMessage());
@@ -80,11 +88,11 @@ public class GestorPeliculas {
 		return ret;
 	}
 
-	public static ArrayList<String> obtenerTitulosPorProyecciones(ArrayList<Proyeccion> proyecciones) {
-		ret = null;
-		if(proyecciones!=null) {
-			for (int i = 0; i < proyecciones.size(); i++) {
-				ret.add(i, proyecciones.get(i).getTitulo());
+	public static ArrayList<String> obtenerTitulosPorPeliculas(ArrayList<Pelicula> peliculas) {
+		ret=new ArrayList<String>();
+		if(peliculas!=null) {
+			for (int i = 0; i < peliculas.size(); i++) {
+				ret.add(i, peliculas.get(i).getTitulo());
 			}
 		}
 		return ret;
