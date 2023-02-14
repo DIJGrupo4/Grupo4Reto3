@@ -253,8 +253,12 @@ public class Reto3 {
 				SPpanelSeleccionPelis.setVisible(true);
 
 				// peliculas = GestorPeliculas.obtenerPeliculaPorCine(1);
-				// titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+				titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
 
+				if(titulos==null) {
+					titulos=new ArrayList<String>();
+				}
+				
 				titulos.add("Peli1Cine1");
 				titulos.add("Peli2Cine1");
 				titulos.add("Peli3Cine1");
@@ -276,8 +280,12 @@ public class Reto3 {
 				SPpanelSeleccionPelis.setVisible(true);
 
 				// peliculas = GestorPeliculas.obtenerPeliculaPorCine(2);
-				// titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+				titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
 
+				if(titulos==null) {
+					titulos=new ArrayList<String>();
+				}
+				
 				titulos.add("Peli1Cine2");
 				titulos.add("Peli2Cine2");
 				titulos.add("Peli3Cine2");
@@ -298,8 +306,12 @@ public class Reto3 {
 				SPpanelSeleccionPelis.setVisible(true);
 
 				//peliculas = GestorPeliculas.obtenerPeliculaPorCine(3);
-				//titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+				titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
 
+				if(titulos==null) {
+					titulos=new ArrayList<String>();
+				}
+				
 				titulos.add("Peli1Cine3");
 				titulos.add("Peli2Cine3");
 				titulos.add("Peli3Cine3");
@@ -313,7 +325,6 @@ public class Reto3 {
 		});
 		SCseleccionBtnCine4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				titulos=null;
 				listModel.clear();
 				titulos.clear();
 				BpanelBienvenida.setVisible(false);
@@ -321,7 +332,12 @@ public class Reto3 {
 				SPpanelSeleccionPelis.setVisible(true);
 
 				//peliculas = GestorPeliculas.obtenerPeliculaPorCine(4);
-				//titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+				titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+
+				if(titulos==null) {
+					titulos=new ArrayList<String>();
+				}
+				
 				titulos.add("Peli1Cine4");
 				titulos.add("Peli2Cine4");
 				titulos.add("Peli3Cine4");
