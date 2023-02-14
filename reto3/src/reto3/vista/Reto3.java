@@ -26,20 +26,21 @@ import javax.swing.JComboBox;
 public class Reto3 {
 
 	private JFrame frame;
-	
+
 	private ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
 	private ArrayList<String> titulos = new ArrayList<String>();
-	
+
 	private int ListaFull = 0;
-	
+
 	private DefaultListModel<String> listModel = new DefaultListModel<String>();
-	
+
 	private JTextField SStextTitulo;
 	private JTextField SStextHora;
 	private JTextField SStextPrecio;
 	private JTextField SStextSala;
 
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -99,7 +100,7 @@ public class Reto3 {
 		SCpanelSeleccionCines.add(SClabelSeleccionCines);
 
 		JLabel SCseleccionCinesLogo = new JLabel("");
-		SCseleccionCinesLogo.setIcon(new ImageIcon("C:\\Users\\in1dw3\\Desktop\\Ibai\\Reto 3\\bienvenida.png"));
+		SCseleccionCinesLogo.setIcon(new ImageIcon("/reto3/img/bienvenida.png"));
 		SCseleccionCinesLogo.setBounds(376, 11, 137, 156);
 		SCpanelSeleccionCines.add(SCseleccionCinesLogo);
 
@@ -109,7 +110,7 @@ public class Reto3 {
 		SPpanelSeleccionPelis.add(SPlabelSeleccionPelis);
 
 		JLabel SPlabelLogoPelis = new JLabel("");
-		SPlabelLogoPelis.setIcon(new ImageIcon("C:\\Users\\in1dw3\\Desktop\\Ibai\\Reto 3\\bienvenida.png"));
+		SPlabelLogoPelis.setIcon(new ImageIcon("/reto3/img/bienvenida.png"));
 		SPlabelLogoPelis.setBounds(362, 11, 192, 188);
 		SPpanelSeleccionPelis.add(SPlabelLogoPelis);
 
@@ -250,10 +251,10 @@ public class Reto3 {
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
-				
-				//peliculas = GestorPeliculas.obtenerPeliculaPorCine(1);
-				//titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
-				
+
+				// peliculas = GestorPeliculas.obtenerPeliculaPorCine(1);
+				// titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+
 				titulos.add("Peli1Cine1");
 				titulos.add("Peli2Cine1");
 				titulos.add("Peli3Cine1");
@@ -273,10 +274,10 @@ public class Reto3 {
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
-				
-				//peliculas = GestorPeliculas.obtenerPeliculaPorCine(2);
-				//titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
-				
+
+				// peliculas = GestorPeliculas.obtenerPeliculaPorCine(2);
+				// titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+
 				titulos.add("Peli1Cine2");
 				titulos.add("Peli2Cine2");
 				titulos.add("Peli3Cine2");
@@ -296,9 +297,9 @@ public class Reto3 {
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				//peliculas = GestorPeliculas.obtenerPeliculaPorCine(3);
-				//titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
-				
+				// peliculas = GestorPeliculas.obtenerPeliculaPorCine(3);
+				// titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+
 				titulos.add("Peli1Cine3");
 				titulos.add("Peli2Cine3");
 				titulos.add("Peli3Cine3");
@@ -312,15 +313,15 @@ public class Reto3 {
 		});
 		SCseleccionBtnCine4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				titulos=null;
 				listModel.clear();
 				titulos.clear();
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				//peliculas = GestorPeliculas.obtenerPeliculaPorCine(4);
-				//titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
-				
+				// peliculas = GestorPeliculas.obtenerPeliculaPorCine(4);
+				titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
 				titulos.add("Peli1Cine4");
 				titulos.add("Peli2Cine4");
 				titulos.add("Peli3Cine4");
