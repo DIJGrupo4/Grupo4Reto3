@@ -26,10 +26,14 @@ import javax.swing.JComboBox;
 public class Reto3 {
 
 	private JFrame frame;
+	
 	private ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
 	private ArrayList<String> titulos = new ArrayList<String>();
+	
 	private int ListaFull = 0;
-	DefaultListModel<String> listModel = new DefaultListModel<String>();
+	
+	private DefaultListModel<String> listModel = new DefaultListModel<String>();
+	
 	private JTextField SStextTitulo;
 	private JTextField SStextHora;
 	private JTextField SStextPrecio;
@@ -241,16 +245,15 @@ public class Reto3 {
 
 		SCseleccionBtnCine1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BpanelBienvenida.setVisible(false);
-				SCpanelSeleccionCines.setVisible(false);
-				SPpanelSeleccionPelis.setVisible(true);
 				listModel.clear();
+				titulos.clear();
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
-
-				peliculas = GestorPeliculas.obtenerPeliculaPorCine(1);
-				titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+				
+				//peliculas = GestorPeliculas.obtenerPeliculaPorCine(1);
+				//titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+				
 				titulos.add("Peli1Cine1");
 				titulos.add("Peli2Cine1");
 				titulos.add("Peli3Cine1");
@@ -265,16 +268,15 @@ public class Reto3 {
 
 		SCseleccionBtnCine2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BpanelBienvenida.setVisible(false);
-				SCpanelSeleccionCines.setVisible(false);
-				SPpanelSeleccionPelis.setVisible(true);
 				listModel.clear();
+				titulos.clear();
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
-
-				peliculas = GestorPeliculas.obtenerPeliculaPorCine(2);
-				titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+				
+				//peliculas = GestorPeliculas.obtenerPeliculaPorCine(2);
+				//titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+				
 				titulos.add("Peli1Cine2");
 				titulos.add("Peli2Cine2");
 				titulos.add("Peli3Cine2");
@@ -288,16 +290,15 @@ public class Reto3 {
 		});
 		SCseleccionBtnCine3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BpanelBienvenida.setVisible(false);
-				SCpanelSeleccionCines.setVisible(false);
-				SPpanelSeleccionPelis.setVisible(true);
 				listModel.clear();
+				titulos.clear();
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				peliculas = GestorPeliculas.obtenerPeliculaPorCine(3);
-				titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+				//peliculas = GestorPeliculas.obtenerPeliculaPorCine(3);
+				//titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+				
 				titulos.add("Peli1Cine3");
 				titulos.add("Peli2Cine3");
 				titulos.add("Peli3Cine3");
@@ -311,16 +312,15 @@ public class Reto3 {
 		});
 		SCseleccionBtnCine4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BpanelBienvenida.setVisible(false);
-				SCpanelSeleccionCines.setVisible(false);
-				SPpanelSeleccionPelis.setVisible(true);
 				listModel.clear();
+				titulos.clear();
 				BpanelBienvenida.setVisible(false);
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				peliculas = GestorPeliculas.obtenerPeliculaPorCine(4);
-				titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+				//peliculas = GestorPeliculas.obtenerPeliculaPorCine(4);
+				//titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+				
 				titulos.add("Peli1Cine4");
 				titulos.add("Peli2Cine4");
 				titulos.add("Peli3Cine4");
