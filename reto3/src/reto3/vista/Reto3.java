@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import reto3.bbdd.gestor.GestorPeliculas;
-import reto3.bbdd.pojo.Pelicula;
+import reto3.bbdd.pojo.Proyeccion;
 
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -27,7 +27,7 @@ public class Reto3 {
 
 	private JFrame frame;
 
-	private ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
+	private ArrayList<Proyeccion> proyecciones = new ArrayList<Proyeccion>();
 	private ArrayList<String> titulos = new ArrayList<String>();
 
 	private int ListaFull = 0;
@@ -252,8 +252,8 @@ public class Reto3 {
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				// peliculas = GestorPeliculas.obtenerPeliculaPorCine(1);
-				titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+				// proyecciones = GestorPeliculas.obtenerProyeccionPorCine(1);
+				titulos = GestorPeliculas.obtenerTitulosPorProyecciones(proyecciones);
 
 				if(titulos==null) {
 					titulos=new ArrayList<String>();
@@ -279,8 +279,8 @@ public class Reto3 {
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				// peliculas = GestorPeliculas.obtenerPeliculaPorCine(2);
-				titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+				// proyecciones = GestorPeliculas.obtenerProyeccionPorCine(2);
+				titulos = GestorPeliculas.obtenerTitulosPorProyecciones(proyecciones);
 
 				if(titulos==null) {
 					titulos=new ArrayList<String>();
@@ -305,8 +305,8 @@ public class Reto3 {
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				//peliculas = GestorPeliculas.obtenerPeliculaPorCine(3);
-				titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+				//proyecciones = GestorPeliculas.obtenerProyeccionPorCine(3);
+				titulos = GestorPeliculas.obtenerTitulosPorProyecciones(proyecciones);
 
 				if(titulos==null) {
 					titulos=new ArrayList<String>();
@@ -331,8 +331,8 @@ public class Reto3 {
 				SCpanelSeleccionCines.setVisible(false);
 				SPpanelSeleccionPelis.setVisible(true);
 
-				//peliculas = GestorPeliculas.obtenerPeliculaPorCine(4);
-				titulos = GestorPeliculas.obtenerTitulosPorPeliculas(peliculas);
+				//proyecciones = GestorPeliculas.obtenerProyeccionPorCine(4);
+				titulos = GestorPeliculas.obtenerTitulosPorProyecciones(proyecciones);
 
 				if(titulos==null) {
 					titulos=new ArrayList<String>();

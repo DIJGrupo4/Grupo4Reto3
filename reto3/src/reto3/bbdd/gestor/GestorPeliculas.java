@@ -6,19 +6,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import reto3.bbdd.pojo.Pelicula;
+
+import reto3.bbdd.pojo.Proyeccion;
 import reto3.bbdd.utils.DBUtils;
 
 public class GestorPeliculas {
 
 	private static ArrayList<String> ret;
 
-	public static ArrayList<Pelicula> obtenerPeliculaPorCine(int i) {
-		ArrayList<Pelicula> ret = null;
+	public static ArrayList<Proyeccion> obtenerProyeccionPorCine(int i) {
+		ArrayList<Proyeccion> ret = null;
 
-		String sql = "select * from t_pelicula, t_cine, t_sala, t_proyeccion where t_cine.codCine = t_sala.codCine "
-				+ "and t_sala.codSala = t_proyeccion.codSala "
-				+ "and t_proyeccion.codPelicula = t_pelicula.codPelicula and t_cine.codCine = '" + i + "'";
+		String sql = "select t_proyeccion.* from t_cine, t_sala, t_proyeccion where t_cine.codCine = t_sala.codCine "
+				+ "and t_sala.codSala = t_proyeccion.codSala and t_cine.codCine = '" + i + "'";
 
 		Connection connection = null;
 		Statement statement = null;
@@ -35,19 +35,19 @@ public class GestorPeliculas {
 			while (resultSet.next()) {
 
 				if (null == ret)
-					ret = new ArrayList<Pelicula>();
+					ret = new ArrayList<Proyeccion>();
 
-				Pelicula peli = new Pelicula();
+				Proyeccion proy = new Proyeccion();
 
-				int codPelicula = resultSet.getInt("codPelicula");
+				int codPelicula = resultSet.getInt("codProyeccion");
 				String titulo = resultSet.getString("titulo");
-				int duracion = resultSet.getInt("duracion");
-				String genero = resultSet.getString("genero");
+				int hora = resultSet.getInt("hora");
+				int precio = resultSet.getInt("precio");
 
-				peli.setCodPelicula(codPelicula);
-				peli.setTitulo(titulo);
-				peli.setDuracion(duracion);
-				peli.setGenero(genero);
+				proy.setCodPelicula(codPelicula);
+				proy.setTitulo(titulo);
+				proy.setHora(hora);
+				proy.setPrecio(precio);
 			}
 		} catch (SQLException sqle) {
 			System.out.println("Error con la BBDD - " + sqle.getMessage());
@@ -80,11 +80,11 @@ public class GestorPeliculas {
 		return ret;
 	}
 
-	public static ArrayList<String> obtenerTitulosPorPeliculas(ArrayList<Pelicula> peliculas) {
+	public static ArrayList<String> obtenerTitulosPorProyecciones(ArrayList<Proyeccion> proyecciones) {
 		ret = null;
-		if(peliculas!=null) {
-			for (int i = 0; i < peliculas.size(); i++) {
-				ret.add(i, peliculas.get(i).getTitulo());
+		if(proyecciones!=null) {
+			for (int i = 0; i < proyecciones.size(); i++) {
+				ret.add(i, proyecciones.get(i).getTitulo());
 			}
 		}
 		return ret;
