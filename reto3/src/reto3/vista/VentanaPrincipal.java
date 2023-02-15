@@ -263,6 +263,7 @@ public class VentanaPrincipal {
 				proyecciones = gestorProyecciones.obtenerProyeccionPorPelicula(tituloSeleccionado, codCine);
 				if (null != proyecciones) {
 					for (Proyeccion proyeccion : proyecciones) {
+						ssTextTitulo.setText(tituloSeleccionado);
 						ssComboBoxSesiones.addItem(proyeccion.getFecha().toString());
 					}
 				}
