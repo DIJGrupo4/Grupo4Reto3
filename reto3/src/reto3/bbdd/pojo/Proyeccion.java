@@ -1,5 +1,9 @@
 package reto3.bbdd.pojo;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Objects;
 
 public class Proyeccion {
@@ -10,7 +14,7 @@ public class Proyeccion {
 	// Atributos
 	private int codSala = 0;
 	private int codPelicula = 0;
-	private int fechaHora = 0;
+	private Date fechaHora = null;
 
 	public int getCodProyeccion() {
 		return codProyeccion;
@@ -36,11 +40,11 @@ public class Proyeccion {
 		this.codPelicula = codPelicula;
 	}
 
-	public int getFechaHora() {
+	public Date getFechaHora() {
 		return fechaHora;
 	}
 
-	public void setFechaHora(int fechaHora) {
+	public void setFechaHora(Date fechaHora) {
 		this.fechaHora = fechaHora;
 	}
 
@@ -59,7 +63,7 @@ public class Proyeccion {
 			return false;
 		Proyeccion other = (Proyeccion) obj;
 		return codPelicula == other.codPelicula && codProyeccion == other.codProyeccion && codSala == other.codSala
-				&& fechaHora == other.fechaHora;
+				&& Objects.equals(fechaHora, other.fechaHora);
 	}
 
 	@Override
@@ -67,5 +71,4 @@ public class Proyeccion {
 		return "Proyeccion [codProyeccion=" + codProyeccion + ", codSala=" + codSala + ", codPelicula=" + codPelicula
 				+ ", fechaHora=" + fechaHora + "]";
 	}
-
 }

@@ -1,6 +1,7 @@
 package reto3.bbdd.gestor;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,11 +13,10 @@ import reto3.bbdd.utils.DBUtils;
 
 public class GestorProyecciones {
 
-	public ArrayList<Proyeccion> obtenerProyeccionPorPelicula(int titulo) {
+	public ArrayList<Proyeccion> obtenerProyeccionPorPelicula() {
 		ArrayList<Proyeccion> ret = null;
 
-		String sql = "select t_pelicula.* from t_cine where t_cine.codCine = '" + titulo
-				+ "' ORDER BY t_proyeccion.fechaHora";
+		String sql = "select t_proyeccion.fechaHora from t_proyeccion, t_pelicula where t_pelicula.codPelicula = t_proyeccion.codPelicula and t_pelicula.titulo = 'Una boda explosiva'";
 
 		Connection connection = null;
 		Statement statement = null;
@@ -37,14 +37,9 @@ public class GestorProyecciones {
 
 				Proyeccion proyeccion = new Proyeccion();
 
-				int codSala = resultSet.getInt("codSala");
-				int codPelicula = resultSet.getInt("codPelicula");
-				int fechaHora = resultSet.getInt("fechaHora");
-
-				proyeccion.setCodSala(codSala);
-				proyeccion.setCodPelicula(codPelicula);
+				Date fechaHora = resultSet.getDate("fechaHora");
+				
 				proyeccion.setFechaHora(fechaHora);
-
 
 				try {
 					ret.add(proyeccion);

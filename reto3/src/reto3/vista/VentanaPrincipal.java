@@ -341,10 +341,10 @@ public class VentanaPrincipal {
 				spPanelSeleccionPelis.setVisible(false);
 				ssPanelSeleccionSesiones.setVisible(true);
 				
-				proyecciones = gestorProyecciones.obtenerProyeccionPorPelicula(1);
+				proyecciones = gestorProyecciones.obtenerProyeccionPorPelicula();
 				if (null != proyecciones) {
 					for (Proyeccion proyeccion : proyecciones) {
-						ssComboBoxSesiones.setSelectedItem(proyeccion.getFechaHora());
+						ssComboBoxSesiones.addItem(proyeccion.getFechaHora().toString());
 					}
 				}
 				
