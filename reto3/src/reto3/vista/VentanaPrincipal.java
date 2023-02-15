@@ -35,12 +35,8 @@ public class VentanaPrincipal {
 	private GestorCines gestorCines = new GestorCines();
 	private GestorPeliculas gestorPeliculas = new GestorPeliculas();
 	private GestorProyecciones gestorProyecciones = new GestorProyecciones();
-<<<<<<< HEAD
 	
 	private ArrayList<Cine> cines = new ArrayList<Cine>(gestorCines.obtenerTodosLosCines());
-=======
-
->>>>>>> branch 'master' of https://github.com/DIJGrupo4/Grupo4Reto3.git
 	private ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
 	private ArrayList<Proyeccion> proyecciones = new ArrayList<Proyeccion>();
 
@@ -69,10 +65,6 @@ public class VentanaPrincipal {
 	}
 
 	public VentanaPrincipal() {
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'master' of https://github.com/DIJGrupo4/Grupo4Reto3.git
 		initialize();
 	}
 
@@ -248,84 +240,7 @@ public class VentanaPrincipal {
 				scPanelSeleccionCines.setVisible(true);
 			}
 		});
-<<<<<<< HEAD
-=======
 
-		scSeleccionBtnCine1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				listModel.clear();
-				titulos.clear();
-				bPanelBienvenida.setVisible(false);
-				scPanelSeleccionCines.setVisible(false);
-				spPanelSeleccionPelis.setVisible(true);
-
-				peliculas = gestorPeliculas.obtenerPeliculaPorCine(1);
-
-				if (null != peliculas) {
-					for (Pelicula pelicula : peliculas) {
-						listModel.addElement(pelicula.getTitulo());
-					}
-				}
-
-				spListaPeliculas.setModel(listModel);
-			}
-		});
-
-		scSeleccionBtnCine2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				listModel.clear();
-				titulos.clear();
-				bPanelBienvenida.setVisible(false);
-				scPanelSeleccionCines.setVisible(false);
-				spPanelSeleccionPelis.setVisible(true);
-
-				peliculas = gestorPeliculas.obtenerPeliculaPorCine(2);
-				if (null != peliculas) {
-					for (Pelicula pelicula : peliculas) {
-						listModel.addElement(pelicula.getTitulo());
-					}
-				}
-
-				spListaPeliculas.setModel(listModel);
-			}
-		});
-		scSeleccionBtnCine3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				listModel.clear();
-				titulos.clear();
-				bPanelBienvenida.setVisible(false);
-				scPanelSeleccionCines.setVisible(false);
-				spPanelSeleccionPelis.setVisible(true);
-
-				peliculas = gestorPeliculas.obtenerPeliculaPorCine(3);
-				if (null != peliculas) {
-					for (Pelicula pelicula : peliculas) {
-						listModel.addElement(pelicula.getTitulo());
-					}
-				}
-
-				spListaPeliculas.setModel(listModel);
-			}
-		});
-		scSeleccionBtnCine4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				listModel.clear();
-				titulos.clear();
-				bPanelBienvenida.setVisible(false);
-				scPanelSeleccionCines.setVisible(false);
-				spPanelSeleccionPelis.setVisible(true);
-
-				peliculas = gestorPeliculas.obtenerPeliculaPorCine(4);
-				if (null != peliculas) {
-					for (Pelicula pelicula : peliculas) {
-						listModel.addElement(pelicula.getTitulo());
-					}
-				}
-
-				spListaPeliculas.setModel(listModel);
-			}
-		});
->>>>>>> branch 'master' of https://github.com/DIJGrupo4/Grupo4Reto3.git
 		scBtnFinalizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (listaFull == 0) {
