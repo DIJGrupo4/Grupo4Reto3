@@ -7,59 +7,38 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import reto3.bbdd.pojo.Cliente;
+//import reto3.bbdd.menu.inicio;
 import reto3.bbdd.utils.DBUtils;
+import reto3.bbdd.pojo.*;
 
 public class GestorClientes {
 
-	public ArrayList<Cliente> obtenerTodosLosClientes() {
+	private Connection con = null;
+	private Statement st = null;
+	private ResultSet rs = null;
+
+	/*public ArrayList<Cliente> obtenerTodosLosClientes() {
 		ArrayList<Cliente> ret = null;
-		String sql = "select * from t_cliente";
-		Connection connection = null;
-		Statement statement = null;
-		ResultSet resultSet = null;
 
-		// --------------------------------------------------------------------------------------------------
 		try {
-			// El Driver que vamos a usar
-			Class.forName(DBUtils.DRIVER);
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection(DBUtils.URL, DBUtils.USER, DBUtils.PASS);
 
-			// Abrimos la conexion con BBDD
-			connection = DriverManager.getConnection(DBUtils.URL, DBUtils.USER, DBUtils.PASS);
+			inicio inic = new inicio();
 
-			// Vamos a lanzar la sentencia...
-			statement = connection.createStatement();
-			resultSet = statement.executeQuery(sql);
+			String nombre = inic.txtNombre.getText();
+			String apellido = inic.txtApellido.getText();
+			String dni = inic.txtDni.getText();
+			String sexo = inic.txtSexo.getText();
+			String usuario = inic.txtUsuario.getText();
+			String contraseña = inic.txtContraseña.getText();
 
-			// No es posible saber cuantas cosas nos ha devuelto el resultSet.
-			// Hay que ir 1 por 1 y guardandolo todo en su objeto Ejemplo correspondiente
-			while (resultSet.next()) {
+			String sql = "insert into t_cliente (nombre, apellido, dni, sexo, usuario, contraseña) values ('" + nombre
+					+ "','" + apellido + "'" + "'" + dni + "','" + sexo + "','" + usuario + "','" + contraseña + "')";
 
-				// Si es necesario, inicializamos la lista
-				if (null == ret)
-					ret = new ArrayList<Cliente>();
+			st = con.createStatement();
+			st.executeQuery(sql);
 
-				Cliente cliente = new Cliente();
-
-				// Sacamos las columnas del RS
-				int codCliente = resultSet.getInt("codCliente");
-				String nombre = resultSet.getString("nombre");
-				String apellido = resultSet.getString("apellido");
-				String sexo = resultSet.getString("sexo");
-				String usuario = resultSet.getString("usuario");
-				String contraseña = resultSet.getString("contraseña");
-
-				// Metemos los datos a Ejemplo
-				cliente.setCodCliente(codCliente);
-				cliente.setNombre(nombre);
-				cliente.setApellido(apellido);
-				cliente.setSexo(sexo);
-				cliente.setUsuario(usuario);
-				cliente.setContraseña(contraseña);
-
-				// Lo guardamos en ret
-				ret.add(cliente);
-			}
 		} catch (SQLException sqle) {
 			System.out.println("Error con la BBDD - " + sqle.getMessage());
 		} catch (Exception e) {
@@ -67,25 +46,23 @@ public class GestorClientes {
 		} finally {
 			// Cerramos al reves de como las abrimos
 			try {
-				if (resultSet != null)
-					resultSet.close();
+				if (rs != null)
+					rs.close();
 			} catch (Exception e) {
 				// No hace falta
 			}
 			try {
-				if (statement != null)
-					statement.close();
+				if (st != null)
+					st.close();
 			} catch (Exception e) {
 				// No hace falta
 			}
 			try {
-				if (connection != null)
-					connection.close();
+				if (con != null)
+					con.close();
 			} catch (Exception e) {
 				// No hace falta
 			}
 		}
-		return ret;
-	}
-
+	}*/
 }
