@@ -21,7 +21,7 @@ public class GestorPeliculas {
 		ArrayList<Pelicula> ret = null;
 
 		String sql = "select t_pelicula.* from t_cine, t_sala, t_proyeccion, t_pelicula where t_cine.codCine = t_sala.codCine "
-				+ "and t_sala.codSala = t_proyeccion.codSala and t_proyeccion.codPelicula = t_pelicula.codPelicula and t_cine.codCine = '" + codCine + "' ORDER BY t_proyeccion.fechaHora" ;
+				+ "and t_sala.codSala = t_proyeccion.codSala and t_proyeccion.codPelicula = t_pelicula.codPelicula and t_cine.codCine = '" + codCine + "' ORDER BY t_proyeccion.fecha and t_proyeccion.hora" ;
 
 		Connection connection = null;
 		Statement statement = null;

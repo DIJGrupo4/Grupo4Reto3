@@ -24,7 +24,8 @@ public class GestorProyecciones {
 
 		String sql = "select t_proyeccion.fecha from t_cine, t_sala, t_proyeccion, t_pelicula where "
 				+ "t_cine.codCine = t_sala.codCine " + "and t_sala.codSala = t_proyeccion.codSala "
-						+ "and t_proyeccion.codPelicula = t_pelicula.codPelicula and t_pelicula.titulo = '" + tituloSeleccionado + "' ORDER BY t_proyeccion.fechaHora";
+						+ "and t_proyeccion.codPelicula = t_pelicula.codPelicula and t_pelicula.titulo = '" 
+				+ tituloSeleccionado + "' ORDER BY t_proyeccion.fecha";
 		
 		Connection connection = null;
 		Statement statement = null;
@@ -46,10 +47,8 @@ public class GestorProyecciones {
 				Proyeccion proyeccion = new Proyeccion();
 
 				Date fecha = resultSet.getDate("fecha");
-				Time hora = resultSet.getTime("hora");
 				
 				proyeccion.setFecha(fecha);
-				proyeccion.setHora(hora);
 
 				try {
 					ret.add(proyeccion);
