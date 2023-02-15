@@ -1,6 +1,7 @@
 package reto3.bbdd.pojo;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.util.Objects;
 
 public class Proyeccion {
@@ -11,7 +12,8 @@ public class Proyeccion {
 	// Atributos
 	private int codSala = 0;
 	private int codPelicula = 0;
-	private Date fechaHora = null;
+	private Date fecha = null;
+	private Time hora = null;
 
 	public int getCodProyeccion() {
 		return codProyeccion;
@@ -37,17 +39,25 @@ public class Proyeccion {
 		this.codPelicula = codPelicula;
 	}
 
-	public Date getFechaHora() {
-		return fechaHora;
+	public Date getFecha() {
+		return fecha;
 	}
 
-	public void setFechaHora(Date fechaHora) {
-		this.fechaHora = fechaHora;
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
+	public Time getHora() {
+		return hora;
+	}
+
+	public void setHora(Time hora) {
+		this.hora = hora;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(codPelicula, codProyeccion, codSala, fechaHora);
+		return Objects.hash(codPelicula, codProyeccion, codSala, fecha, hora);
 	}
 
 	@Override
@@ -60,12 +70,13 @@ public class Proyeccion {
 			return false;
 		Proyeccion other = (Proyeccion) obj;
 		return codPelicula == other.codPelicula && codProyeccion == other.codProyeccion && codSala == other.codSala
-				&& Objects.equals(fechaHora, other.fechaHora);
+				&& Objects.equals(fecha, other.fecha) && Objects.equals(hora, other.hora);
 	}
 
 	@Override
 	public String toString() {
 		return "Proyeccion [codProyeccion=" + codProyeccion + ", codSala=" + codSala + ", codPelicula=" + codPelicula
-				+ ", fechaHora=" + fechaHora + "]";
+				+ ", fecha=" + fecha + ", hora=" + hora + "]";
 	}
+
 }

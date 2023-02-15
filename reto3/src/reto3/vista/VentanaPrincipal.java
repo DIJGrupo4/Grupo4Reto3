@@ -31,12 +31,13 @@ public class VentanaPrincipal {
 
 	private GestorPeliculas gestorPeliculas = new GestorPeliculas();
 	private GestorProyecciones gestorProyecciones = new GestorProyecciones();
-	
+
 	private ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
 	private ArrayList<Proyeccion> proyecciones = new ArrayList<Proyeccion>();
 	private ArrayList<String> titulos = new ArrayList<String>();
 
 	private int listaFull = 0;
+	private String tituloSeleccionado = null;
 
 	private DefaultListModel<String> listModel = new DefaultListModel<String>();
 
@@ -44,9 +45,9 @@ public class VentanaPrincipal {
 	private JTextField ssTextHora;
 	private JTextField ssTextPrecio;
 	private JTextField ssTextSala;
-	
+
 	public static void main(String[] args) {
-		
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -58,12 +59,11 @@ public class VentanaPrincipal {
 			}
 		});
 	}
-	
+
 	public VentanaPrincipal() {
-		
+
 		initialize();
 	}
-
 
 	private void initialize() {
 		frame = new JFrame();
@@ -202,26 +202,26 @@ public class VentanaPrincipal {
 
 		// TextFields
 
-				ssTextTitulo = new JTextField();
-				ssTextTitulo.setColumns(10);
-				ssTextTitulo.setBounds(211, 167, 204, 20);
-				ssPanelSeleccionSesiones.add(ssTextTitulo);
+		ssTextTitulo = new JTextField();
+		ssTextTitulo.setColumns(10);
+		ssTextTitulo.setBounds(211, 167, 204, 20);
+		ssPanelSeleccionSesiones.add(ssTextTitulo);
 
-				ssTextHora = new JTextField();
-				ssTextHora.setColumns(10);
-				ssTextHora.setBounds(211, 323, 102, 20);
-				ssPanelSeleccionSesiones.add(ssTextHora);
+		ssTextHora = new JTextField();
+		ssTextHora.setColumns(10);
+		ssTextHora.setBounds(211, 323, 102, 20);
+		ssPanelSeleccionSesiones.add(ssTextHora);
 
-				ssTextPrecio = new JTextField();
-				ssTextPrecio.setColumns(10);
-				ssTextPrecio.setBounds(211, 218, 102, 20);
-				ssPanelSeleccionSesiones.add(ssTextPrecio);
+		ssTextPrecio = new JTextField();
+		ssTextPrecio.setColumns(10);
+		ssTextPrecio.setBounds(211, 218, 102, 20);
+		ssPanelSeleccionSesiones.add(ssTextPrecio);
 
-				ssTextSala = new JTextField();
-				ssTextSala.setColumns(10);
-				ssTextSala.setBounds(211, 270, 102, 20);
-				ssPanelSeleccionSesiones.add(ssTextSala);
-		
+		ssTextSala = new JTextField();
+		ssTextSala.setColumns(10);
+		ssTextSala.setBounds(211, 270, 102, 20);
+		ssPanelSeleccionSesiones.add(ssTextSala);
+
 		// JLists
 
 		JList<String> spListaPeliculas = new JList<String>();
@@ -262,13 +262,13 @@ public class VentanaPrincipal {
 				spPanelSeleccionPelis.setVisible(true);
 
 				peliculas = gestorPeliculas.obtenerPeliculaPorCine(1);
-				
+
 				if (null != peliculas) {
 					for (Pelicula pelicula : peliculas) {
 						listModel.addElement(pelicula.getTitulo());
 					}
 				}
-				
+
 				spListaPeliculas.setModel(listModel);
 			}
 		});
@@ -287,7 +287,7 @@ public class VentanaPrincipal {
 						listModel.addElement(pelicula.getTitulo());
 					}
 				}
-				
+
 				spListaPeliculas.setModel(listModel);
 			}
 		});
@@ -305,7 +305,7 @@ public class VentanaPrincipal {
 						listModel.addElement(pelicula.getTitulo());
 					}
 				}
-				
+
 				spListaPeliculas.setModel(listModel);
 			}
 		});
@@ -323,7 +323,7 @@ public class VentanaPrincipal {
 						listModel.addElement(pelicula.getTitulo());
 					}
 				}
-				
+
 				spListaPeliculas.setModel(listModel);
 			}
 		});
@@ -336,18 +336,21 @@ public class VentanaPrincipal {
 		});
 		spBtnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				ssComboBoxSesiones.removeAllItems();
 				bPanelBienvenida.setVisible(false);
 				scPanelSeleccionCines.setVisible(false);
 				spPanelSeleccionPelis.setVisible(false);
 				ssPanelSeleccionSesiones.setVisible(true);
-				
-				proyecciones = gestorProyecciones.obtenerProyeccionPorPelicula();
+
+				tituloSeleccionado = spListaPeliculas.getSelectedValue();
+				proyecciones = gestorProyecciones.obtenerProyeccionPorPelicula(tituloSeleccionado);
 				if (null != proyecciones) {
 					for (Proyeccion proyeccion : proyecciones) {
-						ssComboBoxSesiones.addItem(proyeccion.getFechaHora().toString());
+						ssComboBoxSesiones.addItem(proyeccion.getFecha().toString());
 					}
 				}
-				
+
 			}
 		});
 		ssBtnAtras.addActionListener(new ActionListener() {
