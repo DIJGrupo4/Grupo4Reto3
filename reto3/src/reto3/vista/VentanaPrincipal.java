@@ -270,7 +270,6 @@ public class VentanaPrincipal {
 						ssComboBoxSesiones.addItem(proyeccion.getFecha().toString());
 					}
 				}
-
 			}
 		});
 		ssBtnAtras.addActionListener(new ActionListener() {
