@@ -18,7 +18,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import reto3.bbdd.gestor.GestorPeliculas;
+import reto3.bbdd.gestor.GestorProyecciones;
 import reto3.bbdd.pojo.Pelicula;
+import reto3.bbdd.pojo.Proyeccion;
 
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -28,8 +30,10 @@ public class VentanaPrincipal {
 	private JFrame frame;
 
 	private GestorPeliculas gestorPeliculas = new GestorPeliculas();
+	private GestorProyecciones gestorProyecciones = new GestorProyecciones();
 	
 	private ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
+	private ArrayList<Proyeccion> proyecciones = new ArrayList<Proyeccion>();
 	private ArrayList<String> titulos = new ArrayList<String>();
 
 	private int listaFull = 0;
@@ -60,9 +64,7 @@ public class VentanaPrincipal {
 		initialize();
 	}
 
-	/**
-	 * @wbp.parser.entryPoint
-	 */
+
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setEnabled(false);
@@ -338,6 +340,14 @@ public class VentanaPrincipal {
 				scPanelSeleccionCines.setVisible(false);
 				spPanelSeleccionPelis.setVisible(false);
 				ssPanelSeleccionSesiones.setVisible(true);
+				
+				proyecciones = gestorProyecciones.obtenerProyeccionPorPelicula(1);
+				if (null != proyecciones) {
+					for (Proyeccion proyeccion : proyecciones) {
+						ssComboBoxSesiones.setSelectedItem(proyeccion.getFechaHora());
+					}
+				}
+				
 			}
 		});
 		ssBtnAtras.addActionListener(new ActionListener() {
