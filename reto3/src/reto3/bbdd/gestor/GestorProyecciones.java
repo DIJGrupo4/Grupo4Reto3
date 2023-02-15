@@ -22,7 +22,7 @@ public class GestorProyecciones {
 	//					+ "and t_proyeccion.codPelicula = t_pelicula.codPelicula and t_cine.codCine = '" + codCine + "'"
 	//							+ "and t_pelicula.titulo = '" + tituloSeleccionado + "' ORDER BY t_proyeccion.fechaHora";
 
-		String sql = "select t_proyeccion.fechaHora from t_cine, t_sala, t_proyeccion, t_pelicula where "
+		String sql = "select t_proyeccion.fecha from t_cine, t_sala, t_proyeccion, t_pelicula where "
 				+ "t_cine.codCine = t_sala.codCine " + "and t_sala.codSala = t_proyeccion.codSala "
 						+ "and t_proyeccion.codPelicula = t_pelicula.codPelicula and t_pelicula.titulo = '" + tituloSeleccionado + "' ORDER BY t_proyeccion.fechaHora";
 		
