@@ -12,7 +12,7 @@ import reto3.bbdd.pojo.Cine;
 
 public class GestorCines {
 
-	public ArrayList<Cine> obtenerTodosLosCine() {
+	public ArrayList<Cine> obtenerTodosLosCines() {
 		ArrayList<Cine> ret = null;
 		String sql = "select * from t_cine";
 		Connection connection = null;
