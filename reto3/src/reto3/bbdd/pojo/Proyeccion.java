@@ -1,9 +1,6 @@
 package reto3.bbdd.pojo;
 
 import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Objects;
 
 public class Proyeccion {
