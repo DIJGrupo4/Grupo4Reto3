@@ -42,6 +42,7 @@ public class VentanaPrincipal {
 
 	private int listaFull = 0;
 	private String tituloSeleccionado = null;
+	private int codCine = 0;
 
 	private DefaultListModel<String> listModel = new DefaultListModel<String>();
 
@@ -258,7 +259,8 @@ public class VentanaPrincipal {
 				ssPanelSeleccionSesiones.setVisible(true);
 
 				tituloSeleccionado = spListaPeliculas.getSelectedValue();
-				proyecciones = gestorProyecciones.obtenerProyeccionPorPelicula(tituloSeleccionado);
+				
+				proyecciones = gestorProyecciones.obtenerProyeccionPorPelicula(tituloSeleccionado, codCine);
 				if (null != proyecciones) {
 					for (Proyeccion proyeccion : proyecciones) {
 						ssComboBoxSesiones.addItem(proyeccion.getFecha().toString());
@@ -293,7 +295,8 @@ public class VentanaPrincipal {
 					bPanelBienvenida.setVisible(false);
 					scPanelSeleccionCines.setVisible(false);
 					spPanelSeleccionPelis.setVisible(true);
-					peliculas = gestorPeliculas.obtenerPeliculaPorCine(1);
+					codCine = cine.getCodCine();
+					peliculas = gestorPeliculas.obtenerPeliculaPorCine(codCine);
 					if (null != peliculas) {
 						for (Pelicula pelicula : peliculas) {
 							listModel.addElement(pelicula.getTitulo());

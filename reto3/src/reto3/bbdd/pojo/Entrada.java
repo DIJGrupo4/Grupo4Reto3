@@ -7,10 +7,6 @@ public class Entrada {
 	// Clave primaria
 	private int codEntrada = 0;
 
-	// Atributos
-
-	private int precio = 0;
-
 	public int getCodEntrada() {
 		return codEntrada;
 	}
@@ -19,17 +15,9 @@ public class Entrada {
 		this.codEntrada = codEntrada;
 	}
 
-	public int getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(int precio) {
-		this.precio = precio;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(codEntrada, precio);
+		return Objects.hash(codEntrada);
 	}
 
 	@Override
@@ -41,12 +29,13 @@ public class Entrada {
 		if (getClass() != obj.getClass())
 			return false;
 		Entrada other = (Entrada) obj;
-		return codEntrada == other.codEntrada && precio == other.precio;
+		return codEntrada == other.codEntrada;
 	}
 
 	@Override
 	public String toString() {
-		return "Entrada [codEntrada=" + codEntrada + ", precio=" + precio + "]";
+		return "Entrada [codEntrada=" + codEntrada + "]";
 	}
 
+	
 }
