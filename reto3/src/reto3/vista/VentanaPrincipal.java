@@ -42,7 +42,6 @@ public class VentanaPrincipal {
 
 	private int listaFull = 0;
 	private String tituloSeleccionado = null;
-	private int codCine = 0;
 
 	private DefaultListModel<String> listModel = new DefaultListModel<String>();
 
@@ -216,6 +215,10 @@ public class VentanaPrincipal {
 		JList<String> spListaPeliculas = new JList<String>();
 		spListaPeliculas.setBounds(43, 166, 250, 248);
 		spPanelSeleccionPelis.add(spListaPeliculas);
+		
+		JLabel spLblNombreCine = new JLabel("*");
+		spLblNombreCine.setBounds(200, 30, 200, 14);
+		spPanelSeleccionPelis.add(spLblNombreCine);
 
 		// JComboBox
 
@@ -251,7 +254,8 @@ public class VentanaPrincipal {
 		});
 		spBtnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				int codCine=0;
+				codCine=gestorCines.obtenerCodCinePorNombre(spLblNombreCine.getText());
 				ssComboBoxSesiones.removeAllItems();
 				bPanelBienvenida.setVisible(false);
 				scPanelSeleccionCines.setVisible(false);
@@ -295,8 +299,8 @@ public class VentanaPrincipal {
 					bPanelBienvenida.setVisible(false);
 					scPanelSeleccionCines.setVisible(false);
 					spPanelSeleccionPelis.setVisible(true);
-					codCine = cine.getCodCine();
-					peliculas = gestorPeliculas.obtenerPeliculaPorCine(codCine);
+					spLblNombreCine.setText(cine.getNombre()); 
+					peliculas = gestorPeliculas.obtenerPeliculaPorCine(cine.getCodCine());
 					if (null != peliculas) {
 						for (Pelicula pelicula : peliculas) {
 							listModel.addElement(pelicula.getTitulo());
