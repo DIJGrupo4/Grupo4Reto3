@@ -19,7 +19,6 @@ public class Proyeccion {
 		return codProyeccion;
 	}
 
-	
 	public void setCodProyeccion(int codProyeccion) {
 		this.codProyeccion = codProyeccion;
 	}
