@@ -10,16 +10,14 @@ import java.util.ArrayList;
 import reto3.bbdd.pojo.Pelicula;
 import reto3.bbdd.utils.DBUtils;
 
-public class GestorProyecciones {
-
-	private ArrayList<String> ret;
+public class GestorPeliculas {
 
 	/**
 	 * 
 	 * @param codCine
 	 * @return
 	 */
-	public ArrayList<Pelicula> obtenerProyeccionPorCine(int codCine) {
+	public ArrayList<Pelicula> obtenerPeliculaPorCine(int codCine) {
 		ArrayList<Pelicula> ret = null;
 
 		String sql = "select t_pelicula.* from t_cine, t_sala, t_proyeccion, t_pelicula where t_cine.codCine = t_sala.codCine "
@@ -86,15 +84,4 @@ public class GestorProyecciones {
 		}
 		return ret;
 	}
-
-	public ArrayList<String> obtenerTitulosPorPeliculas(ArrayList<Pelicula> peliculas) {
-		ret=new ArrayList<String>();
-		if(peliculas!=null) {
-			for (int i = 0; i < peliculas.size(); i++) {
-				ret.add(i, peliculas.get(i).getTitulo());
-			}
-		}
-		return ret;
-	}
-
 }

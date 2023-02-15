@@ -17,7 +17,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import reto3.bbdd.gestor.GestorProyecciones;
+import reto3.bbdd.gestor.GestorPeliculas;
 import reto3.bbdd.pojo.Pelicula;
 
 import javax.swing.JTextField;
@@ -27,7 +27,7 @@ public class VentanaPrincipal {
 
 	private JFrame frame;
 
-	private GestorProyecciones gestorProyecciones = new GestorProyecciones();
+	private GestorPeliculas gestorPeliculas = new GestorPeliculas();
 	
 	private ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
 	private ArrayList<String> titulos = new ArrayList<String>();
@@ -40,7 +40,7 @@ public class VentanaPrincipal {
 	private JTextField ssTextHora;
 	private JTextField ssTextPrecio;
 	private JTextField ssTextSala;
-
+	
 	public static void main(String[] args) {
 		
 		EventQueue.invokeLater(new Runnable() {
@@ -54,7 +54,7 @@ public class VentanaPrincipal {
 			}
 		});
 	}
-
+	
 	public VentanaPrincipal() {
 		
 		initialize();
@@ -82,16 +82,19 @@ public class VentanaPrincipal {
 		JPanel scPanelSeleccionCines = new JPanel();
 		scPanelSeleccionCines.setLayout(null);
 		scPanelSeleccionCines.setBounds(0, 0, 564, 441);
+		scPanelSeleccionCines.setVisible(false);
 		frame.getContentPane().add(scPanelSeleccionCines);
 
 		JPanel spPanelSeleccionPelis = new JPanel();
 		spPanelSeleccionPelis.setLayout(null);
 		spPanelSeleccionPelis.setBounds(0, 0, 564, 441);
+		spPanelSeleccionPelis.setVisible(false);
 		frame.getContentPane().add(spPanelSeleccionPelis);
 
 		JPanel ssPanelSeleccionSesiones = new JPanel();
 		ssPanelSeleccionSesiones.setLayout(null);
 		ssPanelSeleccionSesiones.setBounds(0, 0, 564, 441);
+		ssPanelSeleccionSesiones.setVisible(false);
 		frame.getContentPane().add(ssPanelSeleccionSesiones);
 
 		// JLabels
@@ -113,7 +116,7 @@ public class VentanaPrincipal {
 		spPanelSeleccionPelis.add(spLabelSeleccionPelis);
 
 		JLabel spLabelLogoPelis = new JLabel("");
-		spLabelLogoPelis.setIcon(new ImageIcon("/reto3/img/bienvenida.png"));
+		spLabelLogoPelis.setIcon(new ImageIcon("//reto3//img//bienvenida.png"));
 		spLabelLogoPelis.setBounds(362, 11, 192, 188);
 		spPanelSeleccionPelis.add(spLabelLogoPelis);
 
@@ -141,31 +144,10 @@ public class VentanaPrincipal {
 		ssLblSesionesDisponibles.setBounds(81, 107, 130, 14);
 		ssPanelSeleccionSesiones.add(ssLblSesionesDisponibles);
 
-		// TextFields
-
-		ssTextTitulo = new JTextField();
-		ssTextTitulo.setColumns(10);
-		ssTextTitulo.setBounds(211, 167, 204, 20);
-		ssPanelSeleccionSesiones.add(ssTextTitulo);
-
-		ssTextHora = new JTextField();
-		ssTextHora.setColumns(10);
-		ssTextHora.setBounds(211, 323, 102, 20);
-		ssPanelSeleccionSesiones.add(ssTextHora);
-
-		ssTextPrecio = new JTextField();
-		ssTextPrecio.setColumns(10);
-		ssTextPrecio.setBounds(211, 218, 102, 20);
-		ssPanelSeleccionSesiones.add(ssTextPrecio);
-
-		ssTextSala = new JTextField();
-		ssTextSala.setColumns(10);
-		ssTextSala.setBounds(211, 270, 102, 20);
-		ssPanelSeleccionSesiones.add(ssTextSala);
-
 		// Buttons
 
 		JButton bBotonBienvenida = new JButton("BIENVENIDO");
+		bBotonBienvenida.setIcon(new ImageIcon("C:\\Users\\in1daw\\git\\Grupo4Reto3.1\\reto3\\img\\bienvenida.png"));
 		bBotonBienvenida.setForeground(Color.BLACK);
 		bBotonBienvenida.setFont(new Font("Yu Gothic", Font.PLAIN, 50));
 		bBotonBienvenida.setFocusable(false);
@@ -216,6 +198,28 @@ public class VentanaPrincipal {
 		ssBtnConfirmar.setBounds(353, 407, 130, 23);
 		ssPanelSeleccionSesiones.add(ssBtnConfirmar);
 
+		// TextFields
+
+				ssTextTitulo = new JTextField();
+				ssTextTitulo.setColumns(10);
+				ssTextTitulo.setBounds(211, 167, 204, 20);
+				ssPanelSeleccionSesiones.add(ssTextTitulo);
+
+				ssTextHora = new JTextField();
+				ssTextHora.setColumns(10);
+				ssTextHora.setBounds(211, 323, 102, 20);
+				ssPanelSeleccionSesiones.add(ssTextHora);
+
+				ssTextPrecio = new JTextField();
+				ssTextPrecio.setColumns(10);
+				ssTextPrecio.setBounds(211, 218, 102, 20);
+				ssPanelSeleccionSesiones.add(ssTextPrecio);
+
+				ssTextSala = new JTextField();
+				ssTextSala.setColumns(10);
+				ssTextSala.setBounds(211, 270, 102, 20);
+				ssPanelSeleccionSesiones.add(ssTextSala);
+		
 		// JLists
 
 		JList<String> spListaPeliculas = new JList<String>();
@@ -255,7 +259,7 @@ public class VentanaPrincipal {
 				scPanelSeleccionCines.setVisible(false);
 				spPanelSeleccionPelis.setVisible(true);
 
-				peliculas = gestorProyecciones.obtenerProyeccionPorCine(1);
+				peliculas = gestorPeliculas.obtenerPeliculaPorCine(1);
 				
 				if (null != peliculas) {
 					for (Pelicula pelicula : peliculas) {
@@ -275,7 +279,7 @@ public class VentanaPrincipal {
 				scPanelSeleccionCines.setVisible(false);
 				spPanelSeleccionPelis.setVisible(true);
 
-				peliculas = gestorProyecciones.obtenerProyeccionPorCine(2);
+				peliculas = gestorPeliculas.obtenerPeliculaPorCine(2);
 				if (null != peliculas) {
 					for (Pelicula pelicula : peliculas) {
 						listModel.addElement(pelicula.getTitulo());
@@ -293,7 +297,7 @@ public class VentanaPrincipal {
 				scPanelSeleccionCines.setVisible(false);
 				spPanelSeleccionPelis.setVisible(true);
 
-				peliculas = gestorProyecciones.obtenerProyeccionPorCine(3);
+				peliculas = gestorPeliculas.obtenerPeliculaPorCine(3);
 				if (null != peliculas) {
 					for (Pelicula pelicula : peliculas) {
 						listModel.addElement(pelicula.getTitulo());
@@ -311,7 +315,7 @@ public class VentanaPrincipal {
 				scPanelSeleccionCines.setVisible(false);
 				spPanelSeleccionPelis.setVisible(true);
 
-				peliculas = gestorProyecciones.obtenerProyeccionPorCine(4);
+				peliculas = gestorPeliculas.obtenerPeliculaPorCine(4);
 				if (null != peliculas) {
 					for (Pelicula pelicula : peliculas) {
 						listModel.addElement(pelicula.getTitulo());
