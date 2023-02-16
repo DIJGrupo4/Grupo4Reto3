@@ -9,35 +9,38 @@ import java.util.ArrayList;
 
 //import reto3.bbdd.menu.inicio;
 import reto3.bbdd.utils.DBUtils;
+import reto3.vista.paneles.CrearUsuario;
 import reto3.bbdd.pojo.*;
 
 public class GestorClientes {
 
-	private Connection con = null;
-	private Statement st = null;
-	private ResultSet rs = null;
-
-	/*public ArrayList<Cliente> obtenerTodosLosClientes() {
+	public ArrayList<Cliente> añadirUsuario(Cliente clienteNuevo) {
 		ArrayList<Cliente> ret = null;
 
+		// La conexion con BBDD
+		Connection connection = null;
+
+		// Vamos a lanzar una sentencia SQL contra la BBDD
+		Statement statement = null;
+
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection(DBUtils.URL, DBUtils.USER, DBUtils.PASS);
+			// El Driver que vamos a usar
+			Class.forName(DBUtils.DRIVER);
 
-			inicio inic = new inicio();
+			// Abrimos la conexion con BBDD
+			connection = DriverManager.getConnection(DBUtils.URL, DBUtils.USER, DBUtils.PASS);
 
-			String nombre = inic.txtNombre.getText();
-			String apellido = inic.txtApellido.getText();
-			String dni = inic.txtDni.getText();
-			String sexo = inic.txtSexo.getText();
-			String usuario = inic.txtUsuario.getText();
-			String contraseña = inic.txtContraseña.getText();
+			// Vamos a lanzar la sentencia...
+			statement = connection.createStatement();
 
-			String sql = "insert into t_cliente (nombre, apellido, dni, sexo, usuario, contraseña) values ('" + nombre
-					+ "','" + apellido + "'" + "'" + dni + "','" + sexo + "','" + usuario + "','" + contraseña + "')";
+			// Montamos la SQL
+			String sql = "insert into t_cliente (dni, nombre, apellido, sexo, usuario, contraseña) values ('"
+					+ clienteNuevo.getDNI() + "','" + clienteNuevo.getNombre() + "'" + "'" + clienteNuevo.getApellido()
+					+ "','" + clienteNuevo.getSexo() + "','" + clienteNuevo.getUsuario() + "','"
+					+ clienteNuevo.getContraseña() + "')";
 
-			st = con.createStatement();
-			st.executeQuery(sql);
+			// La ejecutamos...
+			statement.executeUpdate(sql);
 
 		} catch (SQLException sqle) {
 			System.out.println("Error con la BBDD - " + sqle.getMessage());
@@ -46,23 +49,21 @@ public class GestorClientes {
 		} finally {
 			// Cerramos al reves de como las abrimos
 			try {
-				if (rs != null)
-					rs.close();
+				if (statement != null)
+					statement.close();
 			} catch (Exception e) {
 				// No hace falta
 			}
+			;
 			try {
-				if (st != null)
-					st.close();
+				if (connection != null)
+					connection.close();
 			} catch (Exception e) {
 				// No hace falta
 			}
-			try {
-				if (con != null)
-					con.close();
-			} catch (Exception e) {
-				// No hace falta
-			}
+			;
 		}
-	}*/
+
+		return ret;
+	}
 }
