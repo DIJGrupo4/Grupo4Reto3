@@ -14,6 +14,7 @@ public class Proyeccion {
 	private int codPelicula = 0;
 	private Date fecha = null;
 	private Time hora = null;
+	private float precio = 0;
 
 	public int getCodProyeccion() {
 		return codProyeccion;
@@ -55,9 +56,17 @@ public class Proyeccion {
 		this.hora = hora;
 	}
 
+	public float getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(float precio) {
+		this.precio = precio;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(codPelicula, codProyeccion, codSala, fecha, hora);
+		return Objects.hash(codPelicula, codProyeccion, codSala, fecha, hora, precio);
 	}
 
 	@Override
@@ -70,13 +79,14 @@ public class Proyeccion {
 			return false;
 		Proyeccion other = (Proyeccion) obj;
 		return codPelicula == other.codPelicula && codProyeccion == other.codProyeccion && codSala == other.codSala
-				&& Objects.equals(fecha, other.fecha) && Objects.equals(hora, other.hora);
+				&& Objects.equals(fecha, other.fecha) && Objects.equals(hora, other.hora)
+				&& Float.floatToIntBits(precio) == Float.floatToIntBits(other.precio);
 	}
 
 	@Override
 	public String toString() {
 		return "Proyeccion [codProyeccion=" + codProyeccion + ", codSala=" + codSala + ", codPelicula=" + codPelicula
-				+ ", fecha=" + fecha + ", hora=" + hora + "]";
+				+ ", fecha=" + fecha + ", hora=" + hora + ", precio=" + precio + "]";
 	}
 
 }

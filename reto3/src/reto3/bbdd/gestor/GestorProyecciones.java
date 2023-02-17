@@ -17,15 +17,11 @@ public class GestorProyecciones {
 	public ArrayList<Proyeccion> obtenerProyeccionPorPelicula(String tituloSeleccionado, int codCine) {
 		ArrayList<Proyeccion> ret = null;
 
-	//	String sql = "select t_proyeccion.fecha, t_proyeccion.hora from t_cine, t_sala, t_proyeccion, t_pelicula where "
-	//			+ "t_cine.codCine = t_sala.codCine " + "and t_sala.codSala = t_proyeccion.codSala "
-	//					+ "and t_proyeccion.codPelicula = t_pelicula.codPelicula and t_cine.codCine = '" + codCine + "'"
-	//							+ "and t_pelicula.titulo = '" + tituloSeleccionado + "' ORDER BY t_proyeccion.fechaHora";
-
-		String sql = "select t_proyeccion.fecha from t_cine, t_sala, t_proyeccion, t_pelicula where "
+		String sql = "select t_proyeccion.* from t_cine, t_sala, t_proyeccion, t_pelicula where "
 				+ "t_cine.codCine = t_sala.codCine " + "and t_sala.codSala = t_proyeccion.codSala "
-						+ "and t_proyeccion.codPelicula = t_pelicula.codPelicula and t_pelicula.titulo = '" 
-				+ tituloSeleccionado + "' ORDER BY t_proyeccion.fecha";
+						+ "and t_proyeccion.codPelicula = t_pelicula.codPelicula and t_cine.codCine = '" + codCine + "'"
+								+ "and t_pelicula.titulo = '" + tituloSeleccionado + "' ORDER BY t_proyeccion.fecha, t_proyeccion.hora";
+
 		
 		Connection connection = null;
 		Statement statement = null;
@@ -47,8 +43,13 @@ public class GestorProyecciones {
 				Proyeccion proyeccion = new Proyeccion();
 
 				Date fecha = resultSet.getDate("fecha");
+				Time hora = resultSet.getTime("hora");
+				Float precio = resultSet.getFloat("precio");
+
 				
 				proyeccion.setFecha(fecha);
+				proyeccion.setHora(hora);
+				proyeccion.setPrecio(precio);
 
 				try {
 					ret.add(proyeccion);

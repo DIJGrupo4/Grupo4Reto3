@@ -197,17 +197,17 @@ public class VentanaPrincipal {
 
 		ssTextHora = new JTextField();
 		ssTextHora.setColumns(10);
-		ssTextHora.setBounds(211, 323, 102, 20);
+		ssTextHora.setBounds(211, 218, 102, 20);
 		ssPanelSeleccionSesiones.add(ssTextHora);
 
 		ssTextPrecio = new JTextField();
 		ssTextPrecio.setColumns(10);
-		ssTextPrecio.setBounds(211, 218, 102, 20);
+		ssTextPrecio.setBounds(211, 270, 102, 20);
 		ssPanelSeleccionSesiones.add(ssTextPrecio);
 
 		ssTextSala = new JTextField();
 		ssTextSala.setColumns(10);
-		ssTextSala.setBounds(211, 270, 102, 20);
+		ssTextSala.setBounds(211, 323, 102, 20);
 		ssPanelSeleccionSesiones.add(ssTextSala);
 
 		// JLists
@@ -269,6 +269,8 @@ public class VentanaPrincipal {
 					for (Proyeccion proyeccion : proyecciones) {
 						ssTextTitulo.setText(tituloSeleccionado);
 						ssComboBoxSesiones.addItem(proyeccion.getFecha().toString());
+						ssTextHora.setText(proyeccion.getHora().toString());
+						ssTextPrecio.setText(Float.valueOf(proyeccion.getPrecio()).toString());
 					}
 				}
 			}
