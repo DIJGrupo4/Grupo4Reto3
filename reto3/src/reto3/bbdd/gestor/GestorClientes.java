@@ -72,6 +72,8 @@ public class GestorClientes {
 
 	public boolean validarLogin(String usuario, String contraseña) {
 
+
+		
 		Connection connection = null;
 
 		// Vamos a lanzar una sentencia SQL contra la BBDD
@@ -97,13 +99,14 @@ public class GestorClientes {
 			// La ejecutamos...
 			resultSet = statement.executeQuery(sql);
 
-			if(resultSet.next()) {
-				JFrame jFrame = new JFrame();
+			if (resultSet.next()) {
+
 				JOptionPane.showMessageDialog(null, "Usuario y contraseña correctos");
 				return true;
 			} else {
-				JFrame jFrame = new JFrame();
-				JOptionPane.showMessageDialog(jFrame, "Usuario o contraseña incorrectos");
+
+				JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
+				
 			}
 
 		} catch (SQLException sqle) {

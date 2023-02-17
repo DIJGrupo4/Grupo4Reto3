@@ -71,6 +71,7 @@ public class CrearUsuario {
 		JPanel panelLogin = new JPanel();
 		panelLogin.setBounds(0, 0, 434, 261);
 		frame.getContentPane().add(panelLogin);
+		panelLogin.setVisible(true);
 
 		JPanel panelRegistro = new JPanel();
 		panelRegistro.setBounds(0, 0, 434, 261);
@@ -177,6 +178,10 @@ public class CrearUsuario {
 		JButton btnAccederCuenta = new JButton("Acceder");
 		btnAccederCuenta.setBounds(178, 227, 89, 23);
 		panelLogin.add(btnAccederCuenta);
+		
+		JButton btnAtrasLogin = new JButton("Atrás");
+		btnAtrasLogin.setBounds(10, 11, 89, 23);
+		panelLogin.add(btnAtrasLogin);
 
 		JButton btnAtrasRegistro = new JButton("Atrás");
 		btnAtrasRegistro.setBounds(222, 227, 89, 23);
@@ -198,8 +203,11 @@ public class CrearUsuario {
 		btnAccederCuenta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GestorClientes gestCli = new GestorClientes();
-				gestCli.validarLogin(txtUserLogin.getText(), txtUserPass.getText());
-				panelLogin.setVisible(false);
+				if(gestCli.validarLogin(txtUserLogin.getText(), txtUserPass.getText())==true) {
+					panelLogin.setVisible(false);
+					
+				}
+				
 				//Añadir panel-----------------------------------------------------------
 
 			}
@@ -230,6 +238,13 @@ public class CrearUsuario {
 			public void actionPerformed(ActionEvent e) {
 				panelRegistro.setVisible(false);
 				panelLogin.setVisible(true);
+			}
+		});
+		
+		btnAtrasLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelLogin.setVisible(false);
+				//panelCarrito true ---------------------------------------------------------------
 			}
 		});
 	}
