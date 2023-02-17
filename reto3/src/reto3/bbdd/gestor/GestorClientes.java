@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 //import reto3.bbdd.menu.inicio;
@@ -37,7 +38,7 @@ public class GestorClientes {
 
 			// Montamos la SQL
 			String sql = "insert into t_cliente (dni, nombre, apellido, sexo, usuario, contraseña) values ('"
-					+ clienteNuevo.getDNI() + "','" + clienteNuevo.getNombre() + "'" + "'" + clienteNuevo.getApellido()
+					+ clienteNuevo.getDNI() + "','" + clienteNuevo.getNombre() + "', '" + clienteNuevo.getApellido()
 					+ "','" + clienteNuevo.getSexo() + "','" + clienteNuevo.getUsuario() + "','"
 					+ clienteNuevo.getContraseña() + "')";
 
@@ -68,27 +69,18 @@ public class GestorClientes {
 
 		return ret;
 	}
-	public void validarLogin(){
-		
-		CrearUsuario usuLogin = new CrearUsuario();
-		
-		String usuario  = usuLogin.txtUsuario.getText();
-		String password = usuLogin.txtContraseña.getText();
-		
+
+	public boolean validarLogin(String usuario, String contraseña) {
+
 		Connection connection = null;
 
 		// Vamos a lanzar una sentencia SQL contra la BBDD
 		Statement statement = null;
-		
+
 		// ResultSet
 		ResultSet resultSet = null;
 
 		try {
-			
-			//variables usuario correcto
-			String usuarioCorrecto = null;
-		    String passwordCorrecta = null;
-			
 			// El Driver que vamos a usar
 			Class.forName(DBUtils.DRIVER);
 
@@ -99,21 +91,19 @@ public class GestorClientes {
 			statement = connection.createStatement();
 
 			// Montamos la SQL
-			String sql = "select usuario, contraseña from t_clientes";
+			String sql = "select * from t_cliente where usuario = '" + usuario + "' and contraseña = '" + contraseña
+					+ "'";
 
 			// La ejecutamos...
-			statement.executeUpdate(sql);
-			
+			resultSet = statement.executeQuery(sql);
+
 			if(resultSet.next()) {
-				usuarioCorrecto = resultSet.getString(1);
-		        passwordCorrecta = resultSet.getString(2);
-			}
-			
-			if (usuarioCorrecto !=null && password!=null && password.equals(passwordCorrecta)) {
-				//usuLogin.panelLogin.setVisible(false);
-				
-			}else {
-				JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
+				JFrame jFrame = new JFrame();
+				JOptionPane.showMessageDialog(null, "Usuario y contraseña correctos");
+				return true;
+			} else {
+				JFrame jFrame = new JFrame();
+				JOptionPane.showMessageDialog(jFrame, "Usuario o contraseña incorrectos");
 			}
 
 		} catch (SQLException sqle) {
@@ -144,6 +134,7 @@ public class GestorClientes {
 			}
 			;
 		}
+		return false;
 	}
-		
+
 }
