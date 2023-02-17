@@ -297,11 +297,13 @@ public class VentanaPrincipal {
 		});
 		
 		for(Cine cine : cines){
+			ArrayList<String>repetidos=new ArrayList<String>();
 			String name = cine.getNombre();
 			JButton button = new JButton(name);
 			button.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					listModel.clear();
+					boolean repetido=false;
 					bPanelBienvenida.setVisible(false);
 					scPanelSeleccionCines.setVisible(false);
 					spPanelSeleccionPelis.setVisible(true);
@@ -309,10 +311,20 @@ public class VentanaPrincipal {
 					peliculas = gestorPeliculas.obtenerPeliculaPorCine(cine.getCodCine());
 					if (null != peliculas) {
 						for (Pelicula pelicula : peliculas) {
-							listModel.addElement(pelicula.getTitulo());
+							repetido=false;
+							for(int i=0;i<repetidos.size();i++) {
+								if(pelicula.getTitulo().equalsIgnoreCase(repetidos.get(i))==true) {
+									repetido=true;
+								}
+							}
+							if(repetido==false) {
+								listModel.addElement(pelicula.getTitulo());
+								repetidos.add(pelicula.getTitulo());
+							}
 						}
 					}
 					spListaPeliculas.setModel(listModel);
+					repetidos.clear();
 				}
 			});
 			panelMultiButton.add(button);
