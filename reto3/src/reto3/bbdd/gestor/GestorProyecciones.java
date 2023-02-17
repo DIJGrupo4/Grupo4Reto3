@@ -14,7 +14,7 @@ import reto3.bbdd.utils.DBUtils;
 
 public class GestorProyecciones {
 
-	public ArrayList<Proyeccion> obtenerProyeccionPorPelicula(String tituloSeleccionado, int codCine) {
+	public ArrayList<Proyeccion> obtenerProyeccionesPorPelicula(String tituloSeleccionado, int codCine) {
 		ArrayList<Proyeccion> ret = null;
 
 		String sql = "select t_proyeccion.* from t_cine, t_sala, t_proyeccion, t_pelicula where "
@@ -45,11 +45,13 @@ public class GestorProyecciones {
 				Date fecha = resultSet.getDate("fecha");
 				Time hora = resultSet.getTime("hora");
 				Float precio = resultSet.getFloat("precio");
+				int codSala = resultSet.getInt("codSala");
 
 				
 				proyeccion.setFecha(fecha);
 				proyeccion.setHora(hora);
 				proyeccion.setPrecio(precio);
+				proyeccion.setCodSala(codSala);
 
 				try {
 					ret.add(proyeccion);
@@ -83,5 +85,4 @@ public class GestorProyecciones {
 		}
 		return ret;
 	}
-
 }
