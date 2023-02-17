@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import reto3.bbdd.pojo.Cliente;
 import reto3.bbdd.pojo.Recibo;
 import reto3.bbdd.utils.DBUtils;
 

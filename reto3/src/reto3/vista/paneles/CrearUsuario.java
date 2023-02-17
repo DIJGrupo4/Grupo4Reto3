@@ -17,6 +17,7 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
 public class CrearUsuario {
 
@@ -28,10 +29,11 @@ public class CrearUsuario {
 	public JTextField txtContraseña = null;
 	public JComboBox comboBoxSexo = null;
 	private JTextField txtUserLogin;
-	private JTextField txtUserPass;
 	
 	private String usuario = null;
 	private String contraseña = null;
+	private JPasswordField txtUserPass;
+	private JPasswordField txtContras;
 
 	/**
 	 * Launch the application.
@@ -133,11 +135,6 @@ public class CrearUsuario {
 		panelLogin.add(txtUserLogin);
 		txtUserLogin.setColumns(10);
 
-		txtUserPass = new JTextField();
-		txtUserPass.setBounds(178, 162, 86, 20);
-		panelLogin.add(txtUserPass);
-		txtUserPass.setColumns(10);
-
 		txtNombre = new JTextField();
 		txtNombre.setBounds(74, 57, 86, 20);
 		panelRegistro.add(txtNombre);
@@ -158,11 +155,6 @@ public class CrearUsuario {
 		panelRegistro.add(txtUsuario);
 		txtUsuario.setColumns(10);
 
-		txtContraseña = new JTextField();
-		txtContraseña.setBounds(294, 93, 86, 20);
-		panelRegistro.add(txtContraseña);
-		txtContraseña.setColumns(10);
-
 		// JComboBox
 		JComboBox comboBoxSexo = new JComboBox();
 		comboBoxSexo.setModel(new DefaultComboBoxModel(new String[] { "Seleccione", "Hombre", "Mujer" }));
@@ -182,6 +174,10 @@ public class CrearUsuario {
 		JButton btnAtrasLogin = new JButton("Atrás");
 		btnAtrasLogin.setBounds(10, 11, 89, 23);
 		panelLogin.add(btnAtrasLogin);
+		
+		txtUserPass = new JPasswordField();
+		txtUserPass.setBounds(178, 161, 86, 20);
+		panelLogin.add(txtUserPass);
 
 		JButton btnAtrasRegistro = new JButton("Atrás");
 		btnAtrasRegistro.setBounds(222, 227, 89, 23);
@@ -190,6 +186,10 @@ public class CrearUsuario {
 		JButton btnAceptarRegistro = new JButton("Aceptar");
 		btnAceptarRegistro.setBounds(321, 227, 89, 23);
 		panelRegistro.add(btnAceptarRegistro);
+		
+		txtContras = new JPasswordField();
+		txtContras.setBounds(290, 93, 90, 20);
+		panelRegistro.add(txtContras);
 
 		// Action Listeners
 
@@ -203,7 +203,8 @@ public class CrearUsuario {
 		btnAccederCuenta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GestorClientes gestCli = new GestorClientes();
-				if(gestCli.validarLogin(txtUserLogin.getText(), txtUserPass.getText())==true) {
+				String pwd = new String(txtUserPass.getPassword());
+				if(gestCli.validarLogin(txtUserLogin.getText(), pwd)) {					
 					panelLogin.setVisible(false);
 					
 				}
@@ -223,7 +224,8 @@ public class CrearUsuario {
 				clienteNuevo.setApellido(txtApellido.getText());
 				clienteNuevo.setSexo(comboBoxSexo.getSelectedItem().toString());
 				clienteNuevo.setUsuario(txtUsuario.getText());
-				clienteNuevo.setContraseña(txtContraseña.getText());
+				String pwd = new String(txtContras.getPassword());
+				clienteNuevo.setContraseña(pwd);
 
 				gestorCliente.añadirUsuario(clienteNuevo);
 
@@ -244,7 +246,7 @@ public class CrearUsuario {
 		btnAtrasLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelLogin.setVisible(false);
-				//panelCarrito true ---------------------------------------------------------------
+				//spPanelSeleccionPelis.setVisible(true);
 			}
 		});
 	}
