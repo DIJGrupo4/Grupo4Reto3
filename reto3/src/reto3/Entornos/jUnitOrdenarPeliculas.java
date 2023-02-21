@@ -12,7 +12,7 @@ import reto3.bbdd.pojo.Pelicula;
 import reto3.bbdd.pojo.Proyeccion;
 
 class jUnitOrdenarPeliculas {
-
+ 
 	@Test
 	void testPeliculaTrue() {
 
