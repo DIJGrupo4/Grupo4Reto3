@@ -28,6 +28,7 @@ import reto3.bbdd.gestor.GestorProyecciones;
 import reto3.bbdd.gestor.GestorSalas;
 import reto3.bbdd.gestor.GestorCines;
 import reto3.bbdd.gestor.GestorClientes;
+import reto3.bbdd.gestor.GestorEntradas;
 import reto3.bbdd.pojo.Cine;
 import reto3.bbdd.pojo.Cliente;
 import reto3.bbdd.pojo.Pelicula;
@@ -52,6 +53,9 @@ public class VentanaPrincipal {
 
 	private int listaFull = 0;
 	private String tituloSeleccionado = null;
+	private int fechaSeleccionada = 0;
+	private String nombreCine = null;
+	private int codCine = 0;
 
 	private DefaultListModel<String> listModel = new DefaultListModel<String>();
 
@@ -61,12 +65,10 @@ public class VentanaPrincipal {
 	private JTextField ssTextSala;
 	private JTable table;
 
-	public JTextField txtNombre = null;
-	public JTextField txtApellido = null;
-	public JTextField txtDni = null;
-	public JTextField txtUsuario = null;
-	public JTextField txtContraseña = null;
-	public JComboBox comboBoxSexo = null;
+	private JTextField txtNombre = null;
+	private JTextField txtApellido = null;
+	private JTextField txtDni = null;
+	private JTextField txtUsuario = null;
 	private JTextField txtUserLogin;
 
 	private JPasswordField txtUserPass;
@@ -381,7 +383,7 @@ public class VentanaPrincipal {
 		ssComboBoxSesiones.setBounds(211, 103, 204, 22);
 		ssPanelSeleccionSesiones.add(ssComboBoxSesiones);
 
-		JComboBox comboBoxSexo = new JComboBox();
+		JComboBox<?> comboBoxSexo = new JComboBox();
 		comboBoxSexo.setModel(new DefaultComboBoxModel(new String[] { "Seleccione", "Hombre", "Mujer" }));
 		comboBoxSexo.setBounds(74, 164, 86, 22);
 		panelRegistro.add(comboBoxSexo);
@@ -425,7 +427,6 @@ public class VentanaPrincipal {
 		});
 		spBtnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int codCine = 0;
 				codCine = gestorCines.obtenerCodCinePorNombre(spLblNombreCine.getText());
 				ssComboBoxSesiones.removeAllItems();
 				bPanelBienvenida.setVisible(false);
@@ -442,22 +443,6 @@ public class VentanaPrincipal {
 						ssComboBoxSesiones.addItem(proyeccion.getFecha().toString());
 					}
 				}
-			}
-		});
-		ssBtnAtras.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				bPanelBienvenida.setVisible(false);
-				scPanelSeleccionCines.setVisible(false);
-				spPanelSeleccionPelis.setVisible(true);
-				ssPanelSeleccionSesiones.setVisible(false);
-			}
-		});
-		ssBtnConfirmar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				bPanelBienvenida.setVisible(false);
-				scPanelSeleccionCines.setVisible(true);
-				spPanelSeleccionPelis.setVisible(false);
-				ssPanelSeleccionSesiones.setVisible(false);
 			}
 		});
 
@@ -496,6 +481,7 @@ public class VentanaPrincipal {
 		}
 		ssComboBoxSesiones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				fechaSeleccionada = ssComboBoxSesiones.getSelectedIndex();
 				ssTextHora.setText(proyecciones.get(ssComboBoxSesiones.getSelectedIndex()).getHora().toString());
 				ssTextPrecio.setText(
 						Float.valueOf(proyecciones.get(ssComboBoxSesiones.getSelectedIndex()).getPrecio()).toString());
@@ -504,16 +490,37 @@ public class VentanaPrincipal {
 			}
 		});
 
+		ssBtnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				bPanelBienvenida.setVisible(false);
+				scPanelSeleccionCines.setVisible(false);
+				spPanelSeleccionPelis.setVisible(true);
+				ssPanelSeleccionSesiones.setVisible(false);
+			}
+		});
+		ssBtnConfirmar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				bPanelBienvenida.setVisible(false);
+				scPanelSeleccionCines.setVisible(true);
+				spPanelSeleccionPelis.setVisible(false);
+				ssPanelSeleccionSesiones.setVisible(false);
+
+				nombreCine = gestorCines.getNombrePorCodCine(codCine);
+				GestorEntradas.agregarDatosEntrada(fechaSeleccionada, tituloSeleccionado, ssTextHora, ssTextPrecio,
+						ssTextSala, nombreCine);
+			}
+		});
+
 		btnPagarCarrito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// panelLogin.setVisible(true);
+				panelLogin.setVisible(true);
 				ccPanelCarrito.setVisible(false);
 			}
 		});
 
 		btnAtrasCarrito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// panelSelecionPelicula.setVisible(true);
+				spPanelSeleccionPelis.setVisible(true);
 				ccPanelCarrito.setVisible(false);
 			}
 		});
@@ -533,8 +540,6 @@ public class VentanaPrincipal {
 					panelLogin.setVisible(false);
 
 				}
-
-				// Añadir panel-----------------------------------------------------------
 
 			}
 		});
@@ -571,7 +576,7 @@ public class VentanaPrincipal {
 		btnAtrasLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelLogin.setVisible(false);
-				// spPanelSeleccionPelis.setVisible(true);
+				spPanelSeleccionPelis.setVisible(true);
 			}
 		});
 	}
