@@ -19,6 +19,7 @@ import javax.swing.SwingConstants;
 
 import reto3.bbdd.gestor.GestorPeliculas;
 import reto3.bbdd.gestor.GestorProyecciones;
+import reto3.bbdd.gestor.GestorSalas;
 import reto3.bbdd.gestor.GestorCines;
 import reto3.bbdd.pojo.Cine;
 import reto3.bbdd.pojo.Pelicula;
@@ -35,6 +36,7 @@ public class VentanaPrincipal {
 	private GestorCines gestorCines = new GestorCines();
 	private GestorPeliculas gestorPeliculas = new GestorPeliculas();
 	private GestorProyecciones gestorProyecciones = new GestorProyecciones();
+	private GestorSalas gestorSalas = new GestorSalas();
 	
 	private ArrayList<Cine> cines = new ArrayList<Cine>(gestorCines.obtenerTodosLosCines());
 	private ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
@@ -191,21 +193,25 @@ public class VentanaPrincipal {
 		// TextFields
 
 		ssTextTitulo = new JTextField();
+		ssTextTitulo.setEditable(false);
 		ssTextTitulo.setColumns(10);
 		ssTextTitulo.setBounds(211, 167, 204, 20);
 		ssPanelSeleccionSesiones.add(ssTextTitulo);
 
 		ssTextHora = new JTextField();
+		ssTextHora.setEditable(false);
 		ssTextHora.setColumns(10);
 		ssTextHora.setBounds(211, 218, 102, 20);
 		ssPanelSeleccionSesiones.add(ssTextHora);
 
 		ssTextPrecio = new JTextField();
+		ssTextPrecio.setEditable(false);
 		ssTextPrecio.setColumns(10);
 		ssTextPrecio.setBounds(211, 270, 102, 20);
 		ssPanelSeleccionSesiones.add(ssTextPrecio);
 
 		ssTextSala = new JTextField();
+		ssTextSala.setEditable(false);
 		ssTextSala.setColumns(10);
 		ssTextSala.setBounds(211, 323, 102, 20);
 		ssPanelSeleccionSesiones.add(ssTextSala);
@@ -264,13 +270,11 @@ public class VentanaPrincipal {
 
 				tituloSeleccionado = spListaPeliculas.getSelectedValue();
 				
-				proyecciones = gestorProyecciones.obtenerProyeccionPorPelicula(tituloSeleccionado, codCine);
+				proyecciones = gestorProyecciones.obtenerProyeccionesPorPelicula(tituloSeleccionado, codCine);
 				if (null != proyecciones) {
 					for (Proyeccion proyeccion : proyecciones) {
 						ssTextTitulo.setText(tituloSeleccionado);
 						ssComboBoxSesiones.addItem(proyeccion.getFecha().toString());
-						ssTextHora.setText(proyeccion.getHora().toString());
-						ssTextPrecio.setText(Float.valueOf(proyeccion.getPrecio()).toString());
 					}
 				}
 			}
@@ -291,13 +295,15 @@ public class VentanaPrincipal {
 				ssPanelSeleccionSesiones.setVisible(false);
 			}
 		});
-
+		
 		for(Cine cine : cines){
+			ArrayList<String>repetidos=new ArrayList<String>();
 			String name = cine.getNombre();
 			JButton button = new JButton(name);
 			button.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					listModel.clear();
+					boolean repetido=false;
 					bPanelBienvenida.setVisible(false);
 					scPanelSeleccionCines.setVisible(false);
 					spPanelSeleccionPelis.setVisible(true);
@@ -305,13 +311,30 @@ public class VentanaPrincipal {
 					peliculas = gestorPeliculas.obtenerPeliculaPorCine(cine.getCodCine());
 					if (null != peliculas) {
 						for (Pelicula pelicula : peliculas) {
-							listModel.addElement(pelicula.getTitulo());
+							repetido=false;
+							for(int i=0;i<repetidos.size();i++) {
+								if(pelicula.getTitulo().equalsIgnoreCase(repetidos.get(i))==true) {
+									repetido=true;
+								}
+							}
+							if(repetido==false) {
+								listModel.addElement(pelicula.getTitulo());
+								repetidos.add(pelicula.getTitulo());
+							}
 						}
 					}
 					spListaPeliculas.setModel(listModel);
+					repetidos.clear();
 				}
 			});
 			panelMultiButton.add(button);
 		}
+		ssComboBoxSesiones.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ssTextHora.setText(proyecciones.get(ssComboBoxSesiones.getSelectedIndex()).getHora().toString());
+				ssTextPrecio.setText(Float.valueOf(proyecciones.get(ssComboBoxSesiones.getSelectedIndex()).getPrecio()).toString());
+				ssTextSala.setText(Integer.toString(gestorSalas.getNumSalaPorCodSala(proyecciones.get(ssComboBoxSesiones.getSelectedIndex()).getCodSala())));
+			}
+		});
 	}
 }
