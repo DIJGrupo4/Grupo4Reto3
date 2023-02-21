@@ -15,7 +15,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 import reto3.bbdd.gestor.GestorPeliculas;
 import reto3.bbdd.gestor.GestorProyecciones;
@@ -51,7 +54,8 @@ public class VentanaPrincipal {
 	private JTextField ssTextHora;
 	private JTextField ssTextPrecio;
 	private JTextField ssTextSala;
-
+	private JTable table;
+	
 	public static void main(String[] args) {
 
 		EventQueue.invokeLater(new Runnable() {
@@ -108,6 +112,11 @@ public class VentanaPrincipal {
 		ssPanelSeleccionSesiones.setBounds(0, 0, 564, 441);
 		ssPanelSeleccionSesiones.setVisible(false);
 		frame.getContentPane().add(ssPanelSeleccionSesiones);
+		
+		JPanel ccPanelCarrito = new JPanel();
+		ccPanelCarrito.setBounds(0, 0, 434, 261);
+		frame.getContentPane().add(ccPanelCarrito);
+		ccPanelCarrito.setLayout(null);
 
 		// JLabels
 
@@ -155,6 +164,11 @@ public class VentanaPrincipal {
 		JLabel ssLblSesionesDisponibles = new JLabel("Sesiones disponibles:");
 		ssLblSesionesDisponibles.setBounds(81, 107, 130, 14);
 		ssPanelSeleccionSesiones.add(ssLblSesionesDisponibles);
+		
+		JLabel lblCarrito = new JLabel("CARRITO");
+		lblCarrito.setBounds(162, 28, 89, 48);
+		lblCarrito.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		ccPanelCarrito.add(lblCarrito);
 
 		// Buttons
 
@@ -189,6 +203,14 @@ public class VentanaPrincipal {
 		JButton ssBtnConfirmar = new JButton("Confirmar");
 		ssBtnConfirmar.setBounds(353, 407, 130, 23);
 		ssPanelSeleccionSesiones.add(ssBtnConfirmar);
+		
+		JButton btnPagarCarrito = new JButton("Pagar");
+		btnPagarCarrito.setBounds(335, 11, 89, 23);
+		ccPanelCarrito.add(btnPagarCarrito);
+
+		JButton btnAtrasCarrito = new JButton("Atrás");
+		btnAtrasCarrito.setBounds(10, 11, 89, 23);
+		ccPanelCarrito.add(btnAtrasCarrito);
 
 		// TextFields
 
@@ -231,6 +253,17 @@ public class VentanaPrincipal {
 		JComboBox<String> ssComboBoxSesiones = new JComboBox<String>();
 		ssComboBoxSesiones.setBounds(211, 103, 204, 22);
 		ssPanelSeleccionSesiones.add(ssComboBoxSesiones);
+		
+		// JTable
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+				new Object[][] { { null, null, null, null, null }, { null, null, null, null, null }, },
+				new String[] { "Título", "Número de Sala", "Fecha", "Hora", "Precio" }));
+		table.setBounds(10, 87, 414, 32);
+		table.setToolTipText("");
+		table.setBorder(new LineBorder(new Color(0, 0, 0)));
+		ccPanelCarrito.add(table);
 
 		// Action listeners
 
@@ -334,6 +367,20 @@ public class VentanaPrincipal {
 				ssTextHora.setText(proyecciones.get(ssComboBoxSesiones.getSelectedIndex()).getHora().toString());
 				ssTextPrecio.setText(Float.valueOf(proyecciones.get(ssComboBoxSesiones.getSelectedIndex()).getPrecio()).toString());
 				ssTextSala.setText(Integer.toString(gestorSalas.getNumSalaPorCodSala(proyecciones.get(ssComboBoxSesiones.getSelectedIndex()).getCodSala())));
+			}
+		});
+		
+		btnPagarCarrito.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//panelLogin.setVisible(true);
+				ccPanelCarrito.setVisible(false);
+			}
+		});
+		
+		btnAtrasCarrito.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//panelSelecionPelicula.setVisible(true);
+				ccPanelCarrito.setVisible(false);
 			}
 		});
 	}

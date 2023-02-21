@@ -11,9 +11,6 @@ public class Recibo implements Serializable {
 	// Clave primaria
 	private int codRecibo = 0;
 
-	// Atributos
-	private int precioTotal = 0;
-
 	// Relacion 1:N con Entrada
 	private ArrayList<Entrada> entradas = null;
 
@@ -26,14 +23,6 @@ public class Recibo implements Serializable {
 
 	public void setCodRecibo(int codRecibo) {
 		this.codRecibo = codRecibo;
-	}
-
-	public int getPrecioTotal() {
-		return precioTotal;
-	}
-
-	public void setPrecioTotal(int precioTotal) {
-		this.precioTotal = precioTotal;
 	}
 
 	public ArrayList<Entrada> getEntradas() {
@@ -58,7 +47,7 @@ public class Recibo implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cliente, codRecibo, entradas, precioTotal);
+		return Objects.hash(cliente, codRecibo, entradas);
 	}
 
 	@Override
@@ -71,13 +60,12 @@ public class Recibo implements Serializable {
 			return false;
 		Recibo other = (Recibo) obj;
 		return Objects.equals(cliente, other.cliente) && codRecibo == other.codRecibo
-				&& Objects.equals(entradas, other.entradas) && precioTotal == other.precioTotal;
+				&& Objects.equals(entradas, other.entradas);
 	}
 
 	@Override
 	public String toString() {
-		return "Recibo [codRecibo=" + codRecibo + ", precioTotal=" + precioTotal + ", entradas=" + entradas
-				+ ", cliente=" + cliente + "]";
+		return "Recibo [codRecibo=" + codRecibo + ", entradas=" + entradas + ", cliente=" + cliente + "]";
 	}
 
 }

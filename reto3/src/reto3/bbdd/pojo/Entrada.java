@@ -6,7 +6,7 @@ public class Entrada {
 
 	// Clave primaria
 	private int codEntrada = 0;
-
+	
 	public int getCodEntrada() {
 		return codEntrada;
 	}
