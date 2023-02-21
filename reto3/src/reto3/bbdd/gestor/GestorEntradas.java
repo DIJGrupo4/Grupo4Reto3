@@ -55,6 +55,7 @@ public class GestorEntradas {
 	public static void agregarDatosEntrada(int fechaSeleccionada , String tituloSeleccionado, JTextField ssTextHora, JTextField ssTextPrecio, JTextField ssTextSala, String nombreCine) {
 
 		GestorEntradas dBAccessExample = new GestorEntradas();
+		
 		/*
 		Entrada entradas = new Entrada();
 		entradas.setFecha(fechaSeleccionada);
