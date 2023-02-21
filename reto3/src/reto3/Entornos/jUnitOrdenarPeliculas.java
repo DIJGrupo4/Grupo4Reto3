@@ -18,7 +18,11 @@ class jUnitOrdenarPeliculas {
 
 		Pelicula peliculas = new Pelicula();
 		String pelicula = peliculas.getTitulo();
-		assertTrue("Pelicula disponible:'" + pelicula + "'", true);
+		
+		Proyeccion proyecciones = new Proyeccion();
+		Date fecha = proyecciones.getFecha();
+		
+		assertTrue("Pelicula no disponible:'" + pelicula + "' Ordenado por '" + fecha + "'", true);
 	}
 
 	@Test
@@ -30,7 +34,7 @@ class jUnitOrdenarPeliculas {
 		Proyeccion proyecciones = new Proyeccion();
 		Date fecha = proyecciones.getFecha();
 		
-		assertFalse("Pelicula no disponible:'" + pelicula + "' '" + fecha + "'", false);
+		assertFalse("Pelicula no disponible:'" + pelicula + "' Ordenado por '" + fecha + "'", false);
 	}
 
 	@Test
@@ -38,7 +42,11 @@ class jUnitOrdenarPeliculas {
 
 		Pelicula peliculas = new Pelicula();
 		String pelicula = peliculas.getTitulo();
-		assertNull("Pelicula no disponible:'" + pelicula + "'", null);
+		
+		Proyeccion proyecciones = new Proyeccion();
+		Date fecha = proyecciones.getFecha();
+		
+		assertNull("Pelicula no disponible:'" + pelicula + "' Ordenado por '" + fecha + "'", null);
 		
 	}
 
