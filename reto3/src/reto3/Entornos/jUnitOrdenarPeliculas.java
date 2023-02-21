@@ -1,11 +1,17 @@
 package reto3.Entornos;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Date;
+
 import org.junit.jupiter.api.Test;
 
 import reto3.bbdd.pojo.Pelicula;
+import reto3.bbdd.pojo.Proyeccion;
 
-class jUnitPelisCine {
+class jUnitOrdenarPeliculas {
 
 	@Test
 	void testPeliculaTrue() {
@@ -20,7 +26,11 @@ class jUnitPelisCine {
 
 		Pelicula peliculas = new Pelicula();
 		String pelicula = peliculas.getTitulo();
-		assertFalse("Pelicula no disponible:'" + pelicula + "'", false);
+		
+		Proyeccion proyecciones = new Proyeccion();
+		Date fecha = proyecciones.getFecha();
+		
+		assertFalse("Pelicula no disponible:'" + pelicula + "' '" + fecha + "'", false);
 	}
 
 	@Test
@@ -29,6 +39,7 @@ class jUnitPelisCine {
 		Pelicula peliculas = new Pelicula();
 		String pelicula = peliculas.getTitulo();
 		assertNull("Pelicula no disponible:'" + pelicula + "'", null);
+		
 	}
 
 }
