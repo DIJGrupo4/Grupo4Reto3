@@ -1,6 +1,6 @@
 package reto3.Entornos;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.*; 
 import org.junit.jupiter.api.Test;
 
 import reto3.bbdd.pojo.Cine;
