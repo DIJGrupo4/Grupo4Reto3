@@ -1,4 +1,4 @@
-package reto3.vista;
+package reto3.vista.paneles;
 
 import java.awt.Color;
 import java.awt.EventQueue;

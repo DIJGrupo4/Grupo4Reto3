@@ -30,8 +30,6 @@ public class CrearUsuario {
 	public JComboBox comboBoxSexo = null;
 	private JTextField txtUserLogin;
 	
-	private String usuario = null;
-	private String contraseña = null;
 	private JPasswordField txtUserPass;
 	private JPasswordField txtContras;
 
@@ -154,6 +152,15 @@ public class CrearUsuario {
 		txtUsuario.setBounds(294, 57, 86, 20);
 		panelRegistro.add(txtUsuario);
 		txtUsuario.setColumns(10);
+		
+		txtUserPass = new JPasswordField();
+		txtUserPass.setBounds(178, 161, 86, 20);
+		panelLogin.add(txtUserPass);
+		
+		txtContras = new JPasswordField();
+		txtContras.setBounds(290, 93, 90, 20);
+		panelRegistro.add(txtContras);
+
 
 		// JComboBox
 		JComboBox comboBoxSexo = new JComboBox();
@@ -175,9 +182,7 @@ public class CrearUsuario {
 		btnAtrasLogin.setBounds(10, 11, 89, 23);
 		panelLogin.add(btnAtrasLogin);
 		
-		txtUserPass = new JPasswordField();
-		txtUserPass.setBounds(178, 161, 86, 20);
-		panelLogin.add(txtUserPass);
+		
 
 		JButton btnAtrasRegistro = new JButton("Atrás");
 		btnAtrasRegistro.setBounds(222, 227, 89, 23);
@@ -187,10 +192,7 @@ public class CrearUsuario {
 		btnAceptarRegistro.setBounds(321, 227, 89, 23);
 		panelRegistro.add(btnAceptarRegistro);
 		
-		txtContras = new JPasswordField();
-		txtContras.setBounds(290, 93, 90, 20);
-		panelRegistro.add(txtContras);
-
+		
 		// Action Listeners
 
 		btnRegistrarse.addActionListener(new ActionListener() {
