@@ -11,42 +11,43 @@ import org.junit.jupiter.api.Test;
 import reto3.bbdd.pojo.Pelicula;
 import reto3.bbdd.pojo.Proyeccion;
 
-class jUnitOrdenarPeliculas {
- 
+class jUnitFechaYPeli {
+
 	@Test
-	void testOrdenarPeliculaTrue() {
+	void testFechaYPeliTrue() {
 
 		Pelicula peliculas = new Pelicula();
 		String pelicula = peliculas.getTitulo();
-		
+
 		Proyeccion proyecciones = new Proyeccion();
 		Date fecha = proyecciones.getFecha();
-		assertTrue("Pelicula disponible:'" + pelicula + "' Ordenado por '" + fecha + "'", true);
+
+		assertTrue("Fecha:'" + fecha + "' de la pelicula: '" + pelicula + "'", true);
 	}
 
 	@Test
-	void testOrdenarPeliculaFalse() {
+	void testFechaYPeliFalse() {
 
 		Pelicula peliculas = new Pelicula();
 		String pelicula = peliculas.getTitulo();
-		
+
 		Proyeccion proyecciones = new Proyeccion();
 		Date fecha = proyecciones.getFecha();
-		
-		assertFalse("Pelicula no disponible:'" + pelicula + "' Ordenado por '" + fecha + "'", false);
+
+		assertFalse("Fecha no existe:'" + fecha + "' de la pelicula no existe: '" + pelicula + "'", false);
 	}
 
 	@Test
-	void testOrdenarPeliculaNull() {
+	void testFechaYPeliNull() {
 
 		Pelicula peliculas = new Pelicula();
 		String pelicula = peliculas.getTitulo();
-		
+
 		Proyeccion proyecciones = new Proyeccion();
 		Date fecha = proyecciones.getFecha();
-		
-		assertNull("Pelicula no disponible:'" + pelicula + "' Ordenado por '" + fecha + "'", null);
-		
+
+		assertNull("Fecha no existe:'" + fecha + "' de la pelicula no existe: '" + pelicula + "'", null);
+
 	}
 
 }

@@ -3,7 +3,6 @@ package reto3.Entornos;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-
 import java.util.Date;
 
 import org.junit.jupiter.api.Test;
@@ -11,42 +10,47 @@ import org.junit.jupiter.api.Test;
 import reto3.bbdd.pojo.Pelicula;
 import reto3.bbdd.pojo.Proyeccion;
 
-class jUnitOrdenarPeliculas {
- 
+class jUnitSalasPeli {
+
 	@Test
-	void testOrdenarPeliculaTrue() {
+	void testPeliculaTrue() {
 
 		Pelicula peliculas = new Pelicula();
 		String pelicula = peliculas.getTitulo();
-		
+
 		Proyeccion proyecciones = new Proyeccion();
 		Date fecha = proyecciones.getFecha();
-		assertTrue("Pelicula disponible:'" + pelicula + "' Ordenado por '" + fecha + "'", true);
+		int codSala = proyecciones.getCodSala();
+
+		assertTrue("CodSala'" + codSala + "'Fecha:'" + fecha + "' de la pelicula: '" + pelicula + "'", true);
 	}
 
 	@Test
-	void testOrdenarPeliculaFalse() {
+	void testPeliculaFalse() {
 
 		Pelicula peliculas = new Pelicula();
 		String pelicula = peliculas.getTitulo();
-		
+
 		Proyeccion proyecciones = new Proyeccion();
 		Date fecha = proyecciones.getFecha();
-		
-		assertFalse("Pelicula no disponible:'" + pelicula + "' Ordenado por '" + fecha + "'", false);
+		int codSala = proyecciones.getCodSala();
+
+		assertFalse("CodSala'" + codSala + "'Fecha:'" + fecha + "' de la pelicula: '" + pelicula + "'", false);
 	}
 
 	@Test
-	void testOrdenarPeliculaNull() {
+	void testPeliculaNull() {
 
 		Pelicula peliculas = new Pelicula();
 		String pelicula = peliculas.getTitulo();
-		
+
 		Proyeccion proyecciones = new Proyeccion();
 		Date fecha = proyecciones.getFecha();
-		
-		assertNull("Pelicula no disponible:'" + pelicula + "' Ordenado por '" + fecha + "'", null);
-		
+		int codSala = proyecciones.getCodSala();
+
+		assertNull("CodSala'" + codSala + "'Fecha:'" + fecha + "' de la pelicula: '" + pelicula + "'", null);
+
 	}
+
 
 }
