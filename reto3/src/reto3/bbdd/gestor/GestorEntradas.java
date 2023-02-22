@@ -26,7 +26,7 @@ public class GestorEntradas {
 
 			statement = connection.createStatement();
 
-			String sql = "insert into t_nota (Id, Asignatura, Nota) VALUES ('" + nota.getId() + "', '"
+			String sql = "insert into t_entradas (Id, Asignatura, Nota) VALUES ('" + nota.getId() + "', '"
 					+ nota.getAsignatura() + "', '" + nota.getNota() + "')";
 
 			statement.executeUpdate(sql);
@@ -55,8 +55,7 @@ public class GestorEntradas {
 	public static void agregarDatosEntrada(int fechaSeleccionada , String tituloSeleccionado, JTextField ssTextHora, JTextField ssTextPrecio, JTextField ssTextSala, String nombreCine) {
 
 		GestorEntradas dBAccessExample = new GestorEntradas();
-		
-		/*
+	
 		Entrada entradas = new Entrada();
 		entradas.setFecha(fechaSeleccionada);
 		entradas.setTitulo(tituloSeleccionado);
@@ -64,9 +63,6 @@ public class GestorEntradas {
 		entradas.setPrecio(ssTextPrecio);
 		entradas.setNumSala(ssTextSala);
 		entradas.setNombre(nombreCine);
-		*/
-
-		// dBAccessExample.insertEjemplo(entradas);
 	}
 
 }

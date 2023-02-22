@@ -7,6 +7,8 @@ import reto3.bbdd.pojo.Cine;
 
 class JUnitCinesDisponibles {
 
+	
+
 	@Test
 	void testCineBilbaoTrue() {
 
