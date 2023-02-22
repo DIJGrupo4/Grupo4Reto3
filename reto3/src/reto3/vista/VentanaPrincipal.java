@@ -30,10 +30,8 @@ import reto3.bbdd.gestor.GestorProyecciones;
 import reto3.bbdd.gestor.GestorSalas;
 import reto3.bbdd.gestor.GestorCines;
 import reto3.bbdd.gestor.GestorClientes;
-import reto3.bbdd.gestor.GestorEntradas;
 import reto3.bbdd.pojo.Cine;
 import reto3.bbdd.pojo.Cliente;
-import reto3.bbdd.pojo.Entrada;
 import reto3.bbdd.pojo.Pelicula;
 import reto3.bbdd.pojo.Proyeccion;
 
@@ -53,11 +51,9 @@ public class VentanaPrincipal {
 	private ArrayList<Cine> cines = new ArrayList<Cine>(gestorCines.obtenerTodosLosCines());
 	private ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
 	private ArrayList<Proyeccion> proyecciones = new ArrayList<Proyeccion>();
-	private ArrayList<Entrada> entradas = new ArrayList<Entrada>();
 
-	private int listaFull = 0;
 	private String tituloSeleccionado = null;
-	private int fechaSeleccionada = 0;
+	private Date fechaSeleccionada = null;
 	private Time horaSeleccionada = null;
 	private Float precioSeleccionado = null;
 	private int numSalaSeleccionada = 0;
@@ -65,7 +61,7 @@ public class VentanaPrincipal {
 	private int codCine = 0;
 
 	private DefaultListModel<String> listModel = new DefaultListModel<String>();
-	 DefaultTableModel model = new DefaultTableModel();
+	DefaultTableModel model = new DefaultTableModel();
 
 	private JTextField ssTextTitulo;
 	private JTextField ssTextHora;
@@ -81,6 +77,7 @@ public class VentanaPrincipal {
 
 	private JPasswordField txtUserPass;
 	private JPasswordField txtContras;
+	private JTextField ssTextFecha;
 
 	public static void main(String[] args) {
 
@@ -329,6 +326,16 @@ public class VentanaPrincipal {
 		ssTextTitulo.setBounds(211, 167, 204, 20);
 		ssPanelSeleccionSesiones.add(ssTextTitulo);
 
+		ssTextFecha = new JTextField();
+		ssTextFecha.setEnabled(false);
+		ssTextFecha.setFont(
+				ssTextFecha.getFont().deriveFont(ssTextFecha.getFont().getStyle() & ~Font.BOLD & ~Font.ITALIC));
+		ssTextFecha.setBackground(new Color(255, 255, 255));
+		ssTextFecha.setEditable(false);
+		ssTextFecha.setBounds(425, 103, 107, 22);
+		ssPanelSeleccionSesiones.add(ssTextFecha);
+		ssTextFecha.setColumns(10);
+
 		ssTextHora = new JTextField();
 		ssTextHora.setEditable(false);
 		ssTextHora.setColumns(10);
@@ -402,21 +409,27 @@ public class VentanaPrincipal {
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{},
-				{},
-				{},
-				{},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
 			},
 			new String[] {
+				"NombreCine", "Titulo", "Fecha", "Hora", "Precio", "NumSala"
 			}
-		));
-		table.setBounds(10, 241, 544, 32);
+		) {
+			Class[] columnTypes = new Class[] {
+				String.class, String.class, String.class, String.class, String.class, String.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+		});
+		table.setBounds(10, 241, 544, 178);
 		table.setToolTipText("");
 		table.setBorder(new LineBorder(new Color(0, 0, 0)));
 		ccPanelCarrito.add(table);
-  
 
-		
 		// Action Listeners
 		btnRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -571,17 +584,19 @@ public class VentanaPrincipal {
 		ssComboBoxSesiones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
+				ssTextFecha.setText(proyecciones.get(ssComboBoxSesiones.getSelectedIndex()).getFecha().toString());
 				ssTextHora.setText(proyecciones.get(ssComboBoxSesiones.getSelectedIndex()).getHora().toString());
 				ssTextPrecio.setText(
 						Float.valueOf(proyecciones.get(ssComboBoxSesiones.getSelectedIndex()).getPrecio()).toString());
 				ssTextSala.setText(Integer.toString(gestorSalas
 						.getNumSalaPorCodSala(proyecciones.get(ssComboBoxSesiones.getSelectedIndex()).getCodSala())));
 
-				fechaSeleccionada = ssComboBoxSesiones.getSelectedIndex();
+				fechaSeleccionada = Date.valueOf(ssTextFecha.getText());
 				horaSeleccionada = Time.valueOf(ssTextHora.getText());
 				precioSeleccionado = Float.valueOf(ssTextPrecio.getText());
 				numSalaSeleccionada = Integer.valueOf(ssTextSala.getText());
-	
+				nombreCine = gestorCines.getNombrePorCodCine(codCine);
+
 			}
 		});
 
@@ -599,21 +614,19 @@ public class VentanaPrincipal {
 				scPanelSeleccionCines.setVisible(true);
 				spPanelSeleccionPelis.setVisible(false);
 				ssPanelSeleccionSesiones.setVisible(false);
-		
-				nombreCine = gestorCines.getNombrePorCodCine(codCine);
 				
-				if(table != null){
 				model.addColumn("NombreCine");
-				model.addColumn("Titulo");	
-		        model.addColumn("Fecha");
-		        model.addColumn("Hora");
-		    	model.addColumn("Precio");
-		        model.addColumn("NumSala");
-				}
-				
-		        model.addRow(new Object[]{nombreCine,tituloSeleccionado, fechaSeleccionada, horaSeleccionada, precioSeleccionado, numSalaSeleccionada});
-		        
-		        table.setModel(model);		
+				model.addColumn("Titulo");
+				model.addColumn("Fecha");
+				model.addColumn("Hora");
+				model.addColumn("Precio");
+				model.addColumn("NumSala");
+
+				model.addRow(new Object[] { nombreCine, tituloSeleccionado, fechaSeleccionada, horaSeleccionada,
+						precioSeleccionado, numSalaSeleccionada });
+
+				table.setModel(model);
+
 			}
 		});
 	}
