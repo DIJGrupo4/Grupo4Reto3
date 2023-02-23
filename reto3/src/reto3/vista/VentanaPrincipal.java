@@ -399,8 +399,8 @@ public class VentanaPrincipal {
 		ssComboBoxSesiones.setBounds(211, 103, 204, 22);
 		ssPanelSeleccionSesiones.add(ssComboBoxSesiones);
 
-		JComboBox<?> comboBoxSexo = new JComboBox();
-		comboBoxSexo.setModel(new DefaultComboBoxModel(new String[] { "Seleccione", "Hombre", "Mujer" }));
+		JComboBox<String> comboBoxSexo = new JComboBox<String>();
+		comboBoxSexo.setModel(new DefaultComboBoxModel<String>(new String[] { "Seleccione", "Hombre", "Mujer" }));
 		comboBoxSexo.setBounds(125, 286, 86, 22);
 		rPanelRegistro.add(comboBoxSexo);
 
