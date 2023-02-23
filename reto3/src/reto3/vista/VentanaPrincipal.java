@@ -407,24 +407,6 @@ public class VentanaPrincipal {
 		// JTable
 
 		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-			},
-			new String[] {
-				"NombreCine", "Titulo", "Fecha", "Hora", "Precio", "NumSala"
-			}
-		) {
-			Class[] columnTypes = new Class[] {
-				String.class, String.class, String.class, String.class, String.class, String.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
 		table.setBounds(10, 241, 544, 178);
 		table.setToolTipText("");
 		table.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -506,6 +488,14 @@ public class VentanaPrincipal {
 				scPanelSeleccionCines.setVisible(true);
 				spPanelSeleccionPelis.setVisible(false);
 				ssPanelSeleccionSesiones.setVisible(false);
+				
+				model.addColumn("NombreCine");
+				model.addColumn("Titulo");
+				model.addColumn("Fecha");
+				model.addColumn("Hora");
+				model.addColumn("Precio");
+				model.addColumn("NumSala");
+				
 			}
 		});
 
@@ -614,13 +604,6 @@ public class VentanaPrincipal {
 				scPanelSeleccionCines.setVisible(true);
 				spPanelSeleccionPelis.setVisible(false);
 				ssPanelSeleccionSesiones.setVisible(false);
-				
-				model.addColumn("NombreCine");
-				model.addColumn("Titulo");
-				model.addColumn("Fecha");
-				model.addColumn("Hora");
-				model.addColumn("Precio");
-				model.addColumn("NumSala");
 
 				model.addRow(new Object[] { nombreCine, tituloSeleccionado, fechaSeleccionada, horaSeleccionada,
 						precioSeleccionado, numSalaSeleccionada });
