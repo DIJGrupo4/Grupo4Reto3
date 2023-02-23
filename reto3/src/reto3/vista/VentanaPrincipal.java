@@ -259,7 +259,7 @@ public class VentanaPrincipal {
 		// Buttons
 
 		JButton bBotonBienvenida = new JButton("BIENVENIDO");
-		bBotonBienvenida.setIcon(new ImageIcon("C:\\Users\\in1daw\\git\\Grupo4Reto3.1\\reto3\\img\\bienvenida.png"));
+		bBotonBienvenida.setIcon(new ImageIcon("img/bienvenida.png"));
 		bBotonBienvenida.setForeground(Color.BLACK);
 		bBotonBienvenida.setFont(new Font("Yu Gothic", Font.PLAIN, 50));
 		bBotonBienvenida.setFocusable(false);
