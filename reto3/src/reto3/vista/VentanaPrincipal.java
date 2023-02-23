@@ -136,23 +136,23 @@ public class VentanaPrincipal {
 		ssPanelSeleccionSesiones.setVisible(false);
 		frame.getContentPane().add(ssPanelSeleccionSesiones);
 
-		JPanel panelRegistro = new JPanel();
-		panelRegistro.setBounds(0, 0, 564, 441);
-		frame.getContentPane().add(panelRegistro);
-		panelRegistro.setLayout(null);
-		panelRegistro.setVisible(false);
+		JPanel rPanelRegistro = new JPanel();
+		rPanelRegistro.setBounds(0, 0, 564, 441);
+		frame.getContentPane().add(rPanelRegistro);
+		rPanelRegistro.setLayout(null);
+		rPanelRegistro.setVisible(false);
 
-		JPanel ccPanelCarrito = new JPanel();
-		ccPanelCarrito.setBounds(0, 0, 564, 441);
-		frame.getContentPane().add(ccPanelCarrito);
-		ccPanelCarrito.setLayout(null);
-		ccPanelCarrito.setVisible(false);
+		JPanel cPanelCarrito = new JPanel();
+		cPanelCarrito.setBounds(0, 0, 564, 441);
+		frame.getContentPane().add(cPanelCarrito);
+		cPanelCarrito.setLayout(null);
+		cPanelCarrito.setVisible(false);
 
-		JPanel panelLogin = new JPanel();
-		panelLogin.setBounds(0, 0, 564, 441);
-		frame.getContentPane().add(panelLogin);
-		panelLogin.setVisible(false);
-		panelLogin.setLayout(null);
+		JPanel lPanelLogin = new JPanel();
+		lPanelLogin.setBounds(0, 0, 564, 441);
+		frame.getContentPane().add(lPanelLogin);
+		lPanelLogin.setVisible(false);
+		lPanelLogin.setLayout(null);
 
 		// JLabels
 
@@ -204,36 +204,36 @@ public class VentanaPrincipal {
 		JLabel lblNewLabel = new JLabel("Regristrarme");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel.setBounds(145, 11, 135, 26);
-		panelRegistro.add(lblNewLabel);
+		rPanelRegistro.add(lblNewLabel);
 
 		JLabel lblNewLabelNombre = new JLabel("Nombre");
 		lblNewLabelNombre.setBounds(81, 208, 46, 14);
-		panelRegistro.add(lblNewLabelNombre);
+		rPanelRegistro.add(lblNewLabelNombre);
 
 		JLabel lblNewLabelApellido = new JLabel("Apellido");
 		lblNewLabelApellido.setBounds(81, 233, 46, 14);
-		panelRegistro.add(lblNewLabelApellido);
+		rPanelRegistro.add(lblNewLabelApellido);
 
 		JLabel lblNewLabelDni = new JLabel("DNI");
 		lblNewLabelDni.setBounds(81, 261, 46, 14);
-		panelRegistro.add(lblNewLabelDni);
+		rPanelRegistro.add(lblNewLabelDni);
 
 		JLabel lblNewLabelSexo = new JLabel("Sexo");
 		lblNewLabelSexo.setBounds(81, 286, 46, 14);
-		panelRegistro.add(lblNewLabelSexo);
+		rPanelRegistro.add(lblNewLabelSexo);
 
 		JLabel lblNewLabelUsuario = new JLabel("Usuario");
 		lblNewLabelUsuario.setBounds(293, 236, 46, 14);
-		panelRegistro.add(lblNewLabelUsuario);
+		rPanelRegistro.add(lblNewLabelUsuario);
 
 		JLabel lblNewLabelContraseña = new JLabel("Contraseña");
 		lblNewLabelContraseña.setBounds(283, 279, 56, 14);
-		panelRegistro.add(lblNewLabelContraseña);
+		rPanelRegistro.add(lblNewLabelContraseña);
 
 		JLabel lblCarrito = new JLabel("CARRITO");
 		lblCarrito.setBounds(243, 81, 89, 48);
 		lblCarrito.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		ccPanelCarrito.add(lblCarrito);
+		cPanelCarrito.add(lblCarrito);
 
 		JLabel spLblNombreCine = new JLabel("*");
 		spLblNombreCine.setBounds(200, 30, 200, 14);
@@ -242,19 +242,19 @@ public class VentanaPrincipal {
 		JLabel lblLogin = new JLabel("LOGIN");
 		lblLogin.setBounds(249, 100, 66, 30);
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		panelLogin.add(lblLogin);
+		lPanelLogin.add(lblLogin);
 
 		JLabel lblNewLabel_1 = new JLabel("Usuario");
 		lblNewLabel_1.setBounds(238, 172, 46, 14);
-		panelLogin.add(lblNewLabel_1);
+		lPanelLogin.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_2 = new JLabel("Contraseña");
 		lblNewLabel_2.setBounds(238, 234, 72, 14);
-		panelLogin.add(lblNewLabel_2);
+		lPanelLogin.add(lblNewLabel_2);
 
 		JLabel lblNewLabel_3 = new JLabel("¿No tienes cuenta? Registrate gratis");
 		lblNewLabel_3.setBounds(193, 15, 184, 14);
-		panelLogin.add(lblNewLabel_3);
+		lPanelLogin.add(lblNewLabel_3);
 
 		// Buttons
 
@@ -292,31 +292,31 @@ public class VentanaPrincipal {
 
 		JButton btnAtrasRegistro = new JButton("Atrás");
 		btnAtrasRegistro.setBounds(181, 361, 89, 23);
-		panelRegistro.add(btnAtrasRegistro);
+		rPanelRegistro.add(btnAtrasRegistro);
 
 		JButton btnAceptarRegistro = new JButton("Aceptar");
 		btnAceptarRegistro.setBounds(349, 361, 89, 23);
-		panelRegistro.add(btnAceptarRegistro);
+		rPanelRegistro.add(btnAceptarRegistro);
 
 		JButton btnPagarCarrito = new JButton("Pagar");
 		btnPagarCarrito.setBounds(411, 85, 89, 23);
-		ccPanelCarrito.add(btnPagarCarrito);
+		cPanelCarrito.add(btnPagarCarrito);
 
 		JButton btnAtrasCarrito = new JButton("Atrás");
 		btnAtrasCarrito.setBounds(10, 81, 89, 23);
-		ccPanelCarrito.add(btnAtrasCarrito);
+		cPanelCarrito.add(btnAtrasCarrito);
 
 		JButton btnRegistrarse = new JButton("Registrarme");
 		btnRegistrarse.setBounds(440, 11, 104, 23);
-		panelLogin.add(btnRegistrarse);
+		lPanelLogin.add(btnRegistrarse);
 
 		JButton btnAccederCuenta = new JButton("Acceder");
 		btnAccederCuenta.setBounds(221, 334, 89, 23);
-		panelLogin.add(btnAccederCuenta);
+		lPanelLogin.add(btnAccederCuenta);
 
 		JButton btnAtrasLogin = new JButton("Atrás");
 		btnAtrasLogin.setBounds(10, 11, 89, 23);
-		panelLogin.add(btnAtrasLogin);
+		lPanelLogin.add(btnAtrasLogin);
 
 		// TextFields
 
@@ -356,36 +356,36 @@ public class VentanaPrincipal {
 
 		txtNombre = new JTextField();
 		txtNombre.setBounds(125, 205, 86, 20);
-		panelRegistro.add(txtNombre);
+		rPanelRegistro.add(txtNombre);
 		txtNombre.setColumns(10);
 
 		txtApellido = new JTextField();
 		txtApellido.setBounds(125, 233, 86, 20);
-		panelRegistro.add(txtApellido);
+		rPanelRegistro.add(txtApellido);
 		txtApellido.setColumns(10);
 
 		txtDni = new JTextField();
 		txtDni.setBounds(125, 258, 86, 20);
-		panelRegistro.add(txtDni);
+		rPanelRegistro.add(txtDni);
 		txtDni.setColumns(10);
 
 		txtUsuario = new JTextField();
 		txtUsuario.setBounds(349, 235, 86, 20);
-		panelRegistro.add(txtUsuario);
+		rPanelRegistro.add(txtUsuario);
 		txtUsuario.setColumns(10);
 
 		txtContras = new JPasswordField();
 		txtContras.setBounds(349, 276, 90, 20);
-		panelRegistro.add(txtContras);
+		rPanelRegistro.add(txtContras);
 
 		txtUserLogin = new JTextField();
 		txtUserLogin.setBounds(221, 197, 86, 20);
-		panelLogin.add(txtUserLogin);
+		lPanelLogin.add(txtUserLogin);
 		txtUserLogin.setColumns(10);
 
 		txtUserPass = new JPasswordField();
 		txtUserPass.setBounds(221, 259, 86, 20);
-		panelLogin.add(txtUserPass);
+		lPanelLogin.add(txtUserPass);
 
 		// JLists
 
@@ -402,7 +402,7 @@ public class VentanaPrincipal {
 		JComboBox<?> comboBoxSexo = new JComboBox();
 		comboBoxSexo.setModel(new DefaultComboBoxModel(new String[] { "Seleccione", "Hombre", "Mujer" }));
 		comboBoxSexo.setBounds(125, 286, 86, 22);
-		panelRegistro.add(comboBoxSexo);
+		rPanelRegistro.add(comboBoxSexo);
 
 		// JTable
 
@@ -428,13 +428,13 @@ public class VentanaPrincipal {
 		table.setBounds(10, 241, 544, 178);
 		table.setToolTipText("");
 		table.setBorder(new LineBorder(new Color(0, 0, 0)));
-		ccPanelCarrito.add(table);
+		cPanelCarrito.add(table);
 
 		// Action Listeners
 		btnRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelLogin.setVisible(false);
-				panelRegistro.setVisible(true);
+				lPanelLogin.setVisible(false);
+				rPanelRegistro.setVisible(true);
 			}
 		});
 
@@ -443,7 +443,7 @@ public class VentanaPrincipal {
 				GestorClientes gestCli = new GestorClientes();
 				String pwd = new String(txtUserPass.getPassword());
 				if (gestCli.validarLogin(txtUserLogin.getText(), pwd)) {
-					panelLogin.setVisible(false);
+					lPanelLogin.setVisible(false);
 
 				}
 
@@ -452,22 +452,22 @@ public class VentanaPrincipal {
 
 		btnAtrasLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelLogin.setVisible(false);
+				lPanelLogin.setVisible(false);
 				spPanelSeleccionPelis.setVisible(true);
 			}
 		});
 
 		btnPagarCarrito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelLogin.setVisible(true);
-				ccPanelCarrito.setVisible(false);
+				lPanelLogin.setVisible(true);
+				cPanelCarrito.setVisible(false);
 			}
 		});
 
 		btnAtrasCarrito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				spPanelSeleccionPelis.setVisible(true);
-				ccPanelCarrito.setVisible(false);
+				cPanelCarrito.setVisible(false);
 			}
 		});
 
@@ -488,15 +488,15 @@ public class VentanaPrincipal {
 
 				JFrame jFrame = new JFrame();
 				JOptionPane.showMessageDialog(jFrame, "Cuenta creada");
-				panelRegistro.setVisible(false);
-				panelLogin.setVisible(true);
+				rPanelRegistro.setVisible(false);
+				lPanelLogin.setVisible(true);
 			}
 		});
 
 		btnAtrasRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelRegistro.setVisible(false);
-				panelLogin.setVisible(true);
+				rPanelRegistro.setVisible(false);
+				lPanelLogin.setVisible(true);
 			}
 		});
 
@@ -523,7 +523,7 @@ public class VentanaPrincipal {
 					System.exit(0);
 				} else {
 					scPanelSeleccionCines.setVisible(false);
-					ccPanelCarrito.setVisible(true);
+					cPanelCarrito.setVisible(true);
 				}
 			}
 		});
