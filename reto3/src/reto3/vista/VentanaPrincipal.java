@@ -53,6 +53,7 @@ public class VentanaPrincipal {
 	private ArrayList<Cine> cines = new ArrayList<Cine>(gestorCines.obtenerTodosLosCines());
 	private ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
 	private ArrayList<Proyeccion> proyecciones = new ArrayList<Proyeccion>();
+	private ArrayList precios = new ArrayList();
 
 	private String tituloSeleccionado = null;
 	private Date fechaSeleccionada = null;
@@ -61,7 +62,7 @@ public class VentanaPrincipal {
 	private int numSalaSeleccionada = 0;
 	private String nombreCine = null;
 	private int codCine = 0;
-	private Float precioTotal = null;
+	private Object precioTotal = null;
 
 	private DefaultListModel<String> listModel = new DefaultListModel<String>();
 	DefaultTableModel model = new DefaultTableModel();
@@ -71,6 +72,7 @@ public class VentanaPrincipal {
 	private JTextField ssTextPrecio;
 	private JTextField ssTextSala;
 	private JTable table;
+	private JLabel lblPrecioTotal;
 
 	private JTextField txtNombre = null;
 	private JTextField txtApellido = null;
@@ -646,15 +648,24 @@ public class VentanaPrincipal {
 				spPanelSeleccionPelis.setVisible(false);
 				ssPanelSeleccionSesiones.setVisible(false);
 				
-
+				precios.add(precioSeleccionado);
+				
 				model.addRow(new Object[] { nombreCine, tituloSeleccionado, fechaSeleccionada, horaSeleccionada,
 						precioSeleccionado, numSalaSeleccionada });
-				
-				lblPrecioTotal.setText((precioTotal).toString());
 
 				table.setModel(model);
-
+				
+				for (int i = 0; i < precios.size(); i++) {
+					
+					precioTotal = precios + precios.get(i);
+	
+					
+				}
+				
+				lblPrecioTotal.setText((precioTotal).toString());
 			}
 		});
+
 	}
+
 }
