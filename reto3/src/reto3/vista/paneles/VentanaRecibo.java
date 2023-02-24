@@ -16,9 +16,6 @@ public class VentanaRecibo {
 
 	private JFrame frame;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -32,16 +29,10 @@ public class VentanaRecibo {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public VentanaRecibo() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		
 		CrearUsuario cu = new CrearUsuario();
@@ -65,13 +56,17 @@ public class VentanaRecibo {
 		lblTituloRecibo.setBounds(228, 7, 78, 53);
 		panelRecibo.add(lblTituloRecibo);
 		
-		JLabel lblNombreUsuarioRecibo = new JLabel(cu.txtNombre.toString());
-		lblNombreUsuarioRecibo.setBounds(447, 23, 61, 21);
-		panelRecibo.add(lblNombreUsuarioRecibo);
+		JLabel lblPrecio = new JLabel("Precio Total:");
+		lblPrecio.setBounds(197, 104, 66, 21);
+		panelRecibo.add(lblPrecio);
 		
 		JLabel lblImagenRecibo = new JLabel("");
 		lblImagenRecibo.setBounds(194, 248, 159, 165);
 		RSScaleLabel.setScaleLabel(lblImagenRecibo, "img/pago.png");
 		panelRecibo.add(lblImagenRecibo);
+		
+		JLabel lblPrecioTotal = new JLabel("");
+		lblPrecioTotal.setBounds(284, 111, 46, 14);
+		panelRecibo.add(lblPrecioTotal);
 	}
 }
