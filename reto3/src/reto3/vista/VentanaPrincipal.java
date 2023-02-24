@@ -645,12 +645,11 @@ public class VentanaPrincipal {
 				scPanelSeleccionCines.setVisible(true);
 				spPanelSeleccionPelis.setVisible(false);
 				ssPanelSeleccionSesiones.setVisible(false);
+				
 
 				model.addRow(new Object[] { nombreCine, tituloSeleccionado, fechaSeleccionada, horaSeleccionada,
 						precioSeleccionado, numSalaSeleccionada });
-
-				precioTotal = precioSeleccionado + precioSeleccionado;
-
+				
 				lblPrecioTotal.setText((precioTotal).toString());
 
 				table.setModel(model);
