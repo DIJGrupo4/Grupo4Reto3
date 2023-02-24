@@ -61,7 +61,7 @@ public class VentanaPrincipal {
 	private int numSalaSeleccionada = 0;
 	private String nombreCine = null;
 	private int codCine = 0;
-	private float precioTotal = 0;
+	private Float precioTotal = null;
 
 	private DefaultListModel<String> listModel = new DefaultListModel<String>();
 	DefaultTableModel model = new DefaultTableModel();
@@ -101,9 +101,9 @@ public class VentanaPrincipal {
 	}
 
 	private void initialize() {
-		
+
 		CrearUsuario crearUsuario = new CrearUsuario();
-		
+
 		frame = new JFrame();
 		frame.getContentPane().setEnabled(false);
 		frame.setBackground(SystemColor.text);
@@ -159,7 +159,7 @@ public class VentanaPrincipal {
 		frame.getContentPane().add(lPanelLogin);
 		lPanelLogin.setVisible(false);
 		lPanelLogin.setLayout(null);
-		
+
 		JPanel panelRecibo = new JPanel();
 		panelRecibo.setBounds(0, 0, 564, 441);
 		frame.getContentPane().add(panelRecibo);
@@ -267,23 +267,23 @@ public class VentanaPrincipal {
 		JLabel lblNewLabel_3 = new JLabel("¿No tienes cuenta? Registrate gratis");
 		lblNewLabel_3.setBounds(193, 15, 184, 14);
 		lPanelLogin.add(lblNewLabel_3);
-		
+
 		JLabel lblTituloRecibo = new JLabel("RECIBO");
 		lblTituloRecibo.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblTituloRecibo.setBounds(228, 7, 78, 53);
 		panelRecibo.add(lblTituloRecibo);
-		
+
 		JLabel lblPrecio = new JLabel("Precio Total:");
 		lblPrecio.setBounds(177, 104, 86, 21);
 		panelRecibo.add(lblPrecio);
-		
+
 		JLabel lblImagenRecibo = new JLabel("");
 		lblImagenRecibo.setBounds(194, 248, 159, 165);
 		RSScaleLabel.setScaleLabel(lblImagenRecibo, "img/pago.png");
 		panelRecibo.add(lblImagenRecibo);
-		
+
 		JLabel lblPrecioTotal = new JLabel("");
-		lblPrecioTotal.setBounds(284, 111, 46, 14);
+		lblPrecioTotal.setBounds(284, 104, 58, 21);
 		panelRecibo.add(lblPrecioTotal);
 
 		// Buttons
@@ -347,7 +347,7 @@ public class VentanaPrincipal {
 		JButton btnAtrasLogin = new JButton("Atrás");
 		btnAtrasLogin.setBounds(10, 11, 89, 23);
 		lPanelLogin.add(btnAtrasLogin);
-		
+
 		JButton btnImprimirRecibo = new JButton("IMPRIMIR RECIBO");
 		btnImprimirRecibo.setBounds(197, 156, 145, 42);
 		panelRecibo.add(btnImprimirRecibo);
@@ -468,6 +468,7 @@ public class VentanaPrincipal {
 
 		btnAtrasLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				lPanelLogin.setVisible(false);
 				spPanelSeleccionPelis.setVisible(true);
 			}
@@ -475,17 +476,19 @@ public class VentanaPrincipal {
 
 		btnPagarCarrito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				lPanelLogin.setVisible(true);
 				cPanelCarrito.setVisible(false);
+
 			}
+
 		});
 
 		btnAtrasCarrito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				table.removeAll();
-				
+
 				spPanelSeleccionPelis.setVisible(true);
 				cPanelCarrito.setVisible(false);
 			}
@@ -526,14 +529,14 @@ public class VentanaPrincipal {
 				scPanelSeleccionCines.setVisible(true);
 				spPanelSeleccionPelis.setVisible(false);
 				ssPanelSeleccionSesiones.setVisible(false);
-				
+
 				model.addColumn("NombreCine");
 				model.addColumn("Titulo");
 				model.addColumn("Fecha");
 				model.addColumn("Hora");
 				model.addColumn("Precio");
 				model.addColumn("NumSala");
-				
+
 			}
 		});
 
@@ -645,6 +648,10 @@ public class VentanaPrincipal {
 
 				model.addRow(new Object[] { nombreCine, tituloSeleccionado, fechaSeleccionada, horaSeleccionada,
 						precioSeleccionado, numSalaSeleccionada });
+
+				precioTotal = precioSeleccionado + precioSeleccionado;
+
+				lblPrecioTotal.setText((precioTotal).toString());
 
 				table.setModel(model);
 
