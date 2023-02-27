@@ -57,14 +57,11 @@ public class GestorEntradas {
 	}
 
 	public static void agregarDatosEntrada(int codProyeccion, int codRecibo) {
-
-		GestorEntradas dBAccessExample = new GestorEntradas();
 	
 		Entrada entradas = new Entrada();
 		entradas.setCodProyeccion(codProyeccion);
 		entradas.setCodRecibo(codRecibo);
 		
-		dBAccessExample.insertEjemplo(codProyeccion);
 	}
 
 }

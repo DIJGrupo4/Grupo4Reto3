@@ -666,8 +666,6 @@ public class VentanaPrincipal {
 
 				entradas = gestorEntradas.insertEjemplo(codProyeccion);
 
-				gestorEntradas.agregarDatosEntrada(codProyeccion, codRecibo);
-
 			}
 		});
 
