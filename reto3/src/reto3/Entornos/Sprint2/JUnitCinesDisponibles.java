@@ -1,4 +1,4 @@
-package reto3.Entornos.2Sprint;
+package reto3.Entornos.Sprint2;
 
 import static org.junit.Assert.*;
 
