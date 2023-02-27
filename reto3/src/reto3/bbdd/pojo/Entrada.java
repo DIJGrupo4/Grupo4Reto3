@@ -7,7 +7,11 @@ public class Entrada {
 
 	// Clave primaria
 	private int codEntrada = 0;
-	
+
+	// Atributos
+	private int codProyeccion = 0;
+	private int codRecibo = 0;
+
 	// Relacion 1:N con Proyeccion
 	private ArrayList<Proyeccion> proyecciones = null;
 
@@ -17,6 +21,22 @@ public class Entrada {
 
 	public void setCodEntrada(int codEntrada) {
 		this.codEntrada = codEntrada;
+	}
+
+	public int getCodProyeccion() {
+		return codProyeccion;
+	}
+
+	public void setCodProyeccion(int codProyeccion) {
+		this.codProyeccion = codProyeccion;
+	}
+
+	public int getCodRecibo() {
+		return codRecibo;
+	}
+
+	public void setCodRecibo(int codRecibo) {
+		this.codRecibo = codRecibo;
 	}
 
 	public ArrayList<Proyeccion> getProyecciones() {
@@ -29,7 +49,7 @@ public class Entrada {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(codEntrada, proyecciones);
+		return Objects.hash(codEntrada, codProyeccion, codRecibo, proyecciones);
 	}
 
 	@Override
@@ -41,12 +61,14 @@ public class Entrada {
 		if (getClass() != obj.getClass())
 			return false;
 		Entrada other = (Entrada) obj;
-		return codEntrada == other.codEntrada && Objects.equals(proyecciones, other.proyecciones);
+		return codEntrada == other.codEntrada && codProyeccion == other.codProyeccion && codRecibo == other.codRecibo
+				&& Objects.equals(proyecciones, other.proyecciones);
 	}
 
 	@Override
 	public String toString() {
-		return "Entrada [codEntrada=" + codEntrada + ", proyecciones=" + proyecciones + "]";
+		return "Entrada [codEntrada=" + codEntrada + ", codProyeccion=" + codProyeccion + ", codRecibo=" + codRecibo
+				+ ", proyecciones=" + proyecciones + "]";
 	}
 
 }

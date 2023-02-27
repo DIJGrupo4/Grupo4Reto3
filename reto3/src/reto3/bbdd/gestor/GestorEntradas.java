@@ -2,18 +2,22 @@ package reto3.bbdd.gestor;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.swing.JTextField;
 
 import reto3.bbdd.pojo.Entrada;
+import reto3.bbdd.pojo.Sala;
 import reto3.bbdd.utils.DBUtils;
 
 public class GestorEntradas {
 
-	private void insertEjemplo(Entrada entradas) {
+	public ArrayList<Entrada> insertEjemplo(int codProyeccion) {
 
+		int codRecibo = 1;
 		Connection connection = null;
 
 		Statement statement = null;
@@ -26,8 +30,7 @@ public class GestorEntradas {
 
 			statement = connection.createStatement();
 
-			String sql = "insert into t_entradas (Id, Asignatura, Nota) VALUES ('" + nota.getId() + "', '"
-					+ nota.getAsignatura() + "', '" + nota.getNota() + "')";
+			String sql = "insert into t_entrada (CodProyeccion, CodRecibo) VALUES ('" + codProyeccion + "','" + codRecibo + "')";
 
 			statement.executeUpdate(sql);
 
@@ -50,19 +53,18 @@ public class GestorEntradas {
 			}
 			;
 		}
+		return null;
 	}
 
-	public static void agregarDatosEntrada(int fechaSeleccionada , String tituloSeleccionado, JTextField ssTextHora, JTextField ssTextPrecio, JTextField ssTextSala, String nombreCine) {
+	public static void agregarDatosEntrada(int codProyeccion, int codRecibo) {
 
 		GestorEntradas dBAccessExample = new GestorEntradas();
 	
 		Entrada entradas = new Entrada();
-		entradas.setFecha(fechaSeleccionada);
-		entradas.setTitulo(tituloSeleccionado);
-		entradas.setHora(ssTextHora);
-		entradas.setPrecio(ssTextPrecio);
-		entradas.setNumSala(ssTextSala);
-		entradas.setNombre(nombreCine);
+		entradas.setCodProyeccion(codProyeccion);
+		entradas.setCodRecibo(codRecibo);
+		
+		dBAccessExample.insertEjemplo(codProyeccion);
 	}
 
 }

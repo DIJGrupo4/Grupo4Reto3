@@ -6,6 +6,9 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -30,10 +33,13 @@ import reto3.bbdd.gestor.GestorProyecciones;
 import reto3.bbdd.gestor.GestorSalas;
 import reto3.bbdd.gestor.GestorCines;
 import reto3.bbdd.gestor.GestorClientes;
+import reto3.bbdd.gestor.GestorEntradas;
 import reto3.bbdd.pojo.Cine;
 import reto3.bbdd.pojo.Cliente;
+import reto3.bbdd.pojo.Entrada;
 import reto3.bbdd.pojo.Pelicula;
 import reto3.bbdd.pojo.Proyeccion;
+import reto3.controlador.GestorFichero;
 import reto3.vista.paneles.CrearUsuario;
 import rsscalelabel.RSScaleLabel;
 
@@ -49,20 +55,23 @@ public class VentanaPrincipal {
 	private GestorPeliculas gestorPeliculas = new GestorPeliculas();
 	private GestorProyecciones gestorProyecciones = new GestorProyecciones();
 	private GestorSalas gestorSalas = new GestorSalas();
+	private GestorEntradas gestorEntradas = new GestorEntradas();
 
 	private ArrayList<Cine> cines = new ArrayList<Cine>(gestorCines.obtenerTodosLosCines());
 	private ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
 	private ArrayList<Proyeccion> proyecciones = new ArrayList<Proyeccion>();
-	private ArrayList precios = new ArrayList();
+	private ArrayList<Entrada> entradas = new ArrayList<Entrada>();
 
-	private String tituloSeleccionado = null;
-	private Date fechaSeleccionada = null;
-	private Time horaSeleccionada = null;
-	private Float precioSeleccionado = null;
-	private int numSalaSeleccionada = 0;
-	private String nombreCine = null;
-	private int codCine = 0;
-	private Object precioTotal = null;
+	public String tituloSeleccionado = null;
+	public Date fechaSeleccionada = null;
+	public Time horaSeleccionada = null;
+	public Float precioSeleccionado = null;
+	public int numSalaSeleccionada = 0;
+	public String nombreCine = null;
+	public int codCine = 0;
+	public Float precioTotal = null;
+	private int codProyeccion = 0;
+	private int codRecibo = 0;
 
 	private DefaultListModel<String> listModel = new DefaultListModel<String>();
 	DefaultTableModel model = new DefaultTableModel();
@@ -102,7 +111,7 @@ public class VentanaPrincipal {
 		initialize();
 	}
 
-	private void initialize() {
+	public void initialize() {
 
 		CrearUsuario crearUsuario = new CrearUsuario();
 
@@ -444,7 +453,6 @@ public class VentanaPrincipal {
 
 		table = new JTable();
 		table.setBounds(10, 241, 544, 178);
-		table.setToolTipText("");
 		table.setBorder(new LineBorder(new Color(0, 0, 0)));
 		cPanelCarrito.add(table);
 
@@ -647,20 +655,52 @@ public class VentanaPrincipal {
 				scPanelSeleccionCines.setVisible(true);
 				spPanelSeleccionPelis.setVisible(false);
 				ssPanelSeleccionSesiones.setVisible(false);
-				
-				precios.add(precioSeleccionado);
-				
+
 				model.addRow(new Object[] { nombreCine, tituloSeleccionado, fechaSeleccionada, horaSeleccionada,
-						precioSeleccionado, numSalaSeleccionada });
+						numSalaSeleccionada, precioSeleccionado });
 
 				table.setModel(model);
+
+				codProyeccion = gestorProyecciones.getCodProyeccionPorSala(nombreCine, tituloSeleccionado,
+						fechaSeleccionada, horaSeleccionada, numSalaSeleccionada, precioSeleccionado);
 				
-				for (int i = 0; i < precios.size(); i++) {
-					
-		
+				entradas = gestorEntradas.insertEjemplo(codProyeccion);
+				
+				gestorEntradas.agregarDatosEntrada(codProyeccion, codRecibo);
+			}
+		});
+
+		btnImprimirRecibo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				FileWriter fichero = null;
+				PrintWriter pw = null;
+				try {
+					fichero = new FileWriter("C:\\Users\\in1dw3\\Desktop\\ImprimirRecibo.txt");
+				} catch (IOException e2) {
+					e2.printStackTrace();
 				}
+				pw = new PrintWriter(fichero);
+				pw.println(nombreCine);
+				pw.println(tituloSeleccionado);
+				pw.println(fechaSeleccionada);
+				pw.println(horaSeleccionada);
+				pw.println(numSalaSeleccionada);
+				pw.println(precioSeleccionado);
+				try {
+					fichero.close();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+
+				JFrame jFrame = new JFrame();
+				JOptionPane.showMessageDialog(jFrame, "Impreso");
+
+				model.removeRow(0);
 				
-				lblPrecioTotal.setText((precioTotal).toString());
+				bPanelBienvenida.setVisible(true);
+				panelRecibo.setVisible(false);
+
 			}
 		});
 
