@@ -1,48 +1,44 @@
-package reto3.Entornos;
+package reto3.Entornos.Sprint2;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
+import reto3.bbdd.gestor.GestorProyecciones;
 import reto3.bbdd.pojo.Pelicula;
 import reto3.bbdd.pojo.Proyeccion;
 
 class jUnitPrecioPeli {
 
 	@Test
-	void testPrecioTrue() {
+	void testPrecioPeli() {
 
-		Pelicula peliculas = new Pelicula();
-		String pelicula = peliculas.getTitulo();
+		String tituloSeleccionado = null;
+		int codCine = 0;
 
-		Proyeccion proyecciones = new Proyeccion();
-		Float precio = proyecciones.getPrecio();
-		assertTrue("Precio:'" + precio + "' de la pelicula: '" + pelicula + "'", true);
-	}
+		GestorProyecciones gestorProyecciones = new GestorProyecciones();
+		ArrayList<Proyeccion> proyeccion = null;
 
-	@Test
-	void testPrecioFalse() {
+		proyeccion = gestorProyecciones.obtenerProyeccionesPorPelicula(tituloSeleccionado, codCine);
 
-		Pelicula peliculas = new Pelicula();
-		String pelicula = peliculas.getTitulo();
+		if (null == proyeccion) {
+			fail("El metodo no devuelve ninguna proyeccion");
+		} else {
+			assertEquals(4, proyeccion.size());
 
-		Proyeccion proyecciones = new Proyeccion();
-		Float precio = proyecciones.getPrecio();
-		assertFalse("Precio no esta:'" + precio + "' de la pelicula no existe: '" + pelicula + "'", false);
-	}
+			float precio = proyeccion.get(0).getPrecio();
 
-	@Test
-	void testPrecioNull() {
+			assertEquals("5", precio);
 
-		Pelicula peliculas = new Pelicula();
-		String pelicula = peliculas.getTitulo();
-
-		Proyeccion proyecciones = new Proyeccion();
-		Float precio = proyecciones.getPrecio();
-		assertNull("Precio no esta:'" + precio + "' de la pelicula no existe: '" + pelicula + "'", null);
-
+		}
 	}
 
 }

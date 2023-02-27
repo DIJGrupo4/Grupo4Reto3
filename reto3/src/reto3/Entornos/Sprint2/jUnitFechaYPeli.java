@@ -1,53 +1,46 @@
-package reto3.Entornos;
+package reto3.Entornos.Sprint2;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Date;
+import java.sql.Time;
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
+import reto3.bbdd.gestor.GestorCines;
+import reto3.bbdd.gestor.GestorPeliculas;
+import reto3.bbdd.gestor.GestorProyecciones;
+import reto3.bbdd.pojo.Cine;
 import reto3.bbdd.pojo.Pelicula;
 import reto3.bbdd.pojo.Proyeccion;
 
 class jUnitFechaYPeli {
 
 	@Test
-	void testFechaYPeliTrue() {
+	void testProyeccionPorPeliYFecha() {
 
-		Pelicula peliculas = new Pelicula();
-		String pelicula = peliculas.getTitulo();
+		int codCine = 0;
+		String tituloSeleccionado = null;
 
-		Proyeccion proyecciones = new Proyeccion();
-		Date fecha = proyecciones.getFecha();
+		GestorCines gestorCines = new GestorCines();
+		ArrayList<Cine> cine = null;
+		cine = gestorCines.obtenerTodosLosCines();
 
-		assertTrue("Fecha:'" + fecha + "' de la pelicula: '" + pelicula + "'", true);
+		GestorPeliculas gestorPeliculas = new GestorPeliculas();
+		ArrayList<Pelicula> pelicula = null;
+		pelicula = gestorPeliculas.obtenerPeliculaPorCine(codCine);
+
+		GestorProyecciones gestorProyecciones = new GestorProyecciones();
+		ArrayList<Proyeccion> proyeccion = null;
+		proyeccion = gestorProyecciones.obtenerProyeccionesPorPelicula(tituloSeleccionado, codCine);
+		boolean estaOrdenado = true;
+
+		for (int i = 1; i < proyeccion.size(); i++) {
+			Time hora = proyeccion.get(i).getHora();
+		}
+		
+		assertNull(proyeccion);
+		assertTrue(estaOrdenado);
 	}
-
-	@Test
-	void testFechaYPeliFalse() {
-
-		Pelicula peliculas = new Pelicula();
-		String pelicula = peliculas.getTitulo();
-
-		Proyeccion proyecciones = new Proyeccion();
-		Date fecha = proyecciones.getFecha();
-
-		assertFalse("Fecha no existe:'" + fecha + "' de la pelicula no existe: '" + pelicula + "'", false);
-	}
-
-	@Test
-	void testFechaYPeliNull() {
-
-		Pelicula peliculas = new Pelicula();
-		String pelicula = peliculas.getTitulo();
-
-		Proyeccion proyecciones = new Proyeccion();
-		Date fecha = proyecciones.getFecha();
-
-		assertNull("Fecha no existe:'" + fecha + "' de la pelicula no existe: '" + pelicula + "'", null);
-
-	}
-
 }

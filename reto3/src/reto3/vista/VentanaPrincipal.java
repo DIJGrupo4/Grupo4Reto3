@@ -657,9 +657,7 @@ public class VentanaPrincipal {
 				
 				for (int i = 0; i < precios.size(); i++) {
 					
-					precioTotal = precios + precios.get(i);
-	
-					
+		
 				}
 				
 				lblPrecioTotal.setText((precioTotal).toString());

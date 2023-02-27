@@ -1,52 +1,53 @@
-package reto3.Entornos;
+package reto3.Entornos.Sprint2;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
-import java.util.Date;
-
+import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
+import reto3.bbdd.gestor.GestorPeliculas;
 import reto3.bbdd.pojo.Pelicula;
-import reto3.bbdd.pojo.Proyeccion;
-
 class jUnitOrdenarPeliculas {
- 
-	@Test
-	void testOrdenarPeliculaTrue() {
 
-		Pelicula peliculas = new Pelicula();
-		String pelicula = peliculas.getTitulo();
-		
-		Proyeccion proyecciones = new Proyeccion();
-		Date fecha = proyecciones.getFecha();
-		assertTrue("Pelicula disponible:'" + pelicula + "' Ordenado por '" + fecha + "'", true);
+	@Test
+	void testPelisCineNotNull() {
+
+		int codCine = 0;
+		GestorPeliculas gestorPeliculas = new GestorPeliculas();
+		ArrayList<Pelicula> pelicula = null;
+		pelicula = gestorPeliculas.obtenerPeliculaPorCine(codCine);
+		assertNotNull(pelicula);
 	}
 
 	@Test
-	void testOrdenarPeliculaFalse() {
+	void testPelisCineValue() {
 
-		Pelicula peliculas = new Pelicula();
-		String pelicula = peliculas.getTitulo();
-		
-		Proyeccion proyecciones = new Proyeccion();
-		Date fecha = proyecciones.getFecha();
-		
-		assertFalse("Pelicula no disponible:'" + pelicula + "' Ordenado por '" + fecha + "'", false);
+		int codCine = 0;
+		GestorPeliculas gestorPeliculas = new GestorPeliculas();
+		ArrayList<Pelicula> pelicula = null;
+		pelicula = gestorPeliculas.obtenerPeliculaPorCine(codCine);
+		String nombrePeli = null;
+		String nombreEsperado = "F9";
+
+		nombrePeli = pelicula.get(0).getTitulo();
+
+		assertEquals(nombrePeli, nombreEsperado);
 	}
 
 	@Test
-	void testOrdenarPeliculaNull() {
+	void testPelisCineTamaño() {
 
-		Pelicula peliculas = new Pelicula();
-		String pelicula = peliculas.getTitulo();
-		
-		Proyeccion proyecciones = new Proyeccion();
-		Date fecha = proyecciones.getFecha();
-		
-		assertNull("Pelicula no disponible:'" + pelicula + "' Ordenado por '" + fecha + "'", null);
-		
+		int codCine = 0;
+		GestorPeliculas gestorPeliculas = new GestorPeliculas();
+		ArrayList<Pelicula> pelicula = null;
+		pelicula = gestorPeliculas.obtenerPeliculaPorCine(codCine);
+		int tamañoPelicula = 0;
+		int tamañoEsperado = 12;
+
+		tamañoPelicula = pelicula.get(0).getCodPelicula();
+
+		assertEquals(tamañoPelicula, tamañoEsperado);
 	}
 
 }
