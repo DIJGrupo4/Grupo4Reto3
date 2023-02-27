@@ -15,7 +15,7 @@ public class Sala {
 	private ArrayList<Proyeccion> proyecciones = null;
 	
 	//Relacion N:1 con Cine
-	Cine cine = null;
+	private Cine cine = null;
 
 	public int getCodSala() {
 		return codSala;
