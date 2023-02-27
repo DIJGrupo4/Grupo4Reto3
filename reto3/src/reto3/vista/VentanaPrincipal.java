@@ -485,6 +485,7 @@ public class VentanaPrincipal {
 				for (int i = 0; i < table.getRowCount(); i++) {
 					precioTotal = (Float) table.getValueAt(i, 5);
 				}
+
 				lblPrecioTotal.setText((precioTotal).toString());
 
 			}
@@ -653,10 +654,6 @@ public class VentanaPrincipal {
 				spPanelSeleccionPelis.setVisible(false);
 				ssPanelSeleccionSesiones.setVisible(false);
 
-				int x = table.getRowCount();
-				for (int i = 0; i < x; i++) {
-					table.getValueAt(0, i);
-				}
 				model.addRow(new Object[] { nombreCine, tituloSeleccionado, fechaSeleccionada, horaSeleccionada,
 						numSalaSeleccionada, precioSeleccionado });
 

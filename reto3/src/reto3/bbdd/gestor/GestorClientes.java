@@ -7,12 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-//import reto3.bbdd.menu.inicio;
 import reto3.bbdd.utils.DBUtils;
-import reto3.vista.paneles.CrearUsuario;
 import reto3.bbdd.pojo.*;
 
 public class GestorClientes {
@@ -72,7 +69,7 @@ public class GestorClientes {
 
 	public boolean validarLogin(String usuario, String contraseña) {
 
-
+		boolean ret = false;
 		
 		Connection connection = null;
 
@@ -100,13 +97,10 @@ public class GestorClientes {
 			resultSet = statement.executeQuery(sql);
 
 			if (resultSet.next()) {
-
 				JOptionPane.showMessageDialog(null, "Usuario y contraseña correctos");
-				return true;
+				ret = true;
 			} else {
-
 				JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
-				
 			}
 
 		} catch (SQLException sqle) {
@@ -137,7 +131,7 @@ public class GestorClientes {
 			}
 			;
 		}
-		return false;
+		return ret;
 	}
 
 }
