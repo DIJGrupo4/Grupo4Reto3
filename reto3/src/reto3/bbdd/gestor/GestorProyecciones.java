@@ -10,7 +10,6 @@ import java.sql.Time;
 import java.util.ArrayList;
 
 import reto3.bbdd.pojo.Proyeccion;
-import reto3.bbdd.pojo.Sala;
 import reto3.bbdd.utils.DBUtils;
 
 public class GestorProyecciones {
