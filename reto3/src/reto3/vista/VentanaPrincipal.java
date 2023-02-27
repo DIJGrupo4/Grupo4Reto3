@@ -56,19 +56,19 @@ public class VentanaPrincipal {
 	private ArrayList<Cine> cines = new ArrayList<Cine>(gestorCines.obtenerTodosLosCines());
 	private ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
 	private ArrayList<Proyeccion> proyecciones = new ArrayList<Proyeccion>();
-	
+
 	public String tituloSeleccionado = null;
 	public Date fechaSeleccionada = null;
 	public Time horaSeleccionada = null;
 	public Float precioSeleccionado = null;
 	public String nombreCine = null;
-	
+
 	public int numSalaSeleccionada = 0;
 	public int codCine = 0;
 	private int codProyeccion = 0;
-	
+
 	public Float precioTotal = null;
-	
+
 	private DefaultListModel<String> listModel = new DefaultListModel<String>();
 	DefaultTableModel model = new DefaultTableModel();
 

@@ -13,8 +13,8 @@ public class GestorSalas {
 
 	public int getNumSalaPorCodSala(int codSala) {
 		Sala sala = new Sala();
-		int ret=0;
-		String sql = "select numSala from t_sala where codSala = '"+codSala+"'";
+		int ret = 0;
+		String sql = "select numSala from t_sala where codSala = '" + codSala + "'";
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -37,11 +37,9 @@ public class GestorSalas {
 
 				// Sacamos las columnas del RS
 				int numSala = resultSet.getInt("numSala");
-				
 
 				// Metemos los datos a Ejemplo
 				sala.setNumSala(numSala);
-				
 
 			}
 		} catch (SQLException sqle) {
@@ -49,7 +47,7 @@ public class GestorSalas {
 		} catch (Exception e) {
 			System.out.println("Error generico - " + e.getMessage());
 		} finally {
-		
+
 			// Cerramos al reves de como las abrimos
 			try {
 				if (resultSet != null)
@@ -70,7 +68,7 @@ public class GestorSalas {
 				// No hace falta
 			}
 		}
-		ret=sala.getNumSala();
+		ret = sala.getNumSala();
 		return ret;
-	}	
+	}
 }
