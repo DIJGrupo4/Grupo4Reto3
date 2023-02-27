@@ -3,6 +3,7 @@ package reto3.vista;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +18,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -24,28 +26,22 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
-import reto3.bbdd.gestor.GestorPeliculas;
-import reto3.bbdd.gestor.GestorProyecciones;
-import reto3.bbdd.gestor.GestorSalas;
 import reto3.bbdd.gestor.GestorCines;
 import reto3.bbdd.gestor.GestorClientes;
 import reto3.bbdd.gestor.GestorEntradas;
+import reto3.bbdd.gestor.GestorPeliculas;
+import reto3.bbdd.gestor.GestorProyecciones;
+import reto3.bbdd.gestor.GestorSalas;
 import reto3.bbdd.pojo.Cine;
 import reto3.bbdd.pojo.Cliente;
-import reto3.bbdd.pojo.Entrada;
 import reto3.bbdd.pojo.Pelicula;
 import reto3.bbdd.pojo.Proyeccion;
-import reto3.controlador.GestorFichero;
-import reto3.vista.paneles.CrearUsuario;
 import rsscalelabel.RSScaleLabel;
-
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import java.awt.GridLayout;
 
 public class VentanaPrincipal {
 
@@ -60,19 +56,19 @@ public class VentanaPrincipal {
 	private ArrayList<Cine> cines = new ArrayList<Cine>(gestorCines.obtenerTodosLosCines());
 	private ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
 	private ArrayList<Proyeccion> proyecciones = new ArrayList<Proyeccion>();
-	private ArrayList<Entrada> entradas = new ArrayList<Entrada>();
-
+	
 	public String tituloSeleccionado = null;
 	public Date fechaSeleccionada = null;
 	public Time horaSeleccionada = null;
 	public Float precioSeleccionado = null;
-	public int numSalaSeleccionada = 0;
 	public String nombreCine = null;
+	
+	public int numSalaSeleccionada = 0;
 	public int codCine = 0;
-	public Float precioTotal = null;
 	private int codProyeccion = 0;
-	private int codRecibo = 0;
-
+	
+	public Float precioTotal = null;
+	
 	private DefaultListModel<String> listModel = new DefaultListModel<String>();
 	DefaultTableModel model = new DefaultTableModel();
 
@@ -81,8 +77,6 @@ public class VentanaPrincipal {
 	private JTextField ssTextPrecio;
 	private JTextField ssTextSala;
 	private JTable table;
-	private JLabel lblPrecioTotal;
-
 	private JTextField txtNombre = null;
 	private JTextField txtApellido = null;
 	private JTextField txtDni = null;
@@ -112,8 +106,6 @@ public class VentanaPrincipal {
 	}
 
 	public void initialize() {
-
-		CrearUsuario crearUsuario = new CrearUsuario();
 
 		frame = new JFrame();
 		frame.getContentPane().setEnabled(false);
@@ -663,8 +655,7 @@ public class VentanaPrincipal {
 
 				int x = table.getRowCount();
 				for (int i = 0; i < x; i++) {
-					table.rowAtPoint(i);
-
+					table.getValueAt(0, i);
 				}
 				model.addRow(new Object[] { nombreCine, tituloSeleccionado, fechaSeleccionada, horaSeleccionada,
 						numSalaSeleccionada, precioSeleccionado });
@@ -674,7 +665,7 @@ public class VentanaPrincipal {
 				codProyeccion = gestorProyecciones.getCodProyeccionPorSala(nombreCine, tituloSeleccionado,
 						fechaSeleccionada, horaSeleccionada, numSalaSeleccionada, precioSeleccionado);
 
-				entradas = gestorEntradas.insertEjemplo(codProyeccion);
+				gestorEntradas.insertEjemplo(codProyeccion);
 
 			}
 		});
