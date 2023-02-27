@@ -216,7 +216,7 @@ public class VentanaPrincipal {
 		ssLblSesionesDisponibles.setBounds(81, 107, 130, 14);
 		ssPanelSeleccionSesiones.add(ssLblSesionesDisponibles);
 
-		JLabel lblNewLabel = new JLabel("Regristrarme");
+		JLabel lblNewLabel = new JLabel("Registro");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel.setBounds(145, 11, 135, 26);
 		rPanelRegistro.add(lblNewLabel);
