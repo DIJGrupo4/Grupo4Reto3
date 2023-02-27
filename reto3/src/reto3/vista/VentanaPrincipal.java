@@ -663,10 +663,11 @@ public class VentanaPrincipal {
 
 				codProyeccion = gestorProyecciones.getCodProyeccionPorSala(nombreCine, tituloSeleccionado,
 						fechaSeleccionada, horaSeleccionada, numSalaSeleccionada, precioSeleccionado);
-				
+
 				entradas = gestorEntradas.insertEjemplo(codProyeccion);
-				
+
 				gestorEntradas.agregarDatosEntrada(codProyeccion, codRecibo);
+
 			}
 		});
 
@@ -697,7 +698,7 @@ public class VentanaPrincipal {
 				JOptionPane.showMessageDialog(jFrame, "Impreso");
 
 				model.removeRow(0);
-				
+
 				bPanelBienvenida.setVisible(true);
 				panelRecibo.setVisible(false);
 
